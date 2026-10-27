@@ -91,7 +91,6 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .hero .arrow{position:absolute;right:-14vw;bottom:-22vw;width:74vw;max-width:1100px;height:auto;fill:var(--yellow);filter:drop-shadow(0 30px 60px rgba(20,10,80,.35));will-change:transform}
 @media (min-width:1500px){.hero .arrow{right:-8vw;bottom:-18vw}}
 @media (max-width:860px){.hero .arrow{right:-40vw;bottom:-45vw;width:110vw}.hero .bg img{object-position:55% 30%}.hero .ctas{flex-direction:column;align-items:flex-start}}
-.hero .frame{position:absolute;inset:clamp(14px,2.2vw,28px);border:1px solid rgba(255,255,255,.22);border-radius:18px;pointer-events:none}
 .hero .in{padding-block:7rem 5.5rem;display:grid;gap:1.3rem;justify-items:start}
 .hero .in>*{max-width:46rem}
 .hero h1{max-width:none}
@@ -104,9 +103,6 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .hero .ctas{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:flex-start;margin-top:.8rem}
 .hero .quiet{display:inline-flex;align-items:center;align-self:center;margin-left:.6rem;padding:.3rem 0;color:#fff;font:500 .95rem/1 var(--body);border-bottom:1.5px solid rgba(255,255,255,.45);text-shadow:0 2px 14px rgba(30,20,100,.6)}
 .hero .quiet:hover{border-color:var(--yellow)}
-.hero .scroll{position:absolute;bottom:2rem;left:calc(clamp(14px,2.2vw,28px) + 1.4rem);font:600 .68rem/1 var(--latin);letter-spacing:.22em;color:rgba(255,255,255,.65);display:flex;flex-direction:column;align-items:center;gap:.6rem}
-.hero .scroll i{display:block;width:1px;height:2.4rem;background:linear-gradient(var(--yellow),transparent);animation:drip 2.2s ease-in-out infinite}
-@keyframes drip{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* numbers */
 .nums{border-bottom:1px solid var(--line)}
@@ -244,7 +240,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 footer{padding-block:1.6rem 2.6rem}
 footer .in{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:400 .8rem/1.6 var(--body);color:var(--muted);align-items:center}
 footer svg{height:1.1rem;width:auto;opacity:.75}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.hero .scroll i{animation:none}.marq div{animation:none}.seal{transition:none}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.marq div{animation:none}.seal{transition:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -284,7 +280,6 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
 
 <header class="hero panel wrap" id="top">
   <div class="bg" aria-hidden="true"><img src="assets/hero.jpg" alt="" id="heroImg"><i class="tint"></i><i class="grad"></i><svg class="arrow" id="heroArrow" viewBox="0 0 100 100"><path d="M38 0H100V62L80 42 22 100 0 78 58 20Z"/></svg></div>
-  <div class="frame"></div>
   <div class="in">
     <div class="eyebrow">名校背景提升</div>
     <h1><span class="l">一个项目</span><br><span class="l"><span class="x">×</span><span class="hl">多元成果</span></span></h1>
@@ -294,7 +289,6 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
       <a class="quiet" href="#contact">预约咨询</a>
     </div>
   </div>
-  <div class="scroll"><i></i>SCROLL</div>
 </header>
 
 <section class="nums wrap">
