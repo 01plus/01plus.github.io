@@ -1,0 +1,26 @@
+# 01+ 名校背景提升
+
+> 01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、品牌、社会影响与推荐信等多元成果，申请世界名校。总校位于美国加州 Irvine。
+
+## 核心数据
+- 10+ 年 K12 科创项目经验，700+ 位学员
+- 哈耶普斯麻录取率 20%+；Top 30 名校录取率 90%+；Top 50 名校录取率 100%
+- 2024–2026 录取名单覆盖 35 所院校，见首页
+
+## 方法
+开展调研 → 明确选题 → 制定计划 → 全程陪跑；围绕一个项目持续产出：产品、实习、竞赛、论文、专利、发布、品牌、社会影响、推荐信。
+
+## 案例
+- [智慧校园一体化平台 · Jevon → 斯坦福大学](https://01plus.github.io/case/campus-platform.html)
+- [校园枪击预警系统 · James → 斯坦福大学](https://01plus.github.io/case/gunshot-alert.html)
+- [临床试验招募平台 · Jasmine → 麻省理工学院](https://01plus.github.io/case/clinical-trials.html)
+- [盲人辅助导航系统 · Katherine → 麻省理工学院](https://01plus.github.io/case/assistive-navigation.html)
+- [街头医疗药物平台 · Victor → 斯坦福大学 + 麻省理工学院](https://01plus.github.io/case/street-medicine.html)
+- [一体化任务管理平台 · Leon → 宾夕法尼亚大学 · 沃顿商学院](https://01plus.github.io/case/task-platform.html)
+- [青少年情绪互助平台 · Rachel → 耶鲁大学](https://01plus.github.io/case/peer-support.html)
+- [跑步姿态与康复平台 · Eddie → 约翰霍普金斯大学](https://01plus.github.io/case/gait-rehab.html)
+- [智能家务机械臂 · Tim → 加州理工学院](https://01plus.github.io/case/home-robot-arm.html)
+- [示例项目计划：CarveTrack 多模态滑雪传感器](https://01plus.github.io/case/carvetrack.html)
+
+## 联系
+微信扫码预约免费名校背景规划，获得定制策划书。地址：920 Roosevelt, Suite 200, Irvine, CA。官网 https://01plus.ai

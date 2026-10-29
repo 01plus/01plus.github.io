@@ -1,0 +1,227 @@
+[
+ {
+  "slug": "campus-platform", "name": "Jevon", "gender": "m",
+  "project": "智慧校园一体化平台", "en": "CampusFlow",
+  "school": "斯坦福大学", "schoolEn": "Stanford University", "logo": "stanford", "color": "#8c1515",
+  "major": "计算机科学",
+  "summary": "Jevon 围绕校园运营与家校协作中的实际需求，开发了一套智慧校园一体化平台，覆盖校园管理、信息流转与家校沟通等核心模块，并通过全栈技术架构整合课程管理、消息通知、活动安排与学生服务等功能，提升校园日常运营与家校协作效率。",
+  "problem": "一所学校每天要处理课程、通知、活动和家校沟通，信息散落在十几个工具里，老师重复录入，家长找不到入口。",
+  "outcomes": {
+   "internship": "深入 Distributed Platform Engineering 方向科研，将分布式系统架构、数据同步与多节点服务稳定性应用于项目实践",
+   "paper": "发表论文《Architecting Scalable Mobile Platforms for K-12 Campus Digitalization》，并参与国际会议 SIIE",
+   "competition": "获 Pitch to the Future 一等奖、Orange County Science Fair 二等奖",
+   "patent": "申请美国技术专利（专利号 63/480,021）",
+   "product": "发布至 App Store 与 Google Play",
+   "brand": "创立品牌 CampusFlow Labs",
+   "impact": "推广至多个教育机构和社区，累计覆盖 8,000+ 名学生、教师与家长；获总统义工奖（PVSA）",
+   "letter": "获得科研导师及学校行政主管的高度推荐与评价"
+  },
+  "stats": [["8,000+", "覆盖学生、教师与家长"], ["2", "项竞赛奖项"], ["1", "项美国专利申请"]],
+  "img": {
+   "hero": "He sits in a bright school office with a laptop and a tablet showing a campus app dashboard with schedules and notifications, a teacher looking over his shoulder, glass walls and a corridor of lockers behind.",
+   "s1": "He works beside a graduate mentor at a university systems lab, several monitors showing architecture diagrams and server metrics, whiteboard with distributed-system sketches.",
+   "s2": "He presents on a small stage at a youth pitch competition, slide behind him showing a school app interface, judges at a table with name cards, audience in the foreground.",
+   "s3": "He demonstrates the app to parents and teachers at a school open-house evening, tablets on a table, a banner-free gym hall with warm light."
+  }
+ },
+ {
+  "slug": "gunshot-alert", "name": "James", "gender": "m",
+  "project": "校园枪击预警系统", "en": "SafeSignal",
+  "school": "斯坦福大学", "schoolEn": "Stanford University", "logo": "stanford", "color": "#8c1515",
+  "major": "科学、科技与社会",
+  "summary": "James 聚焦校园公共安全问题，开发了一套实时枪击检测、定位与预警系统，通过多阵列声学采集与深度学习模型识别枪声并推算枪手位置，再将预警信息自动推送至校园安保部门，提升突发事件中的响应效率与安全保障能力。",
+  "problem": "突发事件里，最贵的是前三十秒。校园安保往往要等到有人报告，才知道事情发生在哪里。",
+  "outcomes": {
+   "internship": "深入 Applied Acoustic Machine Learning 方向科研，实践声学信号处理、事件检测模型训练与传感器阵列布设",
+   "paper": "发表论文《Deep Acoustic Event Detection and Multi-Point TDOA Localization for Indoor Gunshot Response Systems》，并参与国际会议 ICAISTS",
+   "competition": "获 Future Lab Investor Pitch 优胜奖、Orange County Science Fair 一等奖、Congressional App Challenge 二等奖",
+   "patent": "申请美国技术专利（专利号 63/517,691）",
+   "product": "完成系统原型，并在校园真实环境中开展测试",
+   "brand": "创立公益品牌 SafeSignal Initiative",
+   "impact": "在多个校园行政部门与安保团队中应用；获总统义工奖（PVSA）",
+   "letter": "获得科研导师及学校安保部门负责人的高度推荐与评价"
+  },
+  "stats": [["3", "项竞赛奖项"], ["1", "项美国专利申请"], ["PVSA", "总统义工奖"]],
+  "img": {
+   "hero": "He mounts a small microphone sensor array on a school hallway ceiling from a ladder, a laptop on a cart below showing a floor-plan with sound-source markers, lockers and daylight.",
+   "s1": "He trains an acoustic detection model in a university lab, oscilloscope-style waveforms and spectrograms on a wide monitor, a mentor pointing at the screen.",
+   "s2": "He explains his project at a science and engineering fair booth, a trifold poster with floor plans and waveform charts, two judges listening.",
+   "s3": "He walks a school security officer through the alert app on a phone in a campus courtyard, the officer nodding, students in the background."
+  }
+ },
+ {
+  "slug": "clinical-trials", "name": "Jasmine", "gender": "f",
+  "project": "临床试验招募平台", "en": "ClinicalAccess",
+  "school": "麻省理工学院", "schoolEn": "MIT", "logo": "mit", "color": "#a31f34",
+  "major": "生物医学",
+  "summary": "Jasmine 聚焦临床试验中患者获取信息与参与机会受限的问题，开发了一款患者匹配与招募平台，通过 AI 模型分析健康信息与试验适配度，为患者推荐更适合的临床试验，改善信息不透明、渠道分散与匹配效率不足等问题。",
+  "problem": "每年有成千上万项临床试验在招募，但最需要它们的患者往往不知道有这回事，也不知道自己是否符合条件。",
+  "outcomes": {
+   "internship": "深入 Biomedical Data Intelligence 方向科研，实践临床信息结构、医学数据处理方法与患者参与模型",
+   "paper": "发表论文《AI-Based Clinical Trial Matching Models for Underrepresented Patient Populations》，并参与国际会议 IEEE",
+   "competition": "获 Google IgniteCS Expo 优胜奖",
+   "patent": "申请美国技术专利（专利号 63/584,910）",
+   "product": "上线 App Store 与 Google Play",
+   "brand": "创立公益品牌 ClinicalAccess Alliance",
+   "impact": "应用于多个医院、社区诊所与养老中心，累计覆盖 200+ 名患者及其家庭；获总统义工奖（PVSA）",
+   "letter": "获得科研导师及社区医疗项目负责人的高度推荐与评价"
+  },
+  "stats": [["200+", "位患者及家庭"], ["IEEE", "国际会议论文"], ["1", "项美国专利申请"]],
+  "img": {
+   "hero": "She sits with an elderly patient in a sunny clinic waiting area, showing a phone app that lists matching clinical trials, a nurse nearby, plants and soft daylight.",
+   "s1": "She reviews anonymised medical data tables and a matching-model diagram on a monitor in a university biomedical informatics lab, a mentor beside her.",
+   "s2": "She presents at a tech expo booth, a large screen showing the app, visitors with lanyards listening, bright exhibition hall.",
+   "s3": "She talks with a small group of patients and families at a community health centre, tablets on the table, warm afternoon light."
+  }
+ },
+ {
+  "slug": "assistive-navigation", "name": "Katherine", "gender": "f",
+  "project": "盲人辅助导航系统", "en": "NavigationForAll",
+  "school": "麻省理工学院", "schoolEn": "MIT", "logo": "mit", "color": "#a31f34",
+  "major": "应用数学",
+  "summary": "Katherine 聚焦视障人群独立出行中的障碍识别与导航问题，开发了一套辅助导航系统，通过计算机视觉、数学特征建模与多模态反馈识别物体、估算深度并分析空间位置，再结合语音与振动提示，帮助用户实时判断障碍物的距离与方向。",
+  "problem": "对视障人士来说，一段几百米的路可能布满未知：台阶、停在人行道上的车、半开的门。她想让这些障碍提前说话。",
+  "outcomes": {
+   "internship": "深入 Spatial Modeling for Assistive Navigation 方向科研，实践特征提取、空间向量计算与场景几何分析",
+   "paper": "发表论文《Mathematical Modeling of Spatial Obstacle Estimation for Assistive Navigation Systems》，并参与会议 SIAM",
+   "competition": "获 Microsoft Imagine Cup 美国区冠军、Diamond Challenge 全球第一、Orange County Science Fair 一等奖；入围 Technovation Challenge 美国区",
+   "patent": "申请美国技术专利（专利号 63/718,568）",
+   "product": "上线 App Store 与 Google Play",
+   "brand": "创立公益品牌 NavigationForAll Initiative",
+   "impact": "应用于多个助残机构、社区康复中心与学校无障碍项目，累计覆盖 600+ 名视障用户及志愿者；获总统义工奖（PVSA）",
+   "letter": "获得科研导师及助残机构负责人的高度推荐与评价"
+  },
+  "stats": [["600+", "位视障用户及志愿者"], ["4", "项竞赛荣誉"], ["#1", "Diamond Challenge 全球"]],
+  "img": {
+   "hero": "She walks beside a visually impaired man with a white cane on a tree-lined sidewalk, he wears a small chest-mounted camera and earbuds, she holds a phone showing an obstacle map, soft morning light.",
+   "s1": "She works on depth-estimation visualisations in a university lab, a monitor showing a street scene with coloured depth overlay and vectors, whiteboard with geometry sketches.",
+   "s2": "She stands on a competition stage holding a trophy, a big screen behind showing her app, applause from an audience.",
+   "s3": "She runs a workshop at a community centre for the blind, several users trying the app with canes, volunteers helping, bright room."
+  }
+ },
+ {
+  "slug": "street-medicine", "name": "Victor", "gender": "m",
+  "project": "街头医疗药物平台", "en": "StreetMed",
+  "school": "斯坦福大学 + 麻省理工学院", "schoolEn": "Stanford University · MIT", "logo": "stanford", "logo2": "mit", "color": "#8c1515",
+  "major": "化学",
+  "summary": "Victor 聚焦医疗资源不足人群的用药与健康需求，开发了一款药物发现与街头医疗平台，通过 AI 模型分析小分子结构、药效与合理性，并提供基础药物信息与社区健康辅助服务，为缺乏医疗资源的人群提供更便捷的健康支持工具。",
+  "problem": "在义诊现场，一个常见的问题是：这个药和那个药能不能一起吃。缺乏医疗资源的人群，需要一个随手可查、可信的答案。",
+  "outcomes": {
+   "internship": "深入 Small-Molecule Prediction Models 方向科研，实践分子指纹、QSAR 模型、能量优化算法及药物结构预测",
+   "paper": "发表论文《AI-Assisted Prediction Models for Small-Molecule Drug Candidates Using Functional Descriptor Mapping》，并参与会议 ACS",
+   "competition": "获 Science Fair California 二等奖；入围 STS",
+   "patent": "申请美国技术专利（专利号 63/688,317）",
+   "product": "上线 App Store 与 Google Play",
+   "brand": "创立公益品牌 StreetMed Collective",
+   "impact": "应用于多个社区健康项目与义诊现场，累计覆盖 400+ 名用户；获总统义工奖（PVSA）",
+   "letter": "获得科研导师及社区医疗组织负责人的高度推荐与评价"
+  },
+  "stats": [["400+", "位用户"], ["2", "所名校录取"], ["ACS", "会议论文"]],
+  "img": {
+   "hero": "He stands at a street medicine tent at a community clinic day, a folding table with basic medicines, showing a phone app with molecule diagrams and drug information to a volunteer nurse, sunny sidewalk.",
+   "s1": "He studies 3D molecule structures and a QSAR model chart on a monitor in a university chemistry lab, glassware and a fume hood behind, a mentor beside him.",
+   "s2": "He explains his project at a science fair booth with a trifold poster showing molecules and charts, a judge taking notes.",
+   "s3": "He hands a printed medication guide to an elderly man at a community health fair, volunteers in matching t-shirts around, warm afternoon light."
+  }
+ },
+ {
+  "slug": "task-platform", "name": "Leon", "gender": "m",
+  "project": "一体化任务管理平台", "en": "Compact",
+  "school": "宾夕法尼亚大学 · 沃顿商学院", "schoolEn": "UPenn · Wharton", "logo": "upenn", "color": "#011f5b",
+  "major": "沃顿商学院",
+  "summary": "Leon 从日常学习中的任务管理问题出发，开发了一套一体化学习任务管理平台，整合学习规划、目标分解、任务清单、考试管理与习惯追踪等核心功能，解决多个工具并用造成的信息分散、规划混乱与学习效率下降问题。",
+  "problem": "日历、待办、笔记、倒计时、打卡——一个高中生平均同时用五个工具管理学习，而真正的问题是它们互相不说话。",
+  "outcomes": {
+   "internship": "深入 User-Centered Product Engineering 方向科研，实践用户行为分析、数据驱动决策模型与产品结构设计",
+   "paper": "发表论文《Designing Unified Productivity Platforms for Multi-Task Student Environments》，并参与国际会议 ICCSIT",
+   "competition": "入围 Diamond Challenge",
+   "patent": "申请美国技术专利（专利号 63/494,253）",
+   "product": "上线 App Store 与 Google Play",
+   "brand": "创立品牌 Compact Labs",
+   "impact": "推广至多个教育机构和社区，累计覆盖 2,000+ 名学生；获总统义工奖（PVSA）",
+   "letter": "获得科研导师及竞赛评审负责人的高度推荐与评价"
+  },
+  "stats": [["2,000+", "位学生使用"], ["2", "个应用商店上线"], ["1", "项美国专利申请"]],
+  "img": {
+   "hero": "He sits at a tidy study desk by a window, a phone and laptop showing a clean task-planning app with a weekly plan and habit tracker, textbooks stacked, morning light.",
+   "s1": "He reviews user-behaviour charts and app wireframes with a mentor in a university product-design studio, sticky notes on a glass wall.",
+   "s2": "He pitches at a youth entrepreneurship competition, standing beside a screen with the app and a growth chart, judges at a long table.",
+   "s3": "He shows the app to a classroom of high-school students who hold phones, a teacher at the back, bright classroom."
+  }
+ },
+ {
+  "slug": "peer-support", "name": "Rachel", "gender": "f",
+  "project": "青少年情绪互助平台", "en": "MindShare",
+  "school": "耶鲁大学", "schoolEn": "Yale University", "logo": "yale", "color": "#00356b",
+  "major": "心理学",
+  "summary": "Rachel 关注青少年情绪压力与同伴支持需求，开发了一款情绪互助平台，通过心理量表特征与共同困扰进行智能匹配，让拥有相似经历的学生相互支持与陪伴，并整合匿名倾诉、心理知识库与情绪趋势追踪等功能，提供持续的情绪支持。",
+  "problem": "很多青少年不愿意向大人开口，却愿意听一个经历过同样事情的同龄人说一句“我懂”。",
+  "outcomes": {
+   "internship": "深入 Emotion Regulation & Youth Mental Health 方向科研，实践心理测评、情绪追踪结构与支持系统设计",
+   "paper": "发表论文《Designing Peer-Matched Emotional Support Systems for Adolescents Using Psychological Profiling》，并参与会议 SRCD",
+   "competition": "入围 Youth Innovation in Mental Health Challenge",
+   "patent": "申请美国技术专利（专利号 63/555,913）",
+   "product": "上线 App Store 与 Google Play",
+   "brand": "创立公益品牌 MindShare Youth",
+   "impact": "在五所学校落地应用，累计覆盖 800+ 名学生；获总统义工奖（PVSA）",
+   "letter": "获得科研导师及学校心理辅导部门负责人的高度推荐与评价"
+  },
+  "stats": [["800+", "位学生使用"], ["5", "所学校落地"], ["SRCD", "会议论文"]],
+  "img": {
+   "hero": "She sits on a campus lawn with two other teenagers, one showing a phone app with a calm chat interface and a mood chart, relaxed conversation, soft late-afternoon light.",
+   "s1": "She discusses psychological scale results and an app flow diagram with a mentor in a university psychology lab, a quiet room with plants.",
+   "s2": "She presents her project to a panel at a youth mental-health innovation challenge, slide showing matching logic, attentive judges.",
+   "s3": "She leads a small peer-support circle in a school counselling room, chairs in a circle, students holding phones, warm light."
+  }
+ },
+ {
+  "slug": "gait-rehab", "name": "Eddie", "gender": "m",
+  "project": "跑步姿态与康复平台", "en": "GaitHealth",
+  "school": "约翰霍普金斯大学", "schoolEn": "Johns Hopkins University", "logo": "johns-hopkins", "color": "#002d72",
+  "major": "生物医学工程",
+  "summary": "Eddie 聚焦跑步姿态与运动康复问题，开发了一款姿态分析与康复平台，通过手机摄像头捕捉身体关键点，分析膝关节角度、落脚模式、步频与躯干稳定度等指标，并结合语音与图像提示提供个性化矫正建议，降低运动损伤与二次伤害风险。",
+  "problem": "大多数跑步损伤不是因为跑得多，而是因为跑得不对。一部手机就能看到的姿态问题，不该等到受伤才被发现。",
+  "outcomes": {
+   "internship": "深入 Human Movement Modeling 方向科研，实践运动学、人体生物力学与临床康复参数",
+   "paper": "发表论文《AI-Driven Posture Correction Framework for Lower-Limb Rehabilitation Using Real-Time Gait Estimation》，并参与国际会议 IEEE",
+   "competition": "获 ISEF 二等奖",
+   "patent": "申请美国技术专利（专利号 63/498,274）",
+   "product": "上线 App Store 与 Google Play",
+   "brand": "创立公益品牌 GaitHealth Initiative",
+   "impact": "应用于多个康复诊所、物理治疗中心及跑步俱乐部，累计覆盖 450+ 名用户；获总统义工奖（PVSA）",
+   "letter": "获得科研导师及康复中心负责人的高度推荐与评价"
+  },
+  "stats": [["450+", "位用户"], ["ISEF", "二等奖"], ["IEEE", "国际会议论文"]],
+  "img": {
+   "hero": "He runs on an outdoor track while a phone on a small tripod films him, a tablet beside it shows a skeleton overlay with joint angles, early morning light.",
+   "s1": "He analyses gait data with a mentor in a university biomechanics lab, a treadmill, motion-capture markers and a monitor with joint-angle curves.",
+   "s2": "He stands at his ISEF booth with a trifold poster showing gait diagrams, a judge with a clipboard listening, a large exhibition hall.",
+   "s3": "He helps a physiotherapist and an older patient use the app in a rehabilitation clinic, parallel bars and exercise balls in the room."
+  }
+ },
+ {
+  "slug": "home-robot-arm", "name": "Tim", "gender": "m",
+  "project": "智能家务机械臂", "en": "HomeBot",
+  "school": "加州理工学院", "schoolEn": "Caltech", "logo": "caltech", "color": "#e05a00",
+  "major": "机械工程",
+  "summary": "Tim 从家庭自动化与辅助生活场景出发，开发了一套智能家务机械臂系统，整合机械结构、驱动传动、传感融合与智能控制，实现抓取、分类与搬运等基础任务，并结合运动学、动力学建模及视觉与力反馈，实现稳定运动与安全精准交互。",
+  "problem": "对行动不便的老人来说，弯腰捡起一只杯子可能是一天里最难的动作。他想做一只能在厨房台面上帮忙的手。",
+  "outcomes": {
+   "internship": "深入 Robotics Manipulation & Mechatronic Systems 方向科研，实践正逆运动学、力矩分析、回路设计与硬件调试",
+   "paper": "发表论文《Design and Control Optimization of a Modular Intelligent Household Robotic Arm》，并参与会议 CCSIT",
+   "competition": "获 California Science & Engineering Fair 优秀工程奖；入围 Diamond Challenge 全球赛",
+   "patent": "申请美国技术专利（专利号 63/689,647）",
+   "product": "完成可复现实验级原型",
+   "brand": "创立品牌 HomeBot Lab",
+   "impact": "在社区 STEM 中心与中学机器人社团开展机械臂工作坊，累计覆盖 400+ 名学生；应用于辅助老年人与行动不便人群的家务场景",
+   "letter": "获得大学机器人实验室导师、工程竞赛教练及社区合作机构负责人的高度推荐与评价"
+  },
+  "stats": [["400+", "位学生参与工作坊"], ["1", "项美国专利申请"], ["CSEF", "优秀工程奖"]],
+  "img": {
+   "hero": "He adjusts a compact white desktop robotic arm on a kitchen counter as it lifts a cup, a laptop beside it showing a control interface, an elderly woman watching with a smile, bright kitchen.",
+   "s1": "He tunes servo wiring on the robotic arm at a university robotics lab bench, oscilloscope and 3D printer behind, a mentor pointing at a kinematics diagram.",
+   "s2": "He demonstrates the arm picking objects at a science and engineering fair booth, trophies on a table, judges watching.",
+   "s3": "He runs a robotics workshop for middle-school students at a community STEM centre, kids crowding around the arm, bright room."
+  }
+ }
+]
