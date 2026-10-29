@@ -86,8 +86,10 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .film{position:relative;height:780svh}
 .stage{position:sticky;top:0;height:100svh;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);background:var(--bg)}
 .cine{position:relative;height:100%;overflow:hidden;background:#17133a}
-.cine img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;will-change:transform,opacity;transform:scale(1.04)}
-.cine img.on{opacity:1}
+.cine img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;z-index:0}
+.cine img.was{opacity:1;z-index:1}
+.cine img.on{opacity:1;z-index:2;animation:wipe .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes wipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}}
 .cine .vig{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(16,13,38,.35),transparent 22%,transparent 68%,rgba(16,13,38,.55))}
 .cine .chap{position:absolute;left:clamp(16px,3vw,40px);top:calc(5.2rem + env(safe-area-inset-top,0px));display:flex;gap:.7rem;align-items:center;font:700 .7rem/1 var(--latin);letter-spacing:.2em;color:#fff;text-transform:uppercase;z-index:4}
 .cine .chap b{background:var(--yellow);color:var(--yellow-ink);padding:.55em .75em;border-radius:999px;font-weight:800}
@@ -114,7 +116,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .result.swap .ic{animation:pop .55s cubic-bezier(.2,1.5,.3,1) both}
 .result.swap b,.result.swap small{animation:swap .45s cubic-bezier(.2,.7,.2,1) both}
 @keyframes pop{from{transform:scale(.55) rotate(-14deg)}to{transform:none}}
-.story .ev{min-height:7rem;display:grid;gap:.45rem;align-content:start}
+.story .ev{min-height:4.6rem;display:grid;gap:.45rem;align-content:start}
 .story .ev .tag{display:inline-flex;align-items:center;gap:.6rem;font:700 .7rem/1 var(--latin);letter-spacing:.2em;color:var(--purple-text);text-transform:uppercase}
 .story .ev .tag::before{content:"";width:1.6rem;height:3px;background:var(--yellow)}
 .story .ev h2{font-size:clamp(1.45rem,2.5vw,2.1rem)}
@@ -151,7 +153,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
   .got{gap:.3rem}
   .got i{width:1.85rem;height:1.85rem}
   .got span{flex-basis:100%;margin:0;order:-1}
-  .story .ev{min-height:5.4rem}
+  .story .ev{min-height:3.6rem}
   .story .ev h2{font-size:1.4rem}
   .story .ev p{font-size:.9rem}
   .track i.y::after{font-size:.55rem}
@@ -200,7 +202,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 footer{padding-block:1.6rem 2.6rem}
 footer .in{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:400 .8rem/1.6 var(--body);color:var(--muted);align-items:center}
 footer svg{height:1.1rem;width:auto;opacity:.75}
-@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.marq div{animation:none}.lane{animation:none}.seal{transition:none}.out .o .ic{opacity:1}.out .o b,.out .o small{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.marq div{animation:none}.lane{animation:none}.seal{transition:none}.cine img.on{animation:none}.out .o .ic{opacity:1}.out .o b,.out .o small{opacity:1;transform:none}}
 </style>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -261,10 +263,9 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
     <div class="story">
       <div class="eyebrow">一个学生的 30 个月</div>
       <div class="who">Sergio · CarveTrack 多模态滑雪传感器</div>
-      <div class="result" id="res"><span class="ic"><svg viewBox="0 0 24 24" id="resIc" aria-hidden="true"></svg></span><div class="t"><b id="resName">立项</b><small><span id="resEn">PROJECT START</span><em id="resWhen">2026.10</em></small></div></div>
+      <div class="result" id="res"><span class="ic"><svg viewBox="0 0 24 24" id="resIc" aria-hidden="true"></svg></span><div class="t"><b id="resName">立项</b></div></div>
       <div class="ev" id="ev">
         <h2 id="evH">一个滑雪少年的问题</h2>
-        <p id="evP">每一趟滑行的速度、刃角和转弯，都该被记录下来。</p>
       </div>
       <div class="track" id="track"><div class="fill" id="fill"></div><div class="cur" id="cur"></div></div>
       <div class="got" id="got"></div>
@@ -376,15 +377,15 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
   const tickEls=track.querySelectorAll('i');
   const got=$('#got'); got.innerHTML='<span>已收获成果 <b id="cnt">0</b> / 9</span>'+OUT.map(o=>`<i><svg viewBox="0 0 24 24">${ICONS[o[2]]}</svg></i>`).join('');
   const gotEls=[...got.querySelectorAll('i')], gotP=OUT.map(o=>{const b=BEATS.find(b=>b.ic===o[2]&&b.seal); return b?b.p:2});
-  const film=$('#film'), ev=$('#ev'), evH=$('#evH'), evP=$('#evP'), cur=$('#cur'), fill=$('#fill'), cnt=$('#cnt'), sub=$('#sub'), chapNo=$('#chapNo'), chapDate=$('#chapDate'), res=$('#res'), resIc=$('#resIc'), resName=$('#resName'), resEn=$('#resEn'), resWhen=$('#resWhen');
+  const film=$('#film'), ev=$('#ev'), evH=$('#evH'), cur=$('#cur'), fill=$('#fill'), cnt=$('#cnt'), sub=$('#sub'), chapNo=$('#chapNo'), chapDate=$('#chapDate'), res=$('#res'), resIc=$('#resIc'), resName=$('#resName');
   let lastBeat=-1, raf=0;
   function setBeat(i){
     if(i===lastBeat) return; lastBeat=i; const b=BEATS[i];
-    evH.textContent=b.h; evP.textContent=b.d; sub.textContent=b.s;
+    evH.textContent=b.h; sub.textContent=b.s;
     const [y,m]=ym(b.mi), when=`${y}.${String(m).padStart(2,'0')}`;
-    resIc.innerHTML=ICONS[b.ic]; resName.textContent=b.tag; resEn.textContent=b.big?'ADMITTED':b.en; resWhen.textContent=when;
+    resIc.innerHTML=ICONS[b.ic]; resName.textContent=b.tag;
     chapNo.textContent=when; chapDate.textContent=`第 ${b.mi+1} 个月`;
-    imgs.forEach((im,j)=>im.classList.toggle('on',j===i)); cine.classList.toggle('final',i===LAST);
+    imgs.forEach((im,j)=>{im.classList.toggle('was',im.classList.contains('on')&&j!==i); im.classList.toggle('on',j===i)}); cine.classList.toggle('final',i===LAST);
     if(!RM){ for(const el of [ev,sub,res]){ el.classList.remove('swap'); void el.offsetWidth; el.classList.add('swap'); } }
   }
   function update(){
@@ -394,9 +395,6 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
     const mf=monthAt(p), mi=Math.min(MONTHS-1,Math.floor(mf+1e-6));
     let bi=0; for(let i=0;i<BEATS.length;i++) if(p>=BEATS[i].p-1e-9) bi=i;
     setBeat(bi);
-    /* slow push-in on the active photo, driven by scroll inside the beat */
-    const lp=bi<LAST?Math.min(1,(p-BEATS[bi].p)/(BEATS[bi+1].p-BEATS[bi].p)):1;
-    if(!RM) imgs[bi].style.transform=`scale(${(1.04+.10*lp).toFixed(4)}) translateX(${(-lp*1.5).toFixed(2)}%)`;
     let n=0; sealEls.forEach(s=>s.el.classList.toggle('on',p>=s.p-1e-9));
     gotEls.forEach((g,k)=>{const on=p>=gotP[k]-1e-9; g.classList.toggle('on',on); if(on)n++}); cnt.textContent=n;
     handoff();
