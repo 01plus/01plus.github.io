@@ -85,7 +85,12 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .nav .back:hover{color:var(--purple-text)}
 .chero{position:relative;margin-top:calc(4.25rem + env(safe-area-inset-top,0px));padding-block:5.5rem 4.5rem;overflow:hidden;isolation:isolate}
 .chero .bigar{position:absolute;right:-6vw;bottom:-20vw;width:42vw;max-width:600px;aspect-ratio:1;background:var(--yellow);opacity:.16;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;pointer-events:none}
-.chero .in{position:relative;display:grid;gap:1.2rem;justify-items:start}
+.chero .in{position:relative;display:grid;gap:1.2rem;justify-items:start;padding-right:14rem}
+.chero .uni{position:absolute;right:0;top:50%;transform:translateY(-50%);display:grid;justify-items:center;gap:.5rem;text-align:center}
+.chero .uni img{width:7.5rem;height:7.5rem;padding:.9rem;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
+.chero .uni b{font:400 1.1rem/1 var(--display);color:#fff}
+.chero .uni small{font:600 .62rem/1 var(--latin);letter-spacing:.18em;text-transform:uppercase;color:var(--yellow)}
+@media (max-width:860px){.chero .in{padding-right:0}.chero .uni{position:static;transform:none;justify-items:start;text-align:left;grid-template-columns:auto 1fr;column-gap:.9rem;align-items:center}.chero .uni img{width:4.5rem;height:4.5rem;padding:.5rem;grid-row:span 2}.chero .uni small{margin-top:-.2rem}}
 .chero h1{font-size:clamp(2.2rem,5.6vw,5rem);line-height:1.08;text-wrap:balance;max-width:16em}
 .chero .meta{display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;font:400 1.05rem/1.4 var(--display)}
 .chero .meta span{display:inline-flex;align-items:center;gap:.5rem}
@@ -279,6 +284,7 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
     <div class="eyebrow">案例 · CarveTrack</div>
     <h1>一个滑雪少年的 30 个月</h1>
     <div class="meta"><span>Sergio</span><span>CarveTrack 多模态滑雪传感器</span><span>斯坦福大学 · 录取</span></div>
+    <div class="uni"><img src="../assets/logos/stanford.png" alt="Stanford University"><b>斯坦福大学</b><small>Stanford · 录取</small></div>
   </div>
 </header>
 
