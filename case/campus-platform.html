@@ -134,22 +134,29 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .story .stat{display:grid;gap:.25rem;padding:1.1rem 1.2rem;border-radius:16px;background:var(--bg-2);border:1px solid var(--line)}
 .story .stat b{font:800 2rem/1 var(--latin);color:var(--purple-text);letter-spacing:-.02em}
 .story .stat span{font:300 .88rem/1.4 var(--body);color:var(--fg-2)}
-/* the outcomes journey */
+/* the outcomes timeline */
 .journey{padding-block:3rem 5rem}
 .journey h2{font-size:clamp(1.8rem,3.6vw,2.8rem);margin-top:.6rem}
-.journey .lead{margin:.6rem 0 2.4rem;color:var(--fg-2);max-width:40em}
-.journey ol{list-style:none;margin:0;padding:0;display:grid;gap:1rem;position:relative}
-.journey .st{display:grid;grid-template-columns:3.6rem minmax(0,1fr);gap:1.1rem;align-items:start;padding:1.3rem 1.4rem;border:1px solid var(--line);border-radius:18px;background:var(--bg)}
-.journey .st .ic{width:3.6rem;height:3.6rem;border-radius:50%;background:var(--yellow);display:grid;place-items:center;box-shadow:0 12px 26px -12px rgba(255,223,0,.9)}
-.journey .st .ic svg{width:46%;height:46%;fill:none;stroke:var(--yellow-ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.journey .st i{font:600 .66rem/1 var(--latin);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-style:normal}
-.journey .st h3{font-size:1.5rem;margin:.3rem 0 .4rem;color:var(--purple-text)}
-.journey .st p{margin:0;color:var(--fg-2);line-height:1.7}
-.journey .sc{border-radius:20px;overflow:hidden;aspect-ratio:3/2;background:#17133a;box-shadow:0 30px 60px -36px rgba(27,24,51,.5)}
-.journey .sc img{width:100%;height:100%;object-fit:cover;display:block}
-@media (min-width:861px){
-  .journey ol{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .journey .sc{grid-column:span 2;aspect-ratio:21/9}
+.journey .lead{margin:.6rem 0 2rem;color:var(--fg-2);max-width:40em}
+.journey .lay{display:grid;gap:2rem;align-items:start}
+.journey .gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+.journey .gal figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:3/2;background:#17133a;box-shadow:0 24px 50px -34px rgba(27,24,51,.5)}
+.journey .gal img{width:100%;height:100%;object-fit:cover;display:block}
+.journey .gal figcaption{display:none}
+.journey ol.tl{list-style:none;margin:0;padding:0;position:relative;display:grid}
+.journey ol.tl::before{content:"";position:absolute;left:1.5rem;top:1.5rem;bottom:1.5rem;width:2px;background:linear-gradient(var(--purple),var(--yellow));border-radius:2px}
+.journey .st{position:relative;display:grid;grid-template-columns:3rem minmax(0,1fr);gap:1.1rem;align-items:start;padding:1rem 0 1.1rem}
+.journey .st+.st{border-top:1px solid var(--line)}
+.journey .st .ic{position:relative;z-index:1;width:3rem;height:3rem;border-radius:50%;background:var(--yellow);display:grid;place-items:center;box-shadow:0 0 0 5px var(--bg),0 12px 26px -12px rgba(255,223,0,.9)}
+.journey .st .ic svg{width:48%;height:48%;fill:none;stroke:var(--yellow-ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.journey .st .hd{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-top:.45rem}
+.journey .st i{font:600 .64rem/1 var(--latin);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-style:normal}
+.journey .st h3{font-size:1.3rem;margin:0;color:var(--purple-text)}
+.journey .st p{margin:.3rem 0 0;color:var(--fg-2);line-height:1.65;font-size:.98rem}
+@media (min-width:961px){
+  .journey .lay{grid-template-columns:minmax(0,1fr) clamp(300px,32%,420px);gap:3.5rem}
+  .journey .gal{grid-template-columns:1fr;position:sticky;top:5.5rem;gap:.9rem}
+  .journey .gal figure{border-radius:18px}
 }
 /* more cases */
 .others{padding-block:1rem 5.5rem}
@@ -177,9 +184,12 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
   .story .in{grid-template-columns:1fr}
   .story .stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:1.6rem}
   .story .stat{padding:.9rem .8rem}.story .stat b{font-size:1.5rem}
-  .journey .st{grid-template-columns:2.8rem minmax(0,1fr);padding:1.1rem 1.1rem;gap:.8rem}
-  .journey .st .ic{width:2.8rem;height:2.8rem}
-  .journey .st h3{font-size:1.25rem}
+  .journey .st{grid-template-columns:2.5rem minmax(0,1fr);gap:.8rem}
+  .journey .st .ic{width:2.5rem;height:2.5rem}
+  .journey ol.tl::before{left:1.25rem}
+  .journey .st h3{font-size:1.15rem}
+  .journey .gal{gap:.5rem}
+  .journey .gal figure{border-radius:10px}
   .others .grid{grid-template-columns:1fr}
 }
 @media (max-width:560px){.story .stats{grid-template-columns:1fr 1fr}.story .stat:last-child{grid-column:span 2}}
@@ -200,6 +210,7 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .cta .qr .get li{display:flex;align-items:center;gap:.5rem;font:500 .9rem/1.4 var(--body);color:#1b1833}
 .cta .qr .get li::before{content:"";width:.65em;height:.65em;flex:none;background:#5040bf;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat}
 .cta .qr small{margin-top:.5rem;font:400 .74rem/1.4 var(--body);color:#8c88a8}
+.cta .qr small a{color:#5040bf;font-weight:600;text-decoration:none}
 .cta .qr .t span{font-size:.88rem;color:#4b4769}
 @media (max-width:560px){.cta .qr{grid-template-columns:1fr;justify-items:center;text-align:center}.cta .qr .t{justify-items:center}.cta .qr .get li{justify-content:center}}
 .cta.light{background:var(--bg-2);color:var(--fg)}
@@ -215,9 +226,20 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .faq summary::after{content:"";flex:none;width:.75em;height:.75em;background:var(--purple-text);-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;transform:rotate(135deg);transition:transform .3s}
 .faq .q[open] summary::after{transform:rotate(-45deg)}
 .faq .q p{margin:0 0 1.1rem;color:var(--fg-2);line-height:1.8}
-footer{padding-block:1.6rem 2.6rem}
-footer .in{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:400 .8rem/1.6 var(--body);color:var(--muted);align-items:center}
-footer svg{height:1.1rem;width:auto;opacity:.75}
+footer{background:#1b1833;color:#cfcbe6;padding-block:3rem 1.6rem}
+footer .in{display:grid;gap:2rem}
+footer .fb{display:grid;gap:.6rem;align-content:start}
+footer .fb svg{height:1.5rem;width:auto;color:#fff}
+footer .fb p{margin:0;font:400 .9rem/1.6 var(--body);color:#a39fc4;max-width:28em}
+footer .fb .tag{font:400 1.05rem/1.3 var(--display);color:#fff;letter-spacing:.04em}
+footer .col{display:grid;gap:.45rem;align-content:start}
+footer .col b{font:600 .66rem/1 var(--latin);letter-spacing:.16em;text-transform:uppercase;color:#8c88a8;margin-bottom:.35rem}
+footer .col a{color:#fff;text-decoration:none;font:400 .95rem/1.5 var(--body);width:fit-content;border-bottom:1px solid transparent;transition:border-color .2s}
+footer .col a:hover{border-color:var(--yellow)}
+footer .col a.mail{font:600 1.05rem/1.4 var(--latin);color:var(--yellow)}
+footer .col span{font:300 .88rem/1.5 var(--body);color:#a39fc4}
+footer .fl{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:400 .78rem/1.6 var(--body);color:#8c88a8}
+@media (min-width:700px){footer .in{grid-template-columns:1.4fr 1fr 1fr}}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.marq div{animation:none}.seal{transition:none}.out .o .ic{opacity:1}.out .o b,.out .o small{opacity:1;transform:none}}
 
 .cta.light{background:var(--bg-2);color:var(--fg)}
@@ -291,7 +313,10 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
     <div class="eyebrow reveal">多元成果</div>
     <h2 class="reveal">围绕这一个项目，Jevon 收获了八种成果</h2>
     <p class="lead reveal">实习、论文、竞赛、专利、产品、品牌、社会影响与推荐信，每一项都从同一个项目里长出来，也都写进了申请。</p>
-    <ol><li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6.5L4.5 20h15L14 9.5V3"/><path d="M7 15.5h10"/></svg></span><div><i>01 · INTERNSHIP</i><h3>实习</h3><p>深入 Distributed Platform Engineering 方向科研，将分布式系统架构、数据同步与多节点服务稳定性应用于项目实践</p></div></li><li class="sc reveal"><img src="../assets/cases/campus-platform-s1.jpg" alt="智慧校园一体化平台 · 实习" loading="lazy" width="1400" height="933"></li><li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></span><div><i>02 · PAPER</i><h3>论文</h3><p>发表论文《Architecting Scalable Mobile Platforms for K-12 Campus Digitalization》，并参与国际会议 SIIE</p></div></li><li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg></span><div><i>03 · COMPETITION</i><h3>竞赛</h3><p>获 Pitch to the Future 一等奖、Orange County Science Fair 二等奖</p></div></li><li class="sc reveal"><img src="../assets/cases/campus-platform-s2.jpg" alt="智慧校园一体化平台 · 竞赛" loading="lazy" width="1400" height="933"></li><li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.8 3.2 8 7.5 9 4.3-1 7.5-4.2 7.5-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><i>04 · PATENT</i><h3>专利</h3><p>申请美国技术专利（专利号 63/480,021）</p></div></li><li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.5 3.5 7v10L12 21.5l8.5-4.5V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg></span><div><i>05 · PRODUCT</i><h3>产品</h3><p>发布至 App Store 与 Google Play</p></div></li><li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg></span><div><i>06 · BRAND</i><h3>品牌</h3><p>创立品牌 CampusFlow Labs</p></div></li><li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></svg></span><div><i>07 · IMPACT</i><h3>社会</h3><p>推广至多个教育机构和社区，累计覆盖 8,000+ 名学生、教师与家长；获总统义工奖（PVSA）</p></div></li><li class="sc reveal"><img src="../assets/cases/campus-platform-s3.jpg" alt="智慧校园一体化平台 · 社会" loading="lazy" width="1400" height="933"></li><li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg></span><div><i>08 · LETTER</i><h3>推荐</h3><p>获得科研导师及学校行政主管的高度推荐与评价</p></div></li></ol>
+    <div class="lay">
+      <ol class="tl reveal"><li class="st"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6.5L4.5 20h15L14 9.5V3"/><path d="M7 15.5h10"/></svg></span><div><div class="hd"><h3>实习</h3><i>01 · INTERNSHIP</i></div><p>深入 Distributed Platform Engineering 方向科研，将分布式系统架构、数据同步与多节点服务稳定性应用于项目实践</p></div></li><li class="st"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H6v18h12V7z"/><path d="M14 3v4h4M9 12h6M9 16h6"/></svg></span><div><div class="hd"><h3>论文</h3><i>02 · PAPER</i></div><p>发表论文《Architecting Scalable Mobile Platforms for K-12 Campus Digitalization》，并参与国际会议 SIIE</p></div></li><li class="st"><span class="ic"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M7 6H4v2a3 3 0 0 0 3 3M17 6h3v2a3 3 0 0 1-3 3"/></svg></span><div><div class="hd"><h3>竞赛</h3><i>03 · COMPETITION</i></div><p>获 Pitch to the Future 一等奖、Orange County Science Fair 二等奖</p></div></li><li class="st"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 4.5 6v6c0 4.8 3.2 8 7.5 9 4.3-1 7.5-4.2 7.5-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><div><div class="hd"><h3>专利</h3><i>04 · PATENT</i></div><p>申请美国技术专利（专利号 63/480,021）</p></div></li><li class="st"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2.5 3.5 7v10L12 21.5l8.5-4.5V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/></svg></span><div><div class="hd"><h3>产品</h3><i>05 · PRODUCT</i></div><p>发布至 App Store 与 Google Play</p></div></li><li class="st"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/></svg></span><div><div class="hd"><h3>品牌</h3><i>06 · BRAND</i></div><p>创立品牌 CampusFlow Labs</p></div></li><li class="st"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 6-8 11-8 11z"/></svg></span><div><div class="hd"><h3>社会</h3><i>07 · IMPACT</i></div><p>推广至多个教育机构和社区，累计覆盖 8,000+ 名学生、教师与家长；获总统义工奖（PVSA）</p></div></li><li class="st"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/></svg></span><div><div class="hd"><h3>推荐</h3><i>08 · LETTER</i></div><p>获得科研导师及学校行政主管的高度推荐与评价</p></div></li></ol>
+      <div class="gal reveal"><figure><img src="../assets/cases/campus-platform-s1.jpg" alt="智慧校园一体化平台 · 科研与开发" loading="lazy" width="1400" height="933"><figcaption>科研与开发</figcaption></figure><figure><img src="../assets/cases/campus-platform-s2.jpg" alt="智慧校园一体化平台 · 竞赛与展示" loading="lazy" width="1400" height="933"><figcaption>竞赛与展示</figcaption></figure><figure><img src="../assets/cases/campus-platform-s3.jpg" alt="智慧校园一体化平台 · 落地与影响" loading="lazy" width="1400" height="933"><figcaption>落地与影响</figcaption></figure></div>
+    </div>
   </div>
 </section>
 
@@ -299,7 +324,7 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
   <div class="in">
     <div class="eyebrow reveal">更多案例</div>
     <h2 class="reveal">他们也从一个项目开始</h2>
-    <div class="grid"><a class="card" href="../case/gunshot-alert.html"><div class="pic"><img src="../assets/cases/gunshot-alert-hero-720.jpg" srcset="../assets/cases/gunshot-alert-hero-720.jpg 720w, ../assets/cases/gunshot-alert-hero.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="校园枪击预警系统" loading="lazy" width="1400" height="933"></div><div class="t"><i>James · 科学、科技与社会</i><h3>校园枪击预警系统</h3><em style="--c:#8c1515">斯坦福大学</em></div></a><a class="card" href="../case/clinical-trials.html"><div class="pic"><img src="../assets/cases/clinical-trials-hero-720.jpg" srcset="../assets/cases/clinical-trials-hero-720.jpg 720w, ../assets/cases/clinical-trials-hero.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="临床试验招募平台" loading="lazy" width="1400" height="933"></div><div class="t"><i>Jasmine · 生物医学</i><h3>临床试验招募平台</h3><em style="--c:#a31f34">麻省理工学院</em></div></a><a class="card" href="../case/assistive-navigation.html"><div class="pic"><img src="../assets/cases/assistive-navigation-hero-720.jpg" srcset="../assets/cases/assistive-navigation-hero-720.jpg 720w, ../assets/cases/assistive-navigation-hero.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="盲人辅助导航系统" loading="lazy" width="1400" height="933"></div><div class="t"><i>Katherine · 应用数学</i><h3>盲人辅助导航系统</h3><em style="--c:#a31f34">麻省理工学院</em></div></a></div>
+    <div class="grid"><a class="card" href="../case/gunshot-alert.html"><div class="pic"><img src="../assets/cases/gunshot-alert-hero-720.jpg" srcset="../assets/cases/gunshot-alert-hero-720.jpg 720w, ../assets/cases/gunshot-alert-hero.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="校园枪击预警系统" loading="lazy" width="1400" height="933"></div><div class="t"><i>科学、科技与社会</i><h3>校园枪击预警系统</h3><em style="--c:#8c1515">斯坦福大学</em></div></a><a class="card" href="../case/clinical-trials.html"><div class="pic"><img src="../assets/cases/clinical-trials-hero-720.jpg" srcset="../assets/cases/clinical-trials-hero-720.jpg 720w, ../assets/cases/clinical-trials-hero.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="临床试验招募平台" loading="lazy" width="1400" height="933"></div><div class="t"><i>生物医学</i><h3>临床试验招募平台</h3><em style="--c:#a31f34">麻省理工学院</em></div></a><a class="card" href="../case/assistive-navigation.html"><div class="pic"><img src="../assets/cases/assistive-navigation-hero-720.jpg" srcset="../assets/cases/assistive-navigation-hero-720.jpg 720w, ../assets/cases/assistive-navigation-hero.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="盲人辅助导航系统" loading="lazy" width="1400" height="933"></div><div class="t"><i>应用数学</i><h3>盲人辅助导航系统</h3><em style="--c:#a31f34">麻省理工学院</em></div></a></div>
   </div>
 </section>
 
@@ -314,7 +339,7 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
         <span class="logo" aria-hidden="true"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></span>
         <b>名校背景提升</b>
         <ul class="get"><li>免费名校背景规划</li><li>定制项目策划书</li><li>一对一顾问答疑</li></ul>
-        <small>微信扫码或长按识别，添加顾问</small>
+        <small>微信扫码或长按识别，添加顾问 · 或邮件 <a href="mailto:hello@01plus.ai">hello@01plus.ai</a></small>
       </div>
     </div>
   </div>
@@ -322,8 +347,27 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
 
 <footer class="wrap">
   <div class="in">
-    <svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg>
+    <div class="fb">
+      <svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg>
+      <span class="tag">名校背景提升 · 一个项目，多元成果</span>
+      <p>以真实项目为核心的名校背景提升：AI × X 跨学科，硬核成绩，真实定制，全程陪跑。</p>
+    </div>
+    <div class="col">
+      <b>联系我们</b>
+      <a class="mail" href="mailto:hello@01plus.ai">hello@01plus.ai</a>
+      <span>微信扫码添加顾问，预约免费名校背景规划</span>
+    </div>
+    <div class="col">
+      <b>快速导航</b>
+      <a href="../index.html#method">我们的方法</a>
+      <a href="../index.html#cases">具体案例</a>
+      <a href="../index.html#faq">常见问题</a>
+      <a href="#contact">预约咨询</a>
+    </div>
+  </div>
+  <div class="in fl">
     <span>© 2026 01+ 名校背景提升 · All rights reserved</span>
+    <span>hello@01plus.ai</span>
   </div>
 </footer>
 

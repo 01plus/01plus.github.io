@@ -33,22 +33,29 @@
 .story .stat{display:grid;gap:.25rem;padding:1.1rem 1.2rem;border-radius:16px;background:var(--bg-2);border:1px solid var(--line)}
 .story .stat b{font:800 2rem/1 var(--latin);color:var(--purple-text);letter-spacing:-.02em}
 .story .stat span{font:300 .88rem/1.4 var(--body);color:var(--fg-2)}
-/* the outcomes journey */
+/* the outcomes timeline */
 .journey{padding-block:3rem 5rem}
 .journey h2{font-size:clamp(1.8rem,3.6vw,2.8rem);margin-top:.6rem}
-.journey .lead{margin:.6rem 0 2.4rem;color:var(--fg-2);max-width:40em}
-.journey ol{list-style:none;margin:0;padding:0;display:grid;gap:1rem;position:relative}
-.journey .st{display:grid;grid-template-columns:3.6rem minmax(0,1fr);gap:1.1rem;align-items:start;padding:1.3rem 1.4rem;border:1px solid var(--line);border-radius:18px;background:var(--bg)}
-.journey .st .ic{width:3.6rem;height:3.6rem;border-radius:50%;background:var(--yellow);display:grid;place-items:center;box-shadow:0 12px 26px -12px rgba(255,223,0,.9)}
-.journey .st .ic svg{width:46%;height:46%;fill:none;stroke:var(--yellow-ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.journey .st i{font:600 .66rem/1 var(--latin);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-style:normal}
-.journey .st h3{font-size:1.5rem;margin:.3rem 0 .4rem;color:var(--purple-text)}
-.journey .st p{margin:0;color:var(--fg-2);line-height:1.7}
-.journey .sc{border-radius:20px;overflow:hidden;aspect-ratio:3/2;background:#17133a;box-shadow:0 30px 60px -36px rgba(27,24,51,.5)}
-.journey .sc img{width:100%;height:100%;object-fit:cover;display:block}
-@media (min-width:861px){
-  .journey ol{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .journey .sc{grid-column:span 2;aspect-ratio:21/9}
+.journey .lead{margin:.6rem 0 2rem;color:var(--fg-2);max-width:40em}
+.journey .lay{display:grid;gap:2rem;align-items:start}
+.journey .gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem}
+.journey .gal figure{margin:0;border-radius:16px;overflow:hidden;aspect-ratio:3/2;background:#17133a;box-shadow:0 24px 50px -34px rgba(27,24,51,.5)}
+.journey .gal img{width:100%;height:100%;object-fit:cover;display:block}
+.journey .gal figcaption{display:none}
+.journey ol.tl{list-style:none;margin:0;padding:0;position:relative;display:grid}
+.journey ol.tl::before{content:"";position:absolute;left:1.5rem;top:1.5rem;bottom:1.5rem;width:2px;background:linear-gradient(var(--purple),var(--yellow));border-radius:2px}
+.journey .st{position:relative;display:grid;grid-template-columns:3rem minmax(0,1fr);gap:1.1rem;align-items:start;padding:1rem 0 1.1rem}
+.journey .st+.st{border-top:1px solid var(--line)}
+.journey .st .ic{position:relative;z-index:1;width:3rem;height:3rem;border-radius:50%;background:var(--yellow);display:grid;place-items:center;box-shadow:0 0 0 5px var(--bg),0 12px 26px -12px rgba(255,223,0,.9)}
+.journey .st .ic svg{width:48%;height:48%;fill:none;stroke:var(--yellow-ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.journey .st .hd{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-top:.45rem}
+.journey .st i{font:600 .64rem/1 var(--latin);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-style:normal}
+.journey .st h3{font-size:1.3rem;margin:0;color:var(--purple-text)}
+.journey .st p{margin:.3rem 0 0;color:var(--fg-2);line-height:1.65;font-size:.98rem}
+@media (min-width:961px){
+  .journey .lay{grid-template-columns:minmax(0,1fr) clamp(300px,32%,420px);gap:3.5rem}
+  .journey .gal{grid-template-columns:1fr;position:sticky;top:5.5rem;gap:.9rem}
+  .journey .gal figure{border-radius:18px}
 }
 /* more cases */
 .others{padding-block:1rem 5.5rem}
@@ -76,9 +83,12 @@
   .story .in{grid-template-columns:1fr}
   .story .stats{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:1.6rem}
   .story .stat{padding:.9rem .8rem}.story .stat b{font-size:1.5rem}
-  .journey .st{grid-template-columns:2.8rem minmax(0,1fr);padding:1.1rem 1.1rem;gap:.8rem}
-  .journey .st .ic{width:2.8rem;height:2.8rem}
-  .journey .st h3{font-size:1.25rem}
+  .journey .st{grid-template-columns:2.5rem minmax(0,1fr);gap:.8rem}
+  .journey .st .ic{width:2.5rem;height:2.5rem}
+  .journey ol.tl::before{left:1.25rem}
+  .journey .st h3{font-size:1.15rem}
+  .journey .gal{gap:.5rem}
+  .journey .gal figure{border-radius:10px}
   .others .grid{grid-template-columns:1fr}
 }
 @media (max-width:560px){.story .stats{grid-template-columns:1fr 1fr}.story .stat:last-child{grid-column:span 2}}
@@ -130,7 +140,10 @@
     <div class="eyebrow reveal">多元成果</div>
     <h2 class="reveal">围绕这一个项目，{{NAME}} 收获了八种成果</h2>
     <p class="lead reveal">实习、论文、竞赛、专利、产品、品牌、社会影响与推荐信，每一项都从同一个项目里长出来，也都写进了申请。</p>
-    <ol>{{STEPS}}</ol>
+    <div class="lay">
+      <ol class="tl reveal">{{STEPS}}</ol>
+      <div class="gal reveal">{{SCENES}}</div>
+    </div>
   </div>
 </section>
 
@@ -153,7 +166,7 @@
         <span class="logo" aria-hidden="true"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></span>
         <b>名校背景提升</b>
         <ul class="get"><li>免费名校背景规划</li><li>定制项目策划书</li><li>一对一顾问答疑</li></ul>
-        <small>微信扫码或长按识别，添加顾问</small>
+        <small>微信扫码或长按识别，添加顾问 · 或邮件 <a href="mailto:hello@01plus.ai">hello@01plus.ai</a></small>
       </div>
     </div>
   </div>
@@ -161,8 +174,27 @@
 
 <footer class="wrap">
   <div class="in">
-    <svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg>
+    <div class="fb">
+      <svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg>
+      <span class="tag">名校背景提升 · 一个项目，多元成果</span>
+      <p>以真实项目为核心的名校背景提升：AI × X 跨学科，硬核成绩，真实定制，全程陪跑。</p>
+    </div>
+    <div class="col">
+      <b>联系我们</b>
+      <a class="mail" href="mailto:hello@01plus.ai">hello@01plus.ai</a>
+      <span>微信扫码添加顾问，预约免费名校背景规划</span>
+    </div>
+    <div class="col">
+      <b>快速导航</b>
+      <a href="../index.html#method">我们的方法</a>
+      <a href="../index.html#cases">具体案例</a>
+      <a href="../index.html#faq">常见问题</a>
+      <a href="#contact">预约咨询</a>
+    </div>
+  </div>
+  <div class="in fl">
     <span>© 2026 01+ 名校背景提升 · All rights reserved</span>
+    <span>hello@01plus.ai</span>
   </div>
 </footer>
 

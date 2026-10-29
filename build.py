@@ -42,7 +42,6 @@ ICONS = {
 }
 STEPS = [("internship","实习","INTERNSHIP"),("paper","论文","PAPER"),("competition","竞赛","COMPETITION"),("patent","专利","PATENT"),
          ("product","产品","PRODUCT"),("brand","品牌","BRAND"),("impact","社会","IMPACT"),("letter","推荐","LETTER")]
-SCENE_AFTER = {0: "s1", 2: "s2", 6: "s3"}   # a scene photo follows these steps
 
 # ---------- images: generated PNGs -> web JPGs ----------
 def jpg(src_png, dst_jpg, width=1400, q=80):
@@ -127,7 +126,7 @@ print("built case/carvetrack.html")
 def esc(s): return html.escape(s, quote=True)
 def card(c, root):
     return (f'<a class="card" href="{root}case/{c["slug"]}.html"><div class="pic"><img src="{root}assets/cases/{c["slug"]}-hero-720.jpg" srcset="{root}assets/cases/{c["slug"]}-hero-720.jpg 720w, {root}assets/cases/{c["slug"]}-hero.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="{esc(c["project"])}" loading="lazy" width="1400" height="933"></div>'
-            f'<div class="t"><i>{esc(c["name"])} · {esc(c["major"])}</i><h3>{esc(c["project"])}</h3><em style="--c:{c["color"]}">{esc(c["school"])}</em></div></a>')
+            f'<div class="t"><i>{esc(c["major"])}</i><h3>{esc(c["project"])}</h3><em style="--c:{c["color"]}">{esc(c["school"])}</em></div></a>')
 
 for i, c in enumerate(cases):
     for k in ("hero","s1","s2","s3"):
@@ -137,11 +136,11 @@ for i, c in enumerate(cases):
     jpg(src720, f"assets/cases/{c['slug']}-hero-720.jpg", width=720, q=78)
     steps = []
     for n, (key, zh, en) in enumerate(STEPS):
-        steps.append(f'<li class="st reveal"><span class="ic"><svg viewBox="0 0 24 24">{ICONS[key]}</svg></span><div><i>{n+1:02d} · {en}</i><h3>{zh}</h3><p>{esc(c["outcomes"][key])}</p></div></li>')
-        if n in SCENE_AFTER:
-            k = SCENE_AFTER[n]
-            if os.path.exists(f"assets/cases/{c['slug']}-{k}.jpg"):
-                steps.append(f'<li class="sc reveal"><img src="../assets/cases/{c["slug"]}-{k}.jpg" alt="{esc(c["project"])} · {zh}" loading="lazy" width="1400" height="933"></li>')
+        steps.append(f'<li class="st"><span class="ic"><svg viewBox="0 0 24 24">{ICONS[key]}</svg></span><div><div class="hd"><h3>{zh}</h3><i>{n+1:02d} · {en}</i></div><p>{esc(c["outcomes"][key])}</p></div></li>')
+    scenes = []
+    for k, zh in (("s1","科研与开发"),("s2","竞赛与展示"),("s3","落地与影响")):
+        if os.path.exists(f"assets/cases/{c['slug']}-{k}.jpg"):
+            scenes.append(f'<figure><img src="../assets/cases/{c["slug"]}-{k}.jpg" alt="{esc(c["project"])} · {zh}" loading="lazy" width="1400" height="933"><figcaption>{zh}</figcaption></figure>')
     stats = "".join(f'<div class="stat"><b>{esc(a)}</b><span>{esc(b)}</span></div>' for a, b in c["stats"])
     seals = f'<img src="../assets/logos/{c["logo"]}.png" alt="{esc(c["schoolEn"])}">' + (f'<img src="../assets/logos/{c["logo2"]}.png" alt="">' if c.get("logo2") else "")
     others = "".join(card(cases[(i + d) % len(cases)], "../") for d in (1, 2, 3))
@@ -150,7 +149,7 @@ for i, c in enumerate(cases):
         "FONTS": fonts, "BASE_CSS": base_css, "CTA_CSS": cta_css, "DEFS": defs, "HEAD_LINKS": head_links,
         "PROJECT": esc(c["project"]), "PROJECT_EN": esc(c["en"]), "NAME": esc(c["name"]), "MAJOR": esc(c["major"]),
         "SCHOOL": esc(c["school"]), "SCHOOL_EN": esc(c["schoolEn"]), "COLOR": c["color"], "SLUG": c["slug"],
-        "SUMMARY": esc(c["summary"]), "PROBLEM": esc(c["problem"]), "STEPS": "".join(steps), "STATS": stats,
+        "SUMMARY": esc(c["summary"]), "PROBLEM": esc(c["problem"]), "STEPS": "".join(steps), "SCENES": "".join(scenes), "STATS": stats,
         "SEALS": seals, "OTHERS": others,
     }.items():
         page = page.replace("{{" + k + "}}", v)
