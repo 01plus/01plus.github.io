@@ -104,7 +104,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .cine{position:relative;height:100%;overflow:hidden;background:#17133a}
 .cine img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .9s ease;will-change:transform,opacity;transform:scale(1.04)}
 .cine img.on{opacity:1}
-.cine .vig{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 78%,var(--bg) 100%),linear-gradient(180deg,rgba(16,13,38,.45),transparent 28%,transparent 62%,rgba(16,13,38,.6))}
+.cine .vig{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(16,13,38,.35),transparent 22%,transparent 68%,rgba(16,13,38,.55))}
 .cine .chap{position:absolute;left:clamp(16px,3vw,40px);top:calc(5.2rem + env(safe-area-inset-top,0px));display:flex;gap:.7rem;align-items:center;font:700 .7rem/1 var(--latin);letter-spacing:.2em;color:#fff;text-transform:uppercase;z-index:4}
 .cine .chap b{background:var(--yellow);color:var(--yellow-ink);padding:.55em .75em;border-radius:999px;font-weight:800}
 .cine .chap span{text-shadow:0 2px 10px rgba(0,0,0,.6)}
@@ -154,7 +154,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 @media (max-width:860px){
   .film{height:700svh}
   .stage{grid-template-columns:1fr;grid-template-rows:52svh 1fr}
-  .cine .vig{background:linear-gradient(180deg,rgba(16,13,38,.5),transparent 30%,transparent 60%,var(--bg) 100%)}
+  .cine .vig{background:linear-gradient(180deg,rgba(16,13,38,.4),transparent 26%,transparent 66%,rgba(16,13,38,.55))}
   .cine .chap{top:calc(4.8rem + env(safe-area-inset-top,0px))}
   .cine .sub{bottom:1.4rem;font-size:1.05rem}
   .cine .stamps{width:58%;bottom:16%}
