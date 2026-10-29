@@ -205,11 +205,10 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .cta .card{display:inline-grid;grid-template-columns:auto auto;gap:1.6rem;align-items:center;margin-top:2.4rem;padding:1.2rem 1.6rem 1.2rem 1.2rem;background:#fff;color:#1b1833;border-radius:20px;text-align:left;box-shadow:0 30px 60px -30px rgba(0,0,0,.5)}
 .cta .card img{width:132px;height:132px;border-radius:12px}
 .cta .card .t{display:grid;gap:.35rem}
-.cta .card .t small{font:600 .62rem/1 var(--latin);letter-spacing:.2em;text-transform:uppercase;color:#5040bf}
+.cta .card .logo{display:flex;align-items:center;gap:.5rem;color:#1b1833;--mark2:#5040bf;margin-bottom:.3rem}
+.cta .card .logo svg{height:2rem;width:auto}
 .cta .card .t b{font:700 1.3rem/1.2 var(--body)}
 .cta .card .t span{font-size:.88rem;color:#4b4769}
-.cta .card .t a.site{font:700 1.25rem/1 var(--latin);color:#5040bf}
-.cta .card .t a.site:hover{text-decoration:underline}
 @media (max-width:560px){.cta .card{grid-template-columns:1fr;justify-items:center;text-align:center}.cta .card .t{justify-items:center}}
 footer{padding-block:1.6rem 2.6rem}
 footer .in{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:400 .8rem/1.6 var(--body);color:var(--muted);align-items:center}
@@ -302,10 +301,9 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
     <div class="card reveal">
       <img src="../assets/wechat-qr.png" alt="微信二维码">
       <div class="t">
-        <small>WeChat · 免费策划书</small>
+        <span class="logo" aria-hidden="true"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></span>
         <b>01+ 名校背景提升</b>
         <span>920 Roosevelt, Suite 200, Irvine, CA</span>
-        <a class="site" href="https://01plus.ai" target="_blank" rel="noopener">01plus.ai</a>
       </div>
     </div>
   </div>
