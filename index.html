@@ -88,7 +88,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .hero .bg .tint{position:absolute;inset:0;background:var(--purple);mix-blend-mode:multiply;opacity:.94}
 .hero .bg .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(80,64,191,.1),rgba(63,49,168,.45) 60%,rgba(48,36,140,.85))}
 @media (max-width:860px){.hero .bg img{object-position:55% 30%}.hero .ctas{flex-direction:column;align-items:flex-start}}
-.hero .arrow{position:absolute;right:clamp(16px,4vw,80px);top:30%;width:min(41vw,calc(.9*(100svh - 4.25rem)));height:auto;fill:var(--yellow);filter:drop-shadow(0 30px 60px rgba(20,10,80,.35));will-change:transform}
+.hero .arrow{position:absolute;right:clamp(16px,4vw,80px);top:40%;width:min(34vw,60svh);height:auto;fill:var(--yellow);filter:drop-shadow(0 30px 60px rgba(20,10,80,.35));will-change:transform}
 @media (max-width:860px){.hero .arrow{right:4vw;top:auto;bottom:-12vw;width:60vw}.hero .in{padding-bottom:26vh}}
 .hero .in{padding-block:4.5rem 5.5rem;display:grid;gap:1.3rem;justify-items:start}
 .hero .in>*{max-width:46rem}
@@ -392,12 +392,15 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
   const $=s=>document.querySelector(s), RM=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* nav */
-  const nav=$('#nav'); const hero=$('#top');
+  const nav=$('#nav'), hero=$('#top');
   const navSync=()=>nav.classList.toggle('solid',scrollY>8);
   addEventListener('scroll',navSync,{passive:true}); navSync();
 
   /* hero parallax */
   const heroImg=$('#heroImg'), heroArrow=$('#heroArrow');
+  /* the arrow's top edge sits level with the hero button; it runs from there to the bottom of the hero */
+  function placeArrow(){ if(innerWidth<=860){heroArrow.style.top=heroArrow.style.width='';return;} const h=hero.getBoundingClientRect(), b=hero.querySelector('.btn.y').getBoundingClientRect(); const top=b.top-h.top, size=Math.min(h.height-top, innerWidth*.36); heroArrow.style.top=top+'px'; heroArrow.style.width=size+'px'; }
+  placeArrow(); addEventListener('resize',placeArrow); addEventListener('load',placeArrow);
   function parallax(){ const y=scrollY; if(y>innerHeight*1.2||RM) return; heroImg.style.transform=`translateY(${y*.18}px) scale(1.06)`; heroArrow.style.transform=`translate(${y*.04}px,${-y*.08}px)`; }
   addEventListener('scroll',parallax,{passive:true}); parallax();
 
