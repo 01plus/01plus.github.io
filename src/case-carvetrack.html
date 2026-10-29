@@ -95,11 +95,11 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .cine img.was{opacity:1;z-index:1}
 .cine img.on{opacity:1;z-index:2;animation:wipe .5s cubic-bezier(.2,.7,.2,1) both}
 @keyframes wipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0)}}
-.cine .vig{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(16,13,38,.35),transparent 22%,transparent 68%,rgba(16,13,38,.55))}
+.cine .vig{position:absolute;inset:0;pointer-events:none;z-index:3;background:linear-gradient(180deg,rgba(16,13,38,.4),transparent 22%,transparent 66%,rgba(16,13,38,.6))}
 .cine .chap{position:absolute;left:clamp(16px,3vw,40px);top:calc(5.2rem + env(safe-area-inset-top,0px));display:flex;gap:.7rem;align-items:center;font:700 .7rem/1 var(--latin);letter-spacing:.2em;color:#fff;text-transform:uppercase;z-index:4}
 .cine .chap b{background:var(--yellow);color:var(--yellow-ink);padding:.55em .75em;border-radius:999px;font-weight:800}
-.cine .chap span{text-shadow:0 2px 10px rgba(0,0,0,.6)}
-.cine .sub{position:absolute;left:clamp(16px,3vw,40px);right:clamp(16px,3vw,40px);bottom:clamp(18px,3.2vw,44px);color:#fff;font:400 clamp(1.1rem,1.7vw,1.5rem)/1.35 var(--display);text-shadow:0 2px 16px rgba(0,0,0,.7);z-index:4;max-width:22em;transition:opacity .35s,transform .35s}
+.cine .chap span{background:rgba(16,13,38,.72);padding:.55em .8em;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.cine .sub{position:absolute;left:clamp(16px,3vw,40px);right:auto;bottom:clamp(18px,3.2vw,44px);color:#fff;font:400 clamp(1.1rem,1.7vw,1.5rem)/1.35 var(--display);z-index:4;max-width:min(22em,calc(100% - 2*clamp(16px,3vw,40px)));padding:.55em .9em;border-radius:14px;background:rgba(16,13,38,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px -14px rgba(0,0,0,.6);transition:opacity .35s,transform .35s}
 .cine .sub.swap{animation:swap .5s cubic-bezier(.2,.7,.2,1) both}
 .cine .stamps{position:absolute;right:3%;bottom:10%;width:50%;aspect-ratio:1;pointer-events:none;z-index:3;transform-origin:100% 100%;transition:opacity .6s,transform .8s cubic-bezier(.2,.7,.2,1)}
 .cine.final .stamps{opacity:.35;transform:scale(.72)}
