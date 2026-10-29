@@ -41,7 +41,7 @@ ICONS = {
  "letter": '<path d="M3 6h18v12H3z"/><path d="m3 7 9 6 9-6"/>',
 }
 STEPS = [("internship","实习","INTERNSHIP"),("paper","论文","PAPER"),("competition","竞赛","COMPETITION"),("patent","专利","PATENT"),
-         ("product","产品","PRODUCT"),("brand","品牌","BRAND"),("impact","社会","IMPACT"),("letter","推荐","LETTER")]
+         ("product","产品","PRODUCT"),("launch","发布","LAUNCH"),("brand","品牌","BRAND"),("impact","社会","IMPACT"),("letter","推荐","LETTER")]
 
 # ---------- images: generated PNGs -> web JPGs ----------
 def jpg(src_png, dst_jpg, width=1400, q=80):
@@ -64,12 +64,16 @@ def og_image(src, dst):
 
 # ---------- fonts: inline in the sources (artifact), shared files on the built site ----------
 FACES = [("DOUYU", 400, "douyu-400"), ("PuHui", 300, "puhui-300"), ("PuHui", 700, "puhui-700")]
+def font_ver(fn):
+    import hashlib
+    p = f"assets/fonts/{fn}.woff2"
+    return hashlib.md5(open(p, "rb").read()).hexdigest()[:8] if os.path.exists(p) else "0"
 def font_css(root):
-    return "".join(f'@font-face{{font-family:"{fam}";font-weight:{wt};font-style:normal;font-display:swap;src:url({root}assets/fonts/{fn}.woff2) format("woff2")}}\n' for fam, wt, fn in FACES)
+    return "".join(f'@font-face{{font-family:"{fam}";font-weight:{wt};font-style:normal;font-display:swap;src:url({root}assets/fonts/{fn}.woff2?v={font_ver(fn)}) format("woff2")}}\n' for fam, wt, fn in FACES)
 def externalize_fonts(body, root):
     return re.sub(r"/\*FONTS-START\*/.*?/\*FONTS-END\*/", lambda m: font_css(root), body, flags=re.S)
 def font_preloads(root):
-    return "".join(f'<link rel="preload" href="{root}assets/fonts/{fn}.woff2" as="font" type="font/woff2" crossorigin>\n' for _, _, fn in FACES)
+    return "".join(f'<link rel="preload" href="{root}assets/fonts/{fn}.woff2?v={font_ver(fn)}" as="font" type="font/woff2" crossorigin>\n' for _, _, fn in FACES)
 
 # ---------- document skeleton with SEO head ----------
 def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website"):
@@ -98,7 +102,7 @@ def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website"):
         '</head>\n<body>\n' + externalize_fonts(body, root) + '\n</body>\n</html>\n')
 
 ORG = {"@context":"https://schema.org","@type":"EducationalOrganization","name":"01+ 名校背景提升","alternateName":"01plus",
-       "url":SITE,"logo":SITE+"/assets/apple-touch-icon.png","description":"01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、品牌、社会影响与推荐信等多元成果，申请世界名校。",
+       "url":SITE,"logo":SITE+"/assets/apple-touch-icon.png","description":"01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果，申请世界名校。",
        "address":{"@type":"PostalAddress","streetAddress":"920 Roosevelt, Suite 200","addressLocality":"Irvine","addressRegion":"CA","addressCountry":"US"},
        "founder":{"@type":"Person","name":"孙宇","jobTitle":"创始人 · 计算机系终身教授"},"areaServed":["US","CN","CA"],"sameAs":["https://01plus.ai"]}
 
@@ -110,7 +114,7 @@ if faq:
         "acceptedAnswer":{"@type":"Answer","text":re.sub("<.*?>","",a).strip()}} for q,a in faq]})
 og_image("assets/hero.jpg", "assets/og-home.jpg") if not os.path.exists("assets/og-home.jpg") else None
 open("index.html","w",encoding="utf-8").write(shell(land, title="01+ 名校背景提升 · 一个项目，多元成果",
-    desc="01+ 名校背景提升：陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、品牌、社会影响与推荐信等多元成果。哈耶普斯麻录取率 20%+，Top 30 名校录取率 90%+。",
+    desc="01+ 名校背景提升：陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果。哈耶普斯麻录取率 20%+，Top 30 名校录取率 90%+。",
     path="/", root="", og="assets/og-home.jpg", jsonld=land_ld))
 print("built index.html")
 
@@ -176,7 +180,7 @@ urls = ["/", "/case/carvetrack.html"] + [f"/case/{c['slug']}.html" for c in case
 open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod><changefreq>{'weekly' if u=='/' else 'monthly'}</changefreq><priority>{'1.0' if u=='/' else '0.8'}</priority></url>\n" for u in urls) + "</urlset>\n")
 open("robots.txt","w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
-open("llms.txt","w",encoding="utf-8").write("# 01+ 名校背景提升\n\n> 01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、品牌、社会影响与推荐信等多元成果，申请世界名校。总校位于美国加州 Irvine。\n\n"
+open("llms.txt","w",encoding="utf-8").write("# 01+ 名校背景提升\n\n> 01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果，申请世界名校。总校位于美国加州 Irvine。\n\n"
     "## 核心数据\n- 10+ 年 K12 科创项目经验，700+ 位学员\n- 哈耶普斯麻录取率 20%+；Top 30 名校录取率 90%+；Top 50 名校录取率 100%\n- 2024–2026 录取名单覆盖 35 所院校，见首页\n\n## 方法\n开展调研 → 明确选题 → 制定计划 → 全程陪跑；围绕一个项目持续产出：产品、实习、竞赛、论文、专利、发布、品牌、社会影响、推荐信。\n\n## 案例\n" +
     "".join(f"- [{c['project']} · {c['name']} → {c['school']}]({SITE}/case/{c['slug']}.html)\n" for c in cases) +
     f"- [示例项目计划：CarveTrack 多模态滑雪传感器]({SITE}/case/carvetrack.html)\n\n## 联系\n微信扫码预约免费名校背景规划，获得定制策划书。地址：920 Roosevelt, Suite 200, Irvine, CA。官网 https://01plus.ai\n")
