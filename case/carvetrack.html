@@ -206,15 +206,12 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .out .o .ic.in svg{stroke:#fff;transition:stroke .9s .25s}
 .out .o b,.out .o small{opacity:0;transform:translateY(8px);transition:opacity .5s var(--d,0s),transform .5s var(--d,0s)}
 .out .grid.landed .o b,.out .grid.landed .o small{opacity:1;transform:none}
-.fly{position:fixed;inset:0;pointer-events:none;z-index:40}
-.fly .ic{position:absolute;left:0;top:0;border-radius:50%;background:var(--yellow);display:grid;place-items:center;opacity:0;box-shadow:0 12px 30px -12px rgba(40,20,120,.5);will-change:transform}
-.fly .ic svg{width:46%;height:46%;fill:none;stroke:var(--yellow-ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .out .o b{font:400 1.1rem/1 var(--display);color:var(--yellow)}
 .out .o small{font:600 .6rem/1 var(--latin);letter-spacing:.14em;color:rgba(255,255,255,.65);text-transform:uppercase}
 @media (max-width:860px){.out .grid{grid-template-columns:repeat(3,1fr);gap:.6rem}}
 /* cta */
 .cta{position:relative;padding-block:7rem;text-align:center;overflow:hidden}
-.cta .bigar{position:absolute;left:clamp(16px,7vw,140px);bottom:clamp(16px,5vh,56px);width:min(24vw,300px);aspect-ratio:1;background:var(--yellow);opacity:.22;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;pointer-events:none}
+.cta .bigar{position:absolute;left:clamp(16px,7vw,140px);bottom:clamp(16px,5vh,56px);width:min(32vw,420px);aspect-ratio:1;background:var(--yellow);opacity:.22;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;pointer-events:none}
 .cta .in{position:relative}
 .cta h2{margin-top:.8rem;font-size:clamp(2rem,6vw,5rem);text-wrap:balance}
 .cta h2 .z{font-family:var(--latin);font-weight:800;color:var(--yellow)}
@@ -441,11 +438,10 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
     setBeat(bi);
     let n=0; sealEls.forEach(s=>s.el.classList.toggle('on',p>=s.p-1e-9));
     gotEls.forEach((g,k)=>{const on=p>=gotP[k]-1e-9; g.classList.toggle('on',on); if(on)n++}); cnt.textContent=n;
-    handoff();
     const tp=(mf/(MONTHS-1)*100)+'%'; cur.style.left=tp; fill.style.width=tp;
     tickEls.forEach((t,i)=>t.classList.toggle('hit',i<=mi));
   }
-  /* hand-off: once the film ends, the nine collected icons fly down into the outcomes grid */
+  /* deliverables grid + the project tree above it */
   const outGrid=$('#outs'), tgtEls=[...outGrid.querySelectorAll('.ic')];
   const tree=$('#tree'), fan=$('#fan');
   function drawFan(){
@@ -457,24 +453,10 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
     fan.innerHTML=`<path d="M${x0} 0V${y}" pathLength="1"/><path d="M${xs[0]} ${y}H${xs[xs.length-1]}" pathLength="1"/>`+xs.map(x=>`<path d="M${x} ${y}V${H}" pathLength="1"/>`).join('');
   }
   drawFan(); addEventListener('resize',drawFan); addEventListener('load',drawFan);
-  const fly=document.createElement('div'); fly.className='fly'; fly.setAttribute('aria-hidden','true');
-  fly.innerHTML=OUT.map(o=>`<span class="ic"><svg viewBox="0 0 24 24">${ICONS[o[2]]}</svg></span>`).join(''); document.body.appendChild(fly);
-  const flyEls=[...fly.children], ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
-  function handoff(){
-    const vh=innerHeight, g=outGrid.getBoundingClientRect(), start=vh*1.12, end=vh*.52;
-    const t=Math.max(0,Math.min(1,(start-g.top)/(start-end)));
-    let all=true;
-    for(let i=0;i<9;i++){
-      const ti=Math.max(0,Math.min(1,(t-i*.035)/(1-8*.035))), src=gotEls[i], tg=tgtEls[i], c=flyEls[i], mid=ti>0&&ti<1;
-      src.style.opacity=ti>0?'0':''; tg.classList.toggle('in',ti>=1); c.style.opacity=mid?'1':'0';
-      if(mid){ const a=src.getBoundingClientRect(), b=tg.getBoundingClientRect(), e=ease(ti);
-        const w=a.width+(b.width-a.width)*e, x=a.left+(b.left-a.left)*e, y=a.top+(b.top-a.top)*e-Math.sin(Math.PI*ti)*vh*.07;
-        c.style.width=c.style.height=w.toFixed(1)+'px'; c.style.transform=`translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`; }
-      if(ti<1) all=false;
-    }
-    outGrid.classList.toggle('landed',all); tree.classList.toggle('landed',all);
-  }
-  if(RM){ sealEls.forEach(s=>s.el.classList.add('on')); setBeat(LAST); cnt.textContent=9; gotEls.forEach(d=>d.classList.add('on')); tgtEls.forEach(t=>t.classList.add('in')); outGrid.classList.add('landed'); tree.classList.add('landed'); }
+  /* deliverables land when the section comes into view (no hand-off from the film) */
+  const oio=new IntersectionObserver(es=>{ if(!es.some(e=>e.isIntersecting)) return; drawFan(); tree.classList.add('landed'); tgtEls.forEach((t,i)=>setTimeout(()=>t.classList.add('in'),RM?0:400+i*70)); setTimeout(()=>outGrid.classList.add('landed'),RM?0:400); oio.disconnect(); },{threshold:.2});
+  oio.observe(tree);
+  if(RM){ sealEls.forEach(s=>s.el.classList.add('on')); setBeat(LAST); cnt.textContent=9; gotEls.forEach(d=>d.classList.add('on')); }
   else { addEventListener('scroll',()=>{if(!raf)raf=requestAnimationFrame(update)},{passive:true}); addEventListener('resize',update); update(); }
 
 })();
