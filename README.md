@@ -16,8 +16,10 @@ Static site for **01plus.github.io**, built by `./build.sh` (→ `build.py`).
 
 ## Workflow
 1. Edit a source or `cases/cases.json`.
-2. If any text changed, re-subset the fonts (the subsetter also writes `assets/fonts/*.woff2`).
+2. If any text changed, re-subset the fonts: `python3 -I tools/subset-fonts.py` (needs the DOUYU and Alibaba PuHuiTi OTFs in `~/Library/Fonts`, plus fonttools/brotli). It rewrites the inline font block in both sources and `assets/fonts/*.woff2`.
 3. `./build.sh`, then commit sources and built files together.
 
-Case images are generated with the OpenAI Images API from the `img` prompts in `cases/cases.json`
-(`gpt-image-2`, 1536×1024); drop a PNG named `assets/cases/<slug>-{hero,s1,s2,s3}.png` to replace one.
+Case images are generated with the OpenAI Images API from the `img` prompts in `cases/cases.json`:
+`python3 -I tools/gen-case-images.py` (reads `OPENAI_API_KEY` from `.env`, model `gpt-image-2`, 1536×1024; skips images that exist).
+Drop a PNG named `assets/cases/<slug>-{hero,s1,s2,s3}.png` and rebuild to replace one; the PNG originals are git-ignored, the JPGs are committed.
+The film's twelve milestone photos came from `tools/gen-film-images.sh` and the booklet.
