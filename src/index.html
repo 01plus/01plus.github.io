@@ -91,16 +91,12 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .hero .ctas{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:flex-start;margin-top:1.4rem}
 .hero .quiet{display:inline-flex;align-items:center;align-self:center;margin-left:.6rem;padding:.3rem 0;color:#fff;font:500 .95rem/1 var(--body);border-bottom:1.5px solid rgba(255,255,255,.45);text-shadow:0 2px 14px rgba(30,20,100,.6)}
 .hero .quiet:hover{border-color:var(--yellow)}
+.hero .stats{display:flex;align-items:flex-end;flex-wrap:wrap;gap:1rem clamp(1.6rem,4vw,3.6rem);margin-top:clamp(1.6rem,5vh,3.2rem);padding-top:1.4rem;border-top:1px solid rgba(255,255,255,.28)}
+.hero .stat b{display:block;font:800 clamp(2rem,3.6vw,3.2rem)/1 var(--latin);letter-spacing:-.03em;color:var(--yellow);text-shadow:0 4px 18px rgba(30,20,100,.45)}
+.hero .stat span{display:block;margin-top:.35rem;font:300 .85rem/1.3 var(--body);color:rgba(255,255,255,.88);text-shadow:0 2px 10px rgba(30,20,100,.6)}
+.hero .stats .foot{flex-basis:100%;font:500 .7rem/1 var(--latin);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
 /* numbers */
-.nums{border-bottom:1px solid var(--line)}
-.nums .in{display:grid;grid-template-columns:repeat(3,1fr);padding-block:3.6rem 2.6rem}
-.num{text-align:center;padding:.4rem 1rem;border-left:1px solid var(--line)}
-.num:first-child{border-left:0}
-.num b{display:block;font:800 clamp(3rem,7vw,6rem)/1 var(--latin);letter-spacing:-.03em;color:var(--purple-text)}
-.num span{display:block;margin-top:.5rem;font-size:.95rem;color:var(--fg-2)}
-.nums .foot{text-align:center;font:500 .72rem/1 var(--latin);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding-bottom:2.4rem}
-@media (max-width:720px){.nums .in{grid-template-columns:1fr;gap:1.4rem;padding-block:2.6rem 1.8rem}.num{border-left:0;border-top:1px solid var(--line);padding-top:1.4rem}.num:first-child{border-top:0;padding-top:0}}
 
 /* film */
 .film{position:relative;height:780svh}
@@ -309,17 +305,15 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
       <a class="btn y" href="#film">看一个项目如何展开<span class="ar"></span></a>
       <a class="quiet" href="#contact">预约咨询</a>
     </div>
+    <div class="stats">
+      <div class="stat reveal"><b data-n="20" data-s="%+">0</b><span>哈耶普斯麻录取率</span></div>
+      <div class="stat reveal"><b data-n="90" data-s="%+">0</b><span>Top 30 名校录取率</span></div>
+      <div class="stat reveal"><b data-n="100" data-s="%">0</b><span>Top 50 名校录取率</span></div>
+      <div class="foot">700+ 位学生 · 10+ 年</div>
+    </div>
   </div>
 </header>
 
-<section class="nums wrap">
-  <div class="in">
-    <div class="num reveal"><b data-n="20" data-s="%+">0</b><span>哈耶普斯麻录取率</span></div>
-    <div class="num reveal"><b data-n="90" data-s="%+">0</b><span>Top 30 名校录取率</span></div>
-    <div class="num reveal"><b data-n="100" data-s="%">0</b><span>Top 50 名校录取率</span></div>
-  </div>
-  <div class="foot">700+ 位学生 · 10+ 年</div>
-</section>
 
 <section class="film" id="film">
   <div class="stage">
