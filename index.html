@@ -88,16 +88,15 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .hero .bg .tint{position:absolute;inset:0;background:var(--purple);mix-blend-mode:multiply;opacity:.94}
 .hero .bg .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(80,64,191,.1),rgba(63,49,168,.45) 60%,rgba(48,36,140,.85))}
 @media (max-width:860px){.hero .bg img{object-position:55% 30%}.hero .ctas{flex-direction:column;align-items:flex-start}}
-.hero .arrow{position:absolute;right:clamp(40px,9vw,170px);top:40%;width:min(34vw,60svh);height:auto;fill:var(--yellow);filter:drop-shadow(0 30px 60px rgba(20,10,80,.35));will-change:transform}
-@media (max-width:860px){.hero .arrow{right:4vw;top:auto;bottom:-12vw;width:60vw}.hero .in{padding-bottom:26vh}}
 .hero .in{padding-block:4.5rem 5.5rem;display:grid;gap:1.3rem;justify-items:start}
 .hero .in>*{max-width:46rem}
 .hero h1{max-width:none}
 .hero h1 .l{white-space:nowrap}
+.hero h1 .ah{display:inline-block;width:.92em;height:.92em;margin-left:.12em;vertical-align:-.04em;background:var(--yellow);-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;filter:drop-shadow(0 12px 30px rgba(30,20,100,.35))}
 .hero .tagline{display:inline-flex;align-items:center;gap:.75rem;font:400 clamp(1.05rem,1.6vw,1.35rem)/1 var(--display);letter-spacing:.28em;color:#fff;padding:.72em 1em .72em 1.05em;border:1.5px solid rgba(255,255,255,.55);border-radius:999px;background:rgba(255,255,255,.1);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);text-shadow:0 2px 12px rgba(30,20,100,.5)}
 .hero .tagline .x{color:var(--yellow);font-family:var(--latin);font-weight:500;margin:0 .05em 0 .2em}
 .hero .tagline i{width:.85em;height:.85em;background:var(--yellow);-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat}
-.hero h1{font-size:clamp(2.5rem,7.6vw,7.2rem);line-height:1.02;text-wrap:balance;-webkit-text-stroke:.03em var(--purple-deep);paint-order:stroke fill;text-shadow:0 12px 40px rgba(30,20,100,.35)}
+.hero h1{font-size:clamp(2.25rem,7.6vw,7.2rem);line-height:1.02;text-wrap:balance;-webkit-text-stroke:.03em var(--purple-deep);paint-order:stroke fill;text-shadow:0 12px 40px rgba(30,20,100,.35)}
 .hero h1 .x{font-family:var(--latin);font-weight:500;color:var(--yellow);font-size:.6em;vertical-align:.14em;margin:0 .1em}
 .hero .lat{font:600 clamp(1.1rem,2.4vw,1.7rem)/1.2 var(--latin);color:var(--yellow);letter-spacing:.01em;text-shadow:0 2px 14px rgba(30,20,100,.5)}
 .hero p{margin:0;max-width:30em;color:rgba(255,255,255,.9);font-size:clamp(1rem,1.4vw,1.15rem);text-shadow:0 2px 14px rgba(30,20,100,.6)}
@@ -262,9 +261,9 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
 </nav>
 
 <header class="hero panel wrap" id="top">
-  <div class="bg" aria-hidden="true"><img src="assets/hero.jpg" alt="" id="heroImg"><i class="tint"></i><i class="grad"></i><svg class="arrow" id="heroArrow" viewBox="0 0 100 100"><path d="M0 0H100V100A28.5 28.5 0 0 1 71.5 71.5V49L43.75 76.75A14.5 14.5 0 0 1 23.25 56.25L51 28.5H28.5A28.5 28.5 0 0 1 0 0Z"/></svg></div>
+  <div class="bg" aria-hidden="true"><img src="assets/hero.jpg" alt="" id="heroImg"><i class="tint"></i><i class="grad"></i></div>
   <div class="in">
-    <h1><span class="l">名校<span class="hl">背景提升</span></span></h1>
+    <h1><span class="l">名校<span class="hl">背景提升</span><i class="ah" aria-hidden="true"></i></span></h1>
     <div class="ctas">
       <a class="btn y" href="#contact">预约免费名校背景规划完整策划<span class="ar"></span></a>
     </div>
@@ -377,11 +376,9 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
   addEventListener('scroll',navSync,{passive:true}); navSync();
 
   /* hero parallax */
-  const heroImg=$('#heroImg'), heroArrow=$('#heroArrow');
+  const heroImg=$('#heroImg');
   /* the arrow's top edge sits level with the hero button; it runs from there to the bottom of the hero */
-  function placeArrow(){ if(innerWidth<=860){heroArrow.style.top=heroArrow.style.width='';return;} const h=hero.getBoundingClientRect(), b=hero.querySelector('.btn.y').getBoundingClientRect(); const top=b.top-h.top-24, size=Math.min(h.height-top, innerWidth*.4); heroArrow.style.top=top+'px'; heroArrow.style.width=size+'px'; }
-  placeArrow(); addEventListener('resize',placeArrow); addEventListener('load',placeArrow);
-  function parallax(){ const y=scrollY; if(y>innerHeight*1.2||RM) return; heroImg.style.transform=`translateY(${y*.18}px) scale(1.06)`; heroArrow.style.transform=`translate(${y*.04}px,${-y*.08}px)`; }
+  function parallax(){ const y=scrollY; if(y>innerHeight*1.2||RM) return; heroImg.style.transform=`translateY(${y*.18}px) scale(1.06)`; }
   addEventListener('scroll',parallax,{passive:true}); parallax();
 
   /* count-up + reveal */
