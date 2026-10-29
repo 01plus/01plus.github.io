@@ -131,7 +131,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 @media (max-width:860px){.out .grid{grid-template-columns:repeat(3,1fr);gap:.6rem}}
 /* cases */
 .cases{padding-block:6.5rem 5.5rem}
-.cases .top{display:grid;grid-template-columns:1fr minmax(0,22rem);align-items:end;gap:2rem;margin-bottom:2.4rem}
+.cases .top{margin-bottom:2.4rem}
 .cases h2{margin-top:.7rem;font-size:clamp(2.1rem,4.8vw,3.8rem)}
 .cases .top p{margin:0 0 .4rem;color:var(--fg-2);font-size:.98rem}
 .feat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);background:var(--purple);color:#fff;border-radius:24px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(80,64,191,.6);transition:transform .3s,box-shadow .3s}
@@ -167,24 +167,27 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .board .top{margin-bottom:2.4rem}
 .board h2{margin-top:.7rem;font-size:clamp(2.1rem,4.8vw,3.8rem)}
 .board .top p{margin:0 0 .4rem;color:var(--fg-2);font-size:.98rem}
-.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.7rem}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.7rem;transition:grid-template-columns .55s cubic-bezier(.2,.7,.2,1)}
 .tile{position:relative;display:block;width:100%;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.1rem 1rem;cursor:pointer;color:inherit;font:inherit;transition:border-color .25s,transform .25s,box-shadow .25s}
 .tile:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 14px 30px -18px rgba(80,64,191,.45)}
-.tile h3{font:400 1.3rem/1.15 var(--display);margin:0;color:var(--purple-text)}
+.tile h3{font:400 1.3rem/1.15 var(--display);margin:0;color:var(--c,var(--purple-text))}
+.tile:hover,.tile.open{border-color:var(--c,var(--purple))}
 .tile small{display:block;font:600 .62rem/1 var(--latin);letter-spacing:.14em;text-transform:uppercase;color:var(--fg);margin-top:.35rem}
 .tile .n{display:flex;align-items:baseline;gap:.35rem;margin-top:.9rem;font:300 .82rem/1 var(--body);color:var(--fg-2)}
 .tile .n b{font:800 1.5rem/1 var(--latin);color:var(--fg);letter-spacing:-.02em}
-.tile ul{list-style:none;margin:0;padding:1rem 1.1rem;position:absolute;left:-1px;right:-1px;top:calc(100% - 10px);z-index:5;background:var(--bg);border:1px solid var(--purple);border-top:0;border-radius:0 0 16px 16px;box-shadow:0 24px 44px -20px rgba(80,64,191,.55);display:none;gap:.5rem;min-width:16rem}
-.tile:hover,.tile:focus-visible,.tile.open{z-index:6;border-color:var(--purple);border-radius:16px 16px 0 0;transform:none}
-.tile:hover ul,.tile:focus-visible ul,.tile.open ul{display:grid}
+.tile .list{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .55s cubic-bezier(.2,.7,.2,1),opacity .35s}
+.tile .list>ul{list-style:none;margin:0;padding:0;overflow:hidden;min-height:0;display:grid;gap:.5rem}
+.tile .list>ul::before{content:"";display:block;height:1px;background:var(--line);margin:.9rem 0 .5rem}
+.tile:hover,.tile:focus-visible,.tile.open{border-color:var(--purple);box-shadow:0 22px 44px -22px rgba(80,64,191,.55);transform:none}
+.tile:hover .list,.tile:focus-visible .list,.tile.open .list{grid-template-rows:1fr;opacity:1}
 .tile li{display:grid;gap:.1rem;font:500 .86rem/1.35 var(--body);color:var(--fg)}
 .tile li i{font:400 .7rem/1.2 var(--body);font-style:normal;color:var(--muted)}
 .tile .x{position:absolute;right:1rem;top:1.05rem;width:1.1rem;height:1.1rem;color:var(--muted);transition:transform .3s,color .3s}
-.tile:hover .x,.tile.open .x{transform:rotate(45deg);color:var(--purple-text)}
+.tile:hover .x,.tile.open .x,.tile:focus-visible .x{transform:rotate(45deg);color:var(--purple-text)}
 @media (max-width:1100px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:860px){.tiles{grid-template-columns:repeat(3,minmax(0,1fr))}.board .top{grid-template-columns:1fr;gap:.8rem}.board{padding-block:3.8rem 4rem}}
-@media (max-width:560px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:.9rem .9rem .85rem}.tile h3{font-size:1.1rem}.tile ul{min-width:0}}
-@media (hover:none){.tile:hover ul{display:none}.tile.open ul{display:grid}}
+@media (max-width:560px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:.9rem .9rem .85rem}.tile h3{font-size:1.1rem}}
+@media (hover:none){.tile:hover .list{grid-template-rows:0fr;opacity:0}.tile.open .list{grid-template-rows:1fr;opacity:1}}
 .founder .in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,6vw,6rem);align-items:center}
 .founder .pic{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:22px;background:var(--purple)}
 .founder .pic img{width:100%;height:100%;object-fit:cover;object-position:72% 20%}
@@ -301,7 +304,6 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
   <div class="in">
     <div class="top">
       <div><div class="eyebrow reveal">案例 · Case studies</div><h2 class="reveal">他们都从<span class="hl">一个项目</span>开始</h2></div>
-      <p class="reveal">点开一个案例，看一个真实项目如何从 0 走到名校。</p>
     </div>
     <a class="feat reveal" href="case/carvetrack.html">
       <div class="pic"><img src="assets/m-start.jpg" alt="" loading="lazy"><span>完整案例 · 30 个月</span></div>
@@ -419,9 +421,17 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
   $('#caseGrid').innerHTML=CASES.map((c,i)=>`<div class="card reveal" style="transition-delay:${i*50}ms"><i>${String(i+1).padStart(2,'0')} · ${c[2]}</i><h3>${c[0]}</h3><em>${c[1]}</em><span class="soon">案例整理中</span></div>`).join('');
   document.querySelectorAll('#caseGrid .reveal, #cases .feat').forEach(el=>io.observe(el));
   /* admissions board: one tile per school, opens on click */
+  /* each school's own brand colour for its name */
+  const COLORS={"MIT": "#a31f34", "Harvard": "#a51c30", "Stanford": "#8c1515", "Yale": "#00356b", "Princeton": "#e77500", "UPenn": "#011f5b", "Cornell": "#b31b1b", "Caltech": "#ff6c0c", "Carnegie Mellon": "#c41230", "Columbia": "#1d4f91", "Brown": "#4e3629", "Johns Hopkins": "#002d72", "UChicago": "#800000", "UIUC": "#e84a27", "UC Berkeley": "#003262", "West Point": "#1b1833", "Vanderbilt": "#866d4b", "UCLA": "#2774ae", "Northwestern": "#4e2a84", "USC": "#990000", "Dartmouth": "#00693e", "ArtCenter": "#f25c19", "Duke": "#012169", "Rice": "#00205b", "Emory": "#012169", "UT Austin": "#bf5700", "UNC Charlotte": "#005035", "NYU": "#57068c", "Purdue": "#8e6f3e", "Michigan": "#00274c", "Georgetown": "#041e42", "UC San Diego": "#182b49", "Northeastern": "#d41b2c", "Toronto": "#002a5c", "Oxford": "#002147"};
   const tiles=$('#tiles');
-  tiles.innerHTML=SCHOOLS.map((sc,i)=>`<button class="tile reveal" type="button" style="transition-delay:${(i%10)*40}ms" aria-expanded="false"><svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><h3>${sc.n}</h3><small>${sc.en}</small><div class="n"><b>${sc.p.length}</b>位学生</div><ul>${sc.p.map(e=>`<li>${e[0]}<i>${e[1]}${e[2]?' · '+e[2]:''}</i></li>`).join('')}</ul></button>`).join('');
+  tiles.innerHTML=SCHOOLS.map((sc,i)=>`<button class="tile reveal" type="button" style="transition-delay:${(i%10)*40}ms;--c:${COLORS[sc.en]||'var(--purple-text)'}" aria-expanded="false"><svg class="x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><h3>${sc.n}</h3><small>${sc.en}</small><div class="n"><b>${sc.p.length}</b>位学生</div><div class="list"><ul>${sc.p.map(e=>`<li>${e[0]}<i>${e[1]}${e[2]?' · '+e[2]:''}</i></li>`).join('')}</ul></div></button>`).join('');
   tiles.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  tiles.addEventListener('click',e=>{const t=e.target.closest('.tile'); if(!t) return; const open=!t.classList.contains('open'); tiles.querySelectorAll('.tile.open').forEach(o=>{o.classList.remove('open');o.setAttribute('aria-expanded','false')}); t.classList.toggle('open',open); t.setAttribute('aria-expanded',String(open))});
+  /* the hovered tile's column widens and the others squeeze; the list unfolds inside */
+  const tileEls=[...tiles.children];
+  const cols=()=>getComputedStyle(tiles).gridTemplateColumns.split(' ').length;
+  const grow=t=>{ if(!t){tiles.style.gridTemplateColumns='';return;} const n=cols(), k=tileEls.indexOf(t)%n; tiles.style.gridTemplateColumns=Array.from({length:n},(_,i)=>i===k?'minmax(0,2.1fr)':'minmax(0,1fr)').join(' '); };
+  tiles.addEventListener('mouseover',e=>{const t=e.target.closest('.tile'); if(t) grow(t)});
+  tiles.addEventListener('mouseleave',()=>{ if(!tiles.querySelector('.tile.open')) grow(null) });
+  tiles.addEventListener('click',e=>{const t=e.target.closest('.tile'); if(!t) return; const open=!t.classList.contains('open'); tileEls.forEach(o=>{o.classList.remove('open');o.setAttribute('aria-expanded','false')}); t.classList.toggle('open',open); t.setAttribute('aria-expanded',String(open)); grow(open?t:null)});
 })();
 </script>
