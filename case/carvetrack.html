@@ -214,7 +214,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 @media (max-width:860px){.out .grid{grid-template-columns:repeat(3,1fr);gap:.6rem}}
 /* cta */
 .cta{position:relative;padding-block:7rem;text-align:center;overflow:hidden}
-.cta .bigar{position:absolute;left:-8vw;bottom:-14vw;width:46vw;max-width:620px;aspect-ratio:1;background:var(--yellow);opacity:.14;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;pointer-events:none}
+.cta .bigar{position:absolute;left:clamp(16px,7vw,140px);bottom:clamp(16px,5vh,56px);width:min(24vw,300px);aspect-ratio:1;background:var(--yellow);opacity:.22;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;pointer-events:none}
 .cta .in{position:relative}
 .cta h2{margin-top:.8rem;font-size:clamp(2rem,6vw,5rem);text-wrap:balance}
 .cta h2 .z{font-family:var(--latin);font-weight:800;color:var(--yellow)}
@@ -332,7 +332,6 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
   <div class="in">
     <div class="eyebrow reveal">下一步</div>
     <h2 class="reveal">准备好，<span class="hl">叩开名校大门</span></h2>
-    <p class="reveal">扫码添加顾问微信，<br>预约免费名校背景规划并获得定制策划书。</p>
     <div class="card reveal">
       <img src="../assets/wechat-qr.png" alt="微信二维码">
       <div class="t">
