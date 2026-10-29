@@ -114,8 +114,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 @media (max-width:860px){.out .steps{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:480px){.out .steps{grid-template-columns:1fr}}
 .out .grid{position:relative;display:grid;grid-template-columns:repeat(9,1fr);gap:.6rem;margin-top:1.4rem}
-.out .o{display:grid;justify-items:center;gap:.9rem;padding:1.2rem .3rem;border-radius:16px;transition:background .3s}
-.out .o:hover{background:rgba(255,255,255,.08)}
+.out .o{display:grid;justify-items:center;gap:.9rem;padding:1.2rem .3rem}
 .out .o .ic{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;background:var(--yellow);border:1px solid var(--yellow);opacity:0}
 .out .o .ic svg{width:30px;height:30px;fill:none;stroke:var(--yellow-ink);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 .out .o .ic.in{opacity:1;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25);transition:background .9s .25s,border-color .9s .25s,transform .3s}
@@ -125,8 +124,6 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .fly{position:fixed;inset:0;pointer-events:none;z-index:40}
 .fly .ic{position:absolute;left:0;top:0;border-radius:50%;background:var(--yellow);display:grid;place-items:center;opacity:0;box-shadow:0 12px 30px -12px rgba(40,20,120,.5);will-change:transform}
 .fly .ic svg{width:46%;height:46%;fill:none;stroke:var(--yellow-ink);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.out .o:hover .ic.in{background:var(--yellow);border-color:var(--yellow);transform:translateY(-3px)}
-.out .o:hover .ic.in svg{stroke:var(--yellow-ink)}
 .out .o b{font:400 1.1rem/1 var(--display);color:var(--yellow)}
 .out .o small{font:600 .6rem/1 var(--latin);letter-spacing:.14em;color:rgba(255,255,255,.65);text-transform:uppercase}
 @media (max-width:860px){.out .grid{grid-template-columns:repeat(3,1fr);gap:.6rem}}
