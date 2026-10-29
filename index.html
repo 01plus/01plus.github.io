@@ -87,9 +87,7 @@ h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.1;let
 .hero .bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 30%;filter:grayscale(1) contrast(1.08);will-change:transform}
 .hero .bg .tint{position:absolute;inset:0;background:var(--purple);mix-blend-mode:multiply;opacity:.94}
 .hero .bg .grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(80,64,191,.1),rgba(63,49,168,.45) 60%,rgba(48,36,140,.85))}
-.hero .arrow{position:absolute;right:clamp(16px,4vw,72px);bottom:clamp(16px,4vw,56px);width:min(44vw,calc(.78*(100svh - 4.25rem)));height:auto;fill:var(--yellow);filter:drop-shadow(0 30px 60px rgba(20,10,80,.35));will-change:transform}
-@media (min-width:1500px){.hero .arrow{width:min(40vw,calc(.8*(100svh - 4.25rem)))}}
-@media (max-width:860px){.hero .arrow{right:4vw;bottom:3vh;width:min(58vw,36svh)}.hero .in{padding-bottom:22vh}.hero .bg img{object-position:55% 30%}.hero .ctas{flex-direction:column;align-items:flex-start}}
+@media (max-width:860px){.hero .bg img{object-position:55% 30%}.hero .ctas{flex-direction:column;align-items:flex-start}}
 .hero .in{padding-block:4.5rem 5.5rem;display:grid;gap:1.3rem;justify-items:start}
 .hero .in>*{max-width:46rem}
 .hero h1{max-width:none}
@@ -266,7 +264,7 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
 </nav>
 
 <header class="hero panel wrap" id="top">
-  <div class="bg" aria-hidden="true"><img src="assets/hero.jpg" alt="" id="heroImg"><i class="tint"></i><i class="grad"></i><svg class="arrow" id="heroArrow" viewBox="0 0 100 100"><path d="M0 0H100V100A28.5 28.5 0 0 1 71.5 71.5V49L43.75 76.75A14.5 14.5 0 0 1 23.25 56.25L51 28.5H28.5A28.5 28.5 0 0 1 0 0Z"/></svg></div>
+  <div class="bg" aria-hidden="true"><img src="assets/hero.jpg" alt="" id="heroImg"><i class="tint"></i><i class="grad"></i></div>
   <div class="in">
     <h1><span class="l">名校<span class="hl">背景提升</span></span></h1>
     <div class="ctas">
@@ -383,8 +381,8 @@ footer svg{height:1.1rem;width:auto;opacity:.75}
   addEventListener('scroll',navSync,{passive:true}); navSync();
 
   /* hero parallax */
-  const heroArrow=$('#heroArrow'), heroImg=$('#heroImg');
-  function parallax(){ const y=scrollY; if(y>innerHeight*1.2||RM) return; heroArrow.style.transform=`translate(${y*.06}px,${-y*.10}px)`; heroImg.style.transform=`translateY(${y*.18}px) scale(1.06)`; }
+  const heroImg=$('#heroImg');
+  function parallax(){ const y=scrollY; if(y>innerHeight*1.2||RM) return; heroImg.style.transform=`translateY(${y*.18}px) scale(1.06)`; }
   addEventListener('scroll',parallax,{passive:true}); parallax();
 
   /* count-up + reveal */
