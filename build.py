@@ -146,6 +146,9 @@ for i, c in enumerate(cases):
         if os.path.exists(f"assets/cases/{c['slug']}-{k}.jpg"):
             scenes.append(f'<figure><img src="../assets/cases/{c["slug"]}-{k}.jpg" alt="{esc(c["project"])} · {zh}" loading="lazy" width="1400" height="933"><figcaption>{zh}</figcaption></figure>')
     stats = "".join(f'<div class="stat"><b>{esc(a)}</b><span>{esc(b)}</span></div>' for a, b in c["stats"])
+    nine = "".join(f'<li><span class="ic"><svg viewBox="0 0 24 24">{ICONS[key]}</svg></span>{zh}</li>' for key, zh, en in STEPS)
+    outcomes = (f'<div class="hd"><b>9<i>/9</i></b><span>种成果全部达成</span></div><ul class="nine">{nine}</ul>'
+                f'<div class="hl"><small>亮点数据</small><div class="row">{stats}</div></div>')
     seals = f'<img src="../assets/logos/{c["logo"]}.png" alt="{esc(c["schoolEn"])}">' + (f'<img src="../assets/logos/{c["logo2"]}.png" alt="">' if c.get("logo2") else "")
     others = "".join(card(cases[(i + d) % len(cases)], "../") for d in (1, 2, 3))
     page = tpl
@@ -153,7 +156,7 @@ for i, c in enumerate(cases):
         "FONTS": fonts, "BASE_CSS": base_css, "CTA_CSS": cta_css, "DEFS": defs, "HEAD_LINKS": head_links,
         "PROJECT": esc(c["project"]), "PROJECT_EN": esc(c["en"]), "NAME": esc(c["name"]), "MAJOR": esc(c["major"]), "MAJOR_LABEL": esc(c["major"] + ("" if c["major"].endswith("学院") else "专业")),
         "SCHOOL": esc(c["school"]), "SCHOOL_EN": esc(c["schoolEn"]), "COLOR": c["color"], "SLUG": c["slug"],
-        "SUMMARY": esc(c["summary"]), "PROBLEM": esc(c["problem"]), "STEPS": "".join(steps), "SCENES": "".join(scenes), "STATS": stats,
+        "SUMMARY": esc(c["summary"]), "PROBLEM": esc(c["problem"]), "STEPS": "".join(steps), "SCENES": "".join(scenes), "STATS": stats, "OUTCOMES": outcomes,
         "SEALS": seals, "OTHERS": others,
     }.items():
         page = page.replace("{{" + k + "}}", v)
