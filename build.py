@@ -133,11 +133,13 @@ def card(c, root):
             f'<div class="t"><i>{esc(c["major"])}</i><h3>{esc(c["project"])}</h3><em style="--c:{c["color"]}">{esc(c["school"])}</em></div></a>')
 
 for i, c in enumerate(cases):
-    for k in ("hero","s1","s2","s3"):
+    for k in ("hero","cover","s1","s2","s3"):
         jpg(f"assets/cases/{c['slug']}-{k}.png", f"assets/cases/{c['slug']}-{k}.jpg")
     og_image(f"assets/cases/{c['slug']}-hero.jpg", f"assets/cases/{c['slug']}-og.jpg")
     src720 = f"assets/cases/{c['slug']}-hero.png"; src720 = src720 if os.path.exists(src720) else f"assets/cases/{c['slug']}-hero.jpg"
     jpg(src720, f"assets/cases/{c['slug']}-hero-720.jpg", width=720, q=78)
+    srccov = f"assets/cases/{c['slug']}-cover.png"; srccov = srccov if os.path.exists(srccov) else f"assets/cases/{c['slug']}-cover.jpg"
+    jpg(srccov, f"assets/cases/{c['slug']}-cover-720.jpg", width=720, q=82)
     steps = []
     for n, (key, zh, en) in enumerate(STEPS):
         steps.append(f'<li class="st"><span class="ic"><svg viewBox="0 0 24 24">{ICONS[key]}</svg></span><div><div class="hd"><h3>{zh}</h3><i>{n+1:02d} · {en}</i></div><p>{esc(c["outcomes"][key])}</p></div></li>')
