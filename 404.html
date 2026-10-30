@@ -24,15 +24,15 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/douyu-400.woff2?v=7f2314c8" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/puhui-300.woff2?v=782025d9" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/puhui-700.woff2?v=fbab6343" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/douyu-400.woff2?v=4403046c" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/puhui-300.woff2?v=cb8221c1" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/puhui-700.woff2?v=66b52d13" as="font" type="font/woff2" crossorigin>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<style>@font-face{font-family:"DOUYU";font-weight:400;font-style:normal;font-display:swap;src:url(/assets/fonts/douyu-400.woff2?v=7f2314c8) format("woff2")}
-@font-face{font-family:"PuHui";font-weight:300;font-style:normal;font-display:swap;src:url(/assets/fonts/puhui-300.woff2?v=782025d9) format("woff2")}
-@font-face{font-family:"PuHui";font-weight:700;font-style:normal;font-display:swap;src:url(/assets/fonts/puhui-700.woff2?v=fbab6343) format("woff2")}
+<style>@font-face{font-family:"DOUYU";font-weight:400;font-style:normal;font-display:swap;src:url(/assets/fonts/douyu-400.woff2?v=4403046c) format("woff2")}
+@font-face{font-family:"PuHui";font-weight:300;font-style:normal;font-display:swap;src:url(/assets/fonts/puhui-300.woff2?v=cb8221c1) format("woff2")}
+@font-face{font-family:"PuHui";font-weight:700;font-style:normal;font-display:swap;src:url(/assets/fonts/puhui-700.woff2?v=66b52d13) format("woff2")}
 
 :root{
   --bg:#ffffff; --bg-2:#f4f3fb; --fg:#1b1833; --fg-2:#4b4769; --muted:#8c88a8;
@@ -119,14 +119,10 @@ a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var
 .cta.light .bigar{opacity:.25}
 /* faq */
 .faq{padding-block:6rem 5.5rem;background:var(--bg)}
-.faq .in{display:grid;gap:1.8rem;align-items:start}
+.faq .in{display:grid;gap:2rem;justify-items:center}
+.faq .hd{text-align:center;display:grid;justify-items:center}
 .faq h2{font-size:clamp(1.8rem,3.6vw,2.8rem);margin:.6rem 0 0}
-.faq .hd p{margin:1rem 0 1.4rem;color:var(--fg-2);line-height:1.8;max-width:26em}
-.faq .ask{display:inline-flex;align-items:center;gap:.5rem;font:700 .95rem/1 var(--body);color:var(--yellow-ink);background:var(--yellow);padding:.75em 1.1em;border-radius:999px;text-decoration:none;transition:transform .25s}
-.faq .ask b{width:.8em;height:.8em;background:currentColor;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat}
-.faq .ask:hover{transform:translateX(3px)}
-@media (min-width:961px){.faq .in{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(2rem,5vw,5rem)}.faq .hd{position:sticky;top:5.5rem}}
-.faq .qs{display:grid;gap:.6rem}
+.faq .qs{display:grid;gap:.6rem;width:100%;max-width:58rem}
 .faq .q{border:1px solid var(--line);border-radius:16px;background:var(--bg-2);padding:0 1.2rem}
 .faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 0;font:700 1.05rem/1.4 var(--body);color:var(--fg)}
 .faq summary::-webkit-details-marker{display:none}
