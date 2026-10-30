@@ -151,7 +151,7 @@ for i, c in enumerate(cases):
     page = tpl
     for k, v in {
         "FONTS": fonts, "BASE_CSS": base_css, "CTA_CSS": cta_css, "DEFS": defs, "HEAD_LINKS": head_links,
-        "PROJECT": esc(c["project"]), "PROJECT_EN": esc(c["en"]), "NAME": esc(c["name"]), "MAJOR": esc(c["major"]),
+        "PROJECT": esc(c["project"]), "PROJECT_EN": esc(c["en"]), "NAME": esc(c["name"]), "MAJOR": esc(c["major"]), "MAJOR_LABEL": esc(c["major"] + ("" if c["major"].endswith("学院") else "专业")),
         "SCHOOL": esc(c["school"]), "SCHOOL_EN": esc(c["schoolEn"]), "COLOR": c["color"], "SLUG": c["slug"],
         "SUMMARY": esc(c["summary"]), "PROBLEM": esc(c["problem"]), "STEPS": "".join(steps), "SCENES": "".join(scenes), "STATS": stats,
         "SEALS": seals, "OTHERS": others,

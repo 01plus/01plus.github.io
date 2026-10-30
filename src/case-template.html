@@ -19,7 +19,6 @@
 .chero .uni .seals{display:flex;gap:.6rem}
 .chero .uni img{width:7rem;height:7rem;padding:.8rem;border-radius:50%;background:#fff;object-fit:contain;box-shadow:0 20px 40px -20px rgba(0,0,0,.5)}
 .chero .uni b{font:400 1.05rem/1.3 var(--display);color:#fff;max-width:14em}
-.chero .uni small{font:600 .62rem/1 var(--latin);letter-spacing:.18em;text-transform:uppercase;color:var(--yellow)}
 .heroimg{margin-top:-8.5rem;position:relative;z-index:2}
 .heroimg .in{border-radius:24px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(27,24,51,.5);background:#17133a;aspect-ratio:3/2}
 .heroimg img{width:100%;height:100%;object-fit:cover;display:block}
@@ -78,7 +77,7 @@
   .chero .in{grid-template-columns:1fr}
   .chero .uni{justify-items:start;text-align:left;grid-template-columns:auto 1fr;column-gap:.9rem;align-items:center}
   .chero .uni img{width:4.2rem;height:4.2rem;padding:.45rem}
-  .chero .uni b{grid-column:2}.chero .uni small{grid-column:2;margin-top:-.3rem}
+  .chero .uni b{grid-column:2}
   .chero .uni .seals{grid-row:span 2}
   .heroimg{margin-top:-6rem}
   .story .in{grid-template-columns:1fr}
@@ -117,9 +116,9 @@
     <div class="txt">
       <div class="eyebrow">案例 · {{SCHOOL_EN}}</div>
       <h1>{{PROJECT}}</h1>
-      <div class="meta"><span>{{NAME}}</span><span>{{MAJOR}}</span><span class="ad">{{SCHOOL}} · 录取</span></div>
+      <div class="meta"><span>{{NAME}}</span><span>{{MAJOR_LABEL}}</span><span class="ad">{{SCHOOL}} · 录取</span></div>
     </div>
-    <div class="uni"><div class="seals">{{SEALS}}</div><b>{{SCHOOL}}</b><small>{{SCHOOL_EN}} · 录取</small></div>
+    <div class="uni"><div class="seals">{{SEALS}}</div><b>{{SCHOOL}}</b></div>
   </div>
 </header>
 <section class="heroimg wrap"><div class="in"><img src="../assets/cases/{{SLUG}}-hero.jpg" alt="{{PROJECT}} · {{NAME}}" width="1400" height="933" fetchpriority="high"></div></section>
