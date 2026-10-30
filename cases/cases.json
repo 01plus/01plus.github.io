@@ -18,7 +18,7 @@
    "competition": "获 Pitch to the Future 一等奖、Orange County Science Fair 二等奖",
    "patent": "申请美国技术专利（专利号 63/***,021）",
    "product": "完成智慧校园一体化平台：课程管理、消息通知、活动安排与家校沟通等模块，全栈架构",
-   "launch": "发布至 App Store 与 Google Play，面向学校与家长开放使用",
+   "launch": "通过 Apple App Store 与 Google Play 官方审核正式上架，面向学校与家长开放使用",
    "brand": "创立品牌 CampusFlow Labs",
    "impact": "推广至多个教育机构和社区，累计覆盖 8,000+ 名学生、教师与家长；获总统义工奖（PVSA）",
    "letter": "获得科研导师及学校行政主管的高度推荐与评价"
@@ -63,7 +63,7 @@
    "competition": "获 Future Lab Investor Pitch 优胜奖、Orange County Science Fair 一等奖、Congressional App Challenge 二等奖",
    "patent": "申请美国技术专利（专利号 63/***,691）",
    "product": "完成声学传感 + AI 识别的校园枪击预警系统原型，并在校园真实环境中开展测试",
-   "launch": "面向合作学校开放试点部署，发布预警 App 内测版本",
+   "launch": "预警 App 通过 Apple App Store 与 Google Play 官方审核上架，面向合作学校开放试点部署",
    "brand": "创立公益品牌 SafeSignal Initiative",
    "impact": "在多个校园行政部门与安保团队中应用；获总统义工奖（PVSA）",
    "letter": "获得科研导师及学校安保部门负责人的高度推荐与评价"
@@ -108,7 +108,7 @@
    "competition": "获 Google IgniteCS Expo 优胜奖",
    "patent": "申请美国技术专利（专利号 63/***,910）",
    "product": "完成临床试验智能匹配平台：患者画像、试验筛选与资格匹配",
-   "launch": "上线 App Store 与 Google Play",
+   "launch": "通过 Apple App Store 与 Google Play 官方审核正式上架，面向患者与家庭开放",
    "brand": "创立公益品牌 ClinicalAccess Alliance",
    "impact": "应用于多个医院、社区诊所与养老中心，累计覆盖 200+ 名患者及其家庭；获总统义工奖（PVSA）",
    "letter": "获得科研导师及社区医疗项目负责人的高度推荐与评价"
@@ -153,7 +153,7 @@
    "competition": "获 Microsoft Imagine Cup 美国区冠军、Diamond Challenge 全球第一、Orange County Science Fair 一等奖；入围 Technovation Challenge 美国区",
    "patent": "申请美国技术专利（专利号 63/***,568）",
    "product": "完成盲人辅助导航系统：胸前摄像头 + 手机 App 实时障碍识别与语音导航",
-   "launch": "上线 App Store 与 Google Play，并向视障社群开放",
+   "launch": "通过 Apple App Store 与 Google Play 官方审核正式上架，并向视障社群开放",
    "brand": "创立公益品牌 NavigationForAll Initiative",
    "impact": "应用于多个助残机构、社区康复中心与学校无障碍项目，累计覆盖 600+ 名视障用户及志愿者；获总统义工奖（PVSA）",
    "letter": "获得科研导师及助残机构负责人的高度推荐与评价"
@@ -199,7 +199,7 @@
    "competition": "获 Science Fair California 二等奖；入围 STS",
    "patent": "申请美国技术专利（专利号 63/***,317）",
    "product": "完成街头医疗药物信息平台：药物信息、分子可视化与用药提示",
-   "launch": "上线 App Store 与 Google Play，并向社区诊所开放",
+   "launch": "通过 Apple App Store 与 Google Play 官方审核正式上架，并向社区诊所开放",
    "brand": "创立公益品牌 StreetMed Collective",
    "impact": "应用于多个社区健康项目与义诊现场，累计覆盖 400+ 名用户；获总统义工奖（PVSA）",
    "letter": "获得科研导师及社区医疗组织负责人的高度推荐与评价"
@@ -244,7 +244,7 @@
    "competition": "入围 Diamond Challenge",
    "patent": "申请美国技术专利（专利号 63/***,253）",
    "product": "完成一体化任务管理平台：周计划、习惯追踪与进度看板",
-   "launch": "上线 App Store 与 Google Play",
+   "launch": "通过 Apple App Store 与 Google Play 官方审核正式上架，面向学生开放下载",
    "brand": "创立品牌 Compact Labs",
    "impact": "推广至多个教育机构和社区，累计覆盖 2,000+ 名学生；获总统义工奖（PVSA）",
    "letter": "获得科研导师及竞赛评审负责人的高度推荐与评价"
@@ -256,7 +256,7 @@
    ],
    [
     "2",
-    "个应用商店上线"
+    "App Store 与 Google Play 官方上架"
    ],
    [
     "1",
@@ -289,7 +289,7 @@
    "competition": "入围 Youth Innovation in Mental Health Challenge",
    "patent": "申请美国技术专利（专利号 63/***,913）",
    "product": "完成青少年情绪互助平台：情绪自评、同伴匹配与安全对话",
-   "launch": "上线 App Store 与 Google Play，并进入校园试点",
+   "launch": "通过 Apple App Store 与 Google Play 官方审核正式上架，并进入校园试点",
    "brand": "创立公益品牌 MindShare Youth",
    "impact": "在五所学校落地应用，累计覆盖 800+ 名学生；获总统义工奖（PVSA）",
    "letter": "获得科研导师及学校心理辅导部门负责人的高度推荐与评价"
@@ -334,7 +334,7 @@
    "competition": "获 ISEF 二等奖",
    "patent": "申请美国技术专利（专利号 63/***,274）",
    "product": "完成跑步姿态与康复平台：手机视频姿态估计、关节角度分析与康复建议",
-   "launch": "上线 App Store 与 Google Play，并进入康复诊所试用",
+   "launch": "通过 Apple App Store 与 Google Play 官方审核正式上架，并进入康复诊所试用",
    "brand": "创立公益品牌 GaitHealth Initiative",
    "impact": "应用于多个康复诊所、物理治疗中心及跑步俱乐部，累计覆盖 450+ 名用户；获总统义工奖（PVSA）",
    "letter": "获得科研导师及康复中心负责人的高度推荐与评价"
