@@ -42,7 +42,8 @@
    "s1": "A systems-architecture whiteboard in a university lab: boxes and arrows for mobile client, API gateway, message queue and database replicas, drawn in purple marker, with a laptop showing server-metrics graphs on the table in front, nobody in frame.",
    "s2": "A youth pitch competition hall seen from the back row: a large screen on stage showing a school app dashboard, a trophy and name cards on the judges' table, blurred audience heads in the foreground.",
    "s3": "A school front office with a wall-mounted display showing a campus notice board app, a receptionist's hands at a keyboard, parents in the background picking up children, warm afternoon light."
-  }
+  },
+  "problemTitle": "从十几个工具里，找回一所学校的秩序"
  },
  {
   "slug": "gunshot-alert",
@@ -87,7 +88,8 @@
    "s1": "Close-up of a wide monitor in an acoustics lab showing a spectrogram and stacked audio waveforms with a highlighted detection window, an oscilloscope and a small microphone array on the bench, nobody in frame.",
    "s2": "A science and engineering fair booth with a trifold poster of a school floor plan with sound-source markers and waveform charts, a sensor prototype on the table, a judge's clipboard at the edge of frame.",
    "s3": "A campus security office: a phone in a hand showing an alert app with a floor-plan map and a highlighted zone, a desk with radios and a wall monitor of hallway cameras, blurred officer in the background."
-  }
+  },
+  "problemTitle": "从最贵的三十秒开始"
  },
  {
   "slug": "clinical-trials",
@@ -132,7 +134,8 @@
    "s1": "A biomedical informatics lab monitor showing anonymised patient data tables, a matching-model flow diagram and a confusion-matrix heatmap, lab notebook and pens in front, nobody in frame.",
    "s2": "A health-tech expo booth with a large screen showing the trial-matching app, a tablet demo stand, brochures on a counter, blurred visitors with lanyards walking past in a bright exhibition hall.",
    "s3": "A community health centre waiting area: an elderly patient's hands holding a tablet showing matched clinical trials, a nurse pointing at the screen, plants and soft daylight, faces out of frame."
-  }
+  },
+  "problemTitle": "从找不到试验的患者开始"
  },
  {
   "slug": "assistive-navigation",
@@ -177,7 +180,8 @@
    "s1": "A computer-vision lab monitor showing a street scene with a coloured depth map overlay and bounding boxes around a curb, a pole and a pedestrian, a whiteboard with camera geometry sketches, nobody in frame.",
    "s2": "A competition stage with a big screen showing the navigation app's depth view, a crystal trophy on a podium in the foreground, blurred audience applauding.",
    "s3": "A visually impaired man with a white cane walking on a tree-lined sidewalk wearing a small chest camera and earbuds, seen from behind, a guide dog harness nearby, soft morning light."
-  }
+  },
+  "problemTitle": "从一段几百米的路开始"
  },
  {
   "slug": "street-medicine",
@@ -223,7 +227,8 @@
    "s1": "A university chemistry lab monitor showing 3D molecule structures and a QSAR scatter chart with a regression line, glassware and a fume hood behind, a notebook with structural formulas, nobody in frame.",
    "s2": "A science fair booth with a trifold poster showing molecule diagrams and charts, a laptop running the molecule app, a small 3D-printed molecule model on the table.",
    "s3": "A community health fair: hands handing a printed medication guide across a table to an elderly man, a volunteer tent and tablets on the table, faces out of frame, warm light."
-  }
+  },
+  "problemTitle": "从义诊桌上的一个问题开始"
  },
  {
   "slug": "task-platform",
@@ -268,7 +273,8 @@
    "s1": "A product-design studio glass wall covered in sticky notes and paper wireframes of a planning app, a laptop on the table showing user-behaviour retention charts, nobody in frame.",
    "s2": "A youth entrepreneurship competition stage with a screen showing the planning app beside a rising growth chart, a judges' long table with microphones, blurred audience.",
    "s3": "A bright high-school classroom seen from the back: students' hands holding phones showing the planning app, a teacher at the whiteboard, faces out of frame."
-  }
+  },
+  "problemTitle": "从五个互不说话的工具开始"
  },
  {
   "slug": "peer-support",
@@ -313,7 +319,8 @@
    "s1": "A quiet psychology lab room with plants: a monitor showing psychological-scale results as bar charts and an app flow diagram, printed questionnaires on the desk, nobody in frame.",
    "s2": "A youth mental-health innovation challenge panel room: a screen showing the matching logic diagram, a trophy on a table, name cards, blurred panel of judges.",
    "s3": "A school counselling room with chairs arranged in a circle, a few teenagers seen from behind holding phones with the support app, warm lamp light, faces out of frame."
-  }
+  },
+  "problemTitle": "从一句“我懂”开始"
  },
  {
   "slug": "gait-rehab",
@@ -358,7 +365,8 @@
    "s1": "A biomechanics lab with a treadmill, reflective motion-capture markers on a table and a monitor showing joint-angle curves over a gait cycle, nobody in frame.",
    "s2": "An ISEF-style exhibition hall booth with a trifold poster of gait diagrams and charts, a tablet running the skeleton-overlay app, a judge's clipboard at the edge of frame.",
    "s3": "A rehabilitation clinic with parallel bars: an older patient's legs walking while a physiotherapist holds a tablet showing the gait app, exercise balls in the background, faces out of frame."
-  }
+  },
+  "problemTitle": "从一部手机看见的跑姿开始"
  },
  {
   "slug": "home-robot-arm",
@@ -403,6 +411,7 @@
    "s1": "A robotics lab bench: the robotic arm with open servo wiring, an oscilloscope, a 3D printer and a monitor showing a kinematics diagram, hand tools laid out, nobody in frame.",
    "s2": "A science and engineering fair booth where the robotic arm is picking up small coloured blocks on the table, trophies behind, blurred judges watching.",
    "s3": "A community STEM centre workshop: children's hands around a table with the robotic arm and small blocks, a projector screen with the control interface, faces out of frame."
-  }
+  },
+  "problemTitle": "从厨房台面上的一只杯子开始"
  }
 ]

@@ -158,7 +158,7 @@ for i, c in enumerate(cases):
         "FONTS": fonts, "BASE_CSS": base_css, "CTA_CSS": cta_css, "DEFS": defs, "HEAD_LINKS": head_links,
         "PROJECT": esc(c["project"]), "PROJECT_EN": esc(c["en"]), "NAME": esc(c["name"]), "MAJOR": esc(c["major"]), "MAJOR_LABEL": esc(c["major"] + ("" if c["major"].endswith("学院") else "专业")),
         "SCHOOL": esc(c["school"]), "SCHOOL_EN": esc(c["schoolEn"]), "COLOR": c["color"], "SLUG": c["slug"],
-        "SUMMARY": esc(c["summary"]), "PROBLEM": esc(c["problem"]), "STEPS": "".join(steps), "SCENES": "".join(scenes), "STATS": stats, "OUTCOMES": outcomes,
+        "SUMMARY": esc(c["summary"]), "PROBLEM": esc(c["problem"]), "PROBLEM_TITLE": esc(c.get("problemTitle","从一个真实的问题开始")), "STEPS": "".join(steps), "SCENES": "".join(scenes), "STATS": stats, "OUTCOMES": outcomes,
         "SEALS": seals, "OTHERS": others,
     }.items():
         page = page.replace("{{" + k + "}}", v)
