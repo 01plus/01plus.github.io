@@ -38,7 +38,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a smartphone and a tablet lying on a light wooden desk, both showing a clean school-management app with a weekly timetable grid, notification cards and a family-messaging view in purple and yellow accents; a pencil, a notebook and a coffee cup beside them.",
+   "hero": "Shot straight down from above: a cluttered student desk with a phone and a tablet showing a school timetable and notification cards in purple and yellow, a half-finished coffee, sticky notes, tangled charger cable, pencil shavings; hard late-morning window light casting long shadows.",
    "s1": "A systems-architecture whiteboard in a university lab: boxes and arrows for mobile client, API gateway, message queue and database replicas, drawn in purple marker, with a laptop showing server-metrics graphs on the table in front, nobody in frame.",
    "s2": "A youth pitch competition hall seen from the back row: a large screen on stage showing a school app dashboard, a trophy and name cards on the judges' table, blurred audience heads in the foreground.",
    "s3": "A school front office with a wall-mounted display showing a campus notice board app, a receptionist's hands at a keyboard, parents in the background picking up children, warm afternoon light."
@@ -83,7 +83,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a compact matte-white acoustic sensor module with a small microphone array grille and a soft status LED, mounted on a school hallway ceiling, a row of lockers below, shallow depth of field.",
+   "hero": "Low, wide-angle view down a long empty high-school corridor, a small matte-white ceiling-mounted acoustic sensor with a tiny status light near the top of frame, lockers on both sides, dusty late-afternoon sun streaking through end windows, slightly underexposed.",
    "s1": "Close-up of a wide monitor in an acoustics lab showing a spectrogram and stacked audio waveforms with a highlighted detection window, an oscilloscope and a small microphone array on the bench, nobody in frame.",
    "s2": "A science and engineering fair booth with a trifold poster of a school floor plan with sound-source markers and waveform charts, a sensor prototype on the table, a judge's clipboard at the edge of frame.",
    "s3": "A campus security office: a phone in a hand showing an alert app with a floor-plan map and a highlighted zone, a desk with radios and a wall monitor of hallway cameras, blurred officer in the background."
@@ -128,7 +128,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a smartphone propped on a clinic reception counter showing a clinical-trial matching app with patient profile cards and a list of matched trials with eligibility badges, a stethoscope and a clipboard beside it, soft daylight.",
+   "hero": "Over-the-shoulder close-up at a clinic reception counter: a clinician's hands holding a phone that shows patient profile cards and matched-trial badges, a clipboard and pen on the counter, blurred waiting room with fluorescent light behind.",
    "s1": "A biomedical informatics lab monitor showing anonymised patient data tables, a matching-model flow diagram and a confusion-matrix heatmap, lab notebook and pens in front, nobody in frame.",
    "s2": "A health-tech expo booth with a large screen showing the trial-matching app, a tablet demo stand, brochures on a counter, blurred visitors with lanyards walking past in a bright exhibition hall.",
    "s3": "A community health centre waiting area: an elderly patient's hands holding a tablet showing matched clinical trials, a nurse pointing at the screen, plants and soft daylight, faces out of frame."
@@ -173,7 +173,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a small chest-mounted camera clip and a pair of earbuds beside a smartphone showing an obstacle-detection view with colour depth overlay and directional arrows, laid on a white table with a folded white cane.",
+   "hero": "Street-level candid at a city crosswalk: a white cane tip and worn sneakers at the kerb, a small chest-mounted camera clip visible on a jacket strap, passing pedestrians as motion blur, overcast flat light, wet pavement.",
    "s1": "A computer-vision lab monitor showing a street scene with a coloured depth map overlay and bounding boxes around a curb, a pole and a pedestrian, a whiteboard with camera geometry sketches, nobody in frame.",
    "s2": "A competition stage with a big screen showing the navigation app's depth view, a crystal trophy on a podium in the foreground, blurred audience applauding.",
    "s3": "A visually impaired man with a white cane walking on a tree-lined sidewalk wearing a small chest camera and earbuds, seen from behind, a guide dog harness nearby, soft morning light."
@@ -219,7 +219,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a smartphone on a folding table at a street medicine tent showing a drug-information app with a 3D molecule viewer and interaction warnings, pill bottles, a blood-pressure cuff and gloves beside it, sunny sidewalk.",
+   "hero": "Wide documentary frame of a pop-up street medicine tent at dusk: folding tables with pill bottles, a blood-pressure cuff and a phone showing a 3D molecule viewer in the foreground, string lights and volunteers from behind in the background, grainy mixed light.",
    "s1": "A university chemistry lab monitor showing 3D molecule structures and a QSAR scatter chart with a regression line, glassware and a fume hood behind, a notebook with structural formulas, nobody in frame.",
    "s2": "A science fair booth with a trifold poster showing molecule diagrams and charts, a laptop running the molecule app, a small 3D-printed molecule model on the table.",
    "s3": "A community health fair: hands handing a printed medication guide across a table to an elderly man, a volunteer tent and tablets on the table, faces out of frame, warm light."
@@ -264,7 +264,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a smartphone and a laptop on a tidy study desk by a window showing a clean task-planning app with a weekly plan, a habit tracker with streak dots and a progress ring, stacked textbooks and a plant, morning light.",
+   "hero": "Tight macro detail at blue hour: the corner of a laptop screen showing a weekly plan and a progress ring, a pencil and a stack of index cards in soft focus, the window reflected in the glossy screen, cool ambient light with a warm desk lamp.",
    "s1": "A product-design studio glass wall covered in sticky notes and paper wireframes of a planning app, a laptop on the table showing user-behaviour retention charts, nobody in frame.",
    "s2": "A youth entrepreneurship competition stage with a screen showing the planning app beside a rising growth chart, a judges' long table with microphones, blurred audience.",
    "s3": "A bright high-school classroom seen from the back: students' hands holding phones showing the planning app, a teacher at the whiteboard, faces out of frame."
@@ -309,7 +309,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a smartphone resting on a campus lawn blanket showing a calm peer-support chat app with a mood-check ring, gentle pastel cards and a matched-peer screen, a notebook and headphones beside it, late-afternoon light.",
+   "hero": "Backlit golden-hour shot on a campus lawn: a phone lying face-up on a picnic blanket showing a calm mood-check ring and pastel chat cards, headphones and a dog-eared paperback beside it, lens flare, students far away out of focus.",
    "s1": "A quiet psychology lab room with plants: a monitor showing psychological-scale results as bar charts and an app flow diagram, printed questionnaires on the desk, nobody in frame.",
    "s2": "A youth mental-health innovation challenge panel room: a screen showing the matching logic diagram, a trophy on a table, name cards, blurred panel of judges.",
    "s3": "A school counselling room with chairs arranged in a circle, a few teenagers seen from behind holding phones with the support app, warm lamp light, faces out of frame."
@@ -354,7 +354,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a phone on a small tripod at the edge of an outdoor running track, its screen showing a runner's skeleton overlay with joint-angle readouts, a tablet beside it showing stride charts, early morning light.",
+   "hero": "Side-on panning shot at a running track on an overcast morning: a runner passing as streaked motion blur, in the sharp foreground a phone on a small tripod showing a skeleton overlay with joint angles, a tablet with stride charts on the lane line.",
    "s1": "A biomechanics lab with a treadmill, reflective motion-capture markers on a table and a monitor showing joint-angle curves over a gait cycle, nobody in frame.",
    "s2": "An ISEF-style exhibition hall booth with a trifold poster of gait diagrams and charts, a tablet running the skeleton-overlay app, a judge's clipboard at the edge of frame.",
    "s3": "A rehabilitation clinic with parallel bars: an older patient's legs walking while a physiotherapist holds a tablet showing the gait app, exercise balls in the background, faces out of frame."
@@ -399,7 +399,7 @@
    ]
   ],
   "img": {
-   "hero": "Product shot: a compact white desktop robotic arm on a kitchen counter lifting a ceramic cup, a laptop beside it showing a control interface with a 3D arm model and sliders, bright kitchen, shallow depth of field.",
+   "hero": "Low-angle evening kitchen scene lit by warm tungsten and laptop glow: a compact white desktop robotic arm lifting a ceramic mug, steam rising, a laptop beside it showing a 3D arm model and sliders, dishes drying in the background.",
    "s1": "A robotics lab bench: the robotic arm with open servo wiring, an oscilloscope, a 3D printer and a monitor showing a kinematics diagram, hand tools laid out, nobody in frame.",
    "s2": "A science and engineering fair booth where the robotic arm is picking up small coloured blocks on the table, trophies behind, blurred judges watching.",
    "s3": "A community STEM centre workshop: children's hands around a table with the robotic arm and small blocks, a projector screen with the control interface, faces out of frame."
