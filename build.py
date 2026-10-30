@@ -181,7 +181,7 @@ open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset x
     "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod><changefreq>{'weekly' if u=='/' else 'monthly'}</changefreq><priority>{'1.0' if u=='/' else '0.8'}</priority></url>\n" for u in urls) + "</urlset>\n")
 open("robots.txt","w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 open("llms.txt","w",encoding="utf-8").write("# 01+ 名校背景提升\n\n> 01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果，申请世界名校。总校位于美国加州 Irvine。\n\n"
-    "## 核心数据\n- 10+ 年 K12 科创项目经验，700+ 位学员\n- 哈耶普斯麻录取率 20%+；Top 30 名校录取率 90%+；Top 50 名校录取率 100%\n- 2024–2026 录取名单覆盖 35 所院校，见首页\n\n## 方法\n开展调研 → 明确选题 → 制定计划 → 全程陪跑；围绕一个项目持续产出：产品、实习、竞赛、论文、专利、发布、品牌、社会影响、推荐信。\n\n## 案例\n" +
+    "## 核心数据\n- 10+ 年科创项目经验，700+ 位学员\n- 哈耶普斯麻录取率 20%+；Top 30 名校录取率 90%+；Top 50 名校录取率 100%\n- 2024–2026 录取名单覆盖 35 所院校，见首页\n\n## 方法\n开展调研 → 明确选题 → 制定计划 → 全程陪跑；围绕一个项目持续产出：产品、实习、竞赛、论文、专利、发布、品牌、社会影响、推荐信。\n\n## 案例\n" +
     "".join(f"- [{c['project']} · {c['name']} → {c['school']}]({SITE}/case/{c['slug']}.html)\n" for c in cases) +
     f"- [示例项目计划：CarveTrack 多模态滑雪传感器]({SITE}/case/carvetrack.html)\n\n## 联系\n微信扫码预约免费名校背景规划，获得定制策划书。地址：920 Roosevelt, Suite 200, Irvine, CA。官网 https://01plus.ai\n")
 print("wrote sitemap.xml, robots.txt, llms.txt")
