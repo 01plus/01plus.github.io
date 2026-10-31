@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://01plus.github.io/sitemap.xml
+Sitemap: https://01plus.ai/sitemap.xml

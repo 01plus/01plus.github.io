@@ -13,7 +13,7 @@ case template only holds what is specific to a case page.
 import json, os, re, sys, html, datetime
 sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
 ROOT = os.path.dirname(os.path.abspath(__file__)); os.chdir(ROOT)
-SITE = "https://01plus.github.io"
+SITE = "https://01plus.ai"
 TODAY = datetime.date.today().isoformat()
 
 land = open("src/index.html", encoding="utf-8").read()
