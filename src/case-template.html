@@ -104,9 +104,6 @@
 }
 @media (max-width:400px){.story .hl .row{grid-template-columns:1fr 1fr}.story .stat:last-child{grid-column:span 2}.story .nine{gap:.4rem}.story .nine li{padding:.5rem .5rem;gap:.4rem;font-size:.9rem}}
 {{CTA_CSS}}
-.cta.light{background:var(--bg);color:var(--fg);border-top:1px solid var(--line)}
-.cta.light p{color:var(--fg-2)}
-.cta.light .bigar{opacity:.25}
 </style>
 
 {{DEFS}}
@@ -165,22 +162,7 @@
   </div>
 </section>
 
-<section class="cta light wrap" id="contact">
-  <div class="bigar"></div>
-  <div class="in">
-    <div class="eyebrow reveal">下一步</div>
-    <h2 class="reveal">准备好，<span class="hl">叩开名校大门</span></h2>
-    <div class="qr reveal">
-      <img src="../assets/wechat-qr.png" alt="微信二维码" width="168" height="168">
-      <div class="t">
-        <span class="logo" aria-hidden="true"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></span>
-        <b>名校背景提升</b>
-        <ul class="get"><li>免费名校背景规划</li><li>定制项目策划书</li><li>一对一顾问答疑</li></ul>
-        <small>微信扫码或长按识别，添加顾问</small>
-      </div>
-    </div>
-  </div>
-</section>
+{{CONTACT}}
 
 <footer class="wrap">
   <div class="in">
@@ -211,4 +193,9 @@
   const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('on');io.unobserve(e.target)}),{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 })();
+</script>
+<script>
+(function(){
+  const $=s=>document.querySelector(s);
+{{CONTACT_JS}}})();
 </script>

@@ -28,6 +28,12 @@ base_css = css_all[css_all.index(":root{"):css_all.index("/* hero */")]
 cta_css = css_all[css_all.index("/* cta */"):]
 defs = re.search(r'<svg width="0" height="0" style="position:absolute" aria-hidden="true">.*?</svg>\n', land, re.S).group(0)
 head_links = re.search(r'(<link rel="preconnect".*?display=swap">\n)', land, re.S).group(1)
+# the landing's contact panel (signup form + WeChat column) is reused verbatim on every case page
+contact_html = re.search(r'<section class="cta panel wrap" id="contact">.*?</section>\n', land, re.S).group(0).replace('src="assets/', 'src="../assets/')
+contact_js = land[land.index("  const leadForm="):land.index("  const allBtn=")]
+contact_css = css_all[css_all.index(".cta .contact{"):css_all.index("\n", css_all.index("@media (max-width:480px){.cta .lead")) + 1]
+carve = carve.replace("{{CONTACT}}", contact_html).replace("{{CONTACT_JS}}", contact_js).replace("{{CONTACT_CSS}}", contact_css)
+assert "{{" not in carve, re.findall(r"\{\{\w+\}\}", carve)[:3]
 
 ICONS = {
  "product": '<path d="M12 2.5 3.5 7v10L12 21.5l8.5-4.5V7z"/><path d="M3.5 7 12 11.5 20.5 7M12 11.5v10"/>',
@@ -129,7 +135,7 @@ print("built case/carvetrack.html")
 # ---------- case pages ----------
 def esc(s): return html.escape(s, quote=True)
 def card(c, root):
-    return (f'<a class="card" href="{root}case/{c["slug"]}.html"><div class="pic"><img src="{root}assets/cases/{c["slug"]}-hero-720.jpg" srcset="{root}assets/cases/{c["slug"]}-hero-720.jpg 720w, {root}assets/cases/{c["slug"]}-hero.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="{esc(c["project"])}" loading="lazy" width="1400" height="933"></div>'
+    return (f'<a class="card" href="{root}case/{c["slug"]}.html"><div class="pic"><img src="{root}assets/cases/{c["slug"]}-cover-720.jpg" srcset="{root}assets/cases/{c["slug"]}-cover-720.jpg 720w, {root}assets/cases/{c["slug"]}-cover.jpg 1400w" sizes="(max-width:860px) 100vw, 33vw" alt="{esc(c["project"])}" loading="lazy" width="1400" height="933"></div>'
             f'<div class="t"><i>{esc(c["major"])}</i><h3>{esc(c["project"])}</h3><em style="--c:{c["color"]}">{esc(c["school"])}</em></div></a>')
 
 for i, c in enumerate(cases):
@@ -159,7 +165,7 @@ for i, c in enumerate(cases):
         "PROJECT": esc(c["project"]), "PROJECT_EN": esc(c["en"]), "NAME": esc(c["name"]), "MAJOR": esc(c["major"]), "MAJOR_LABEL": esc(c["major"] + ("" if c["major"].endswith("学院") else "专业")),
         "SCHOOL": esc(c["school"]), "SCHOOL_EN": esc(c["schoolEn"]), "COLOR": c["color"], "SLUG": c["slug"],
         "SUMMARY": esc(c["summary"]), "PROBLEM": esc(c["problem"]), "PROBLEM_TITLE": esc(c.get("problemTitle","从一个真实的问题开始")), "STEPS": "".join(steps), "SCENES": "".join(scenes), "STATS": stats, "OUTCOMES": outcomes,
-        "SEALS": seals, "OTHERS": others,
+        "SEALS": seals, "OTHERS": others, "CONTACT": contact_html, "CONTACT_JS": contact_js,
     }.items():
         page = page.replace("{{" + k + "}}", v)
     assert "{{" not in page, re.findall(r"\{\{\w+\}\}", page)[:3]
