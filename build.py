@@ -14,6 +14,10 @@ import json, os, re, sys, html, datetime
 sys.path.insert(0, os.path.expanduser("~/Library/Python/3.9/lib/python/site-packages"))
 ROOT = os.path.dirname(os.path.abspath(__file__)); os.chdir(ROOT)
 SITE = "https://01plus.ai"
+# Growth beacon (first-party analytics, see github.com/sunyu912/cm-growth). Empty = not shipped.
+# Production value once deployed: https://growth.aira.ventures/api/t ; the preview wrapper points it at localhost.
+GROWTH_ENDPOINT = os.environ.get("GROWTH_ENDPOINT", "")
+GROWTH_SITE = "01plus"
 TODAY = datetime.date.today().isoformat()
 
 land = open("src/index.html", encoding="utf-8").read()
@@ -89,6 +93,23 @@ def font_preloads(root):
     return "".join(f'<link rel="preload" href="{root}assets/fonts/{fn}.woff2?v={font_ver(fn)}" as="font" type="font/woff2" crossorigin>\n' for _, _, fn in FACES if fn in PRELOAD)
 
 # ---------- document skeleton with SEO head ----------
+BEACON = ("<script>(function(){try{var E=%s,S=%s,L=localStorage,SS=sessionStorage,q=new URLSearchParams(location.search),u={},K=['source','medium','campaign','content','term'];"
+ "K.forEach(function(k){var v=q.get('utm_'+k);if(v)u[k]=v.slice(0,100)});var n=0,v=L.getItem('gs_v');if(!v){v=Math.random().toString(36).slice(2,10)+Date.now().toString(36);L.setItem('gs_v',v);n=1}"
+ "var ss=SS.getItem('gs_s');if(!ss){ss=Math.random().toString(36).slice(2,10)+Date.now().toString(36);SS.setItem('gs_s',ss)}"
+ "if(u.campaign||u.source){L.setItem('gs_u',JSON.stringify(u));L.setItem('gs_lp',location.pathname);if(!L.getItem('gs_fc'))L.setItem('gs_fc',u.campaign||u.source)}"
+ "var a={};try{a=JSON.parse(L.getItem('gs_u')||'{}')}catch(e){}"
+ "function send(e,x){var d={s:S,e:e,v:v,ss:ss,p:location.pathname,r:document.referrer,w:innerWidth,l:navigator.language,lp:L.getItem('gs_lp')||location.pathname,fc:L.getItem('gs_fc')||null,n:n};"
+ "for(var k in a)d[k]=a[k];if(x)for(var k2 in x)d[k2]=x[k2];var b=JSON.stringify(d);"
+ "if(navigator.sendBeacon)navigator.sendBeacon(E,new Blob([b],{type:'text/plain'}));else fetch(E,{method:'POST',body:b,keepalive:true,mode:'no-cors'}).catch(function(){})}"
+ "window.gsTrack=send;send('view');"
+ "document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('a[href$=\"#contact\"],a[href$=\"#signup\"],.btn.y');if(t)send('cta',{t:(t.textContent||'').trim().slice(0,40)})});"
+ "var f=document.getElementById('leadForm');if(f){var st=0;f.addEventListener('focusin',function(){if(!st){st=1;send('form_start')}})}"
+ "var qr=document.querySelector('.wx img');if(qr&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){send('qr_view');io.disconnect()}})},{threshold:.6});io.observe(qr)}"
+ "}catch(e){}})();</script>\n")
+def beacon():
+    if not GROWTH_ENDPOINT: return ""
+    return BEACON % (json.dumps(GROWTH_ENDPOINT), json.dumps(GROWTH_SITE))
+
 def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website", robots="index,follow,max-image-preview:large"):
     url = SITE + path
     ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>\n' for j in (jsonld or []))
@@ -112,7 +133,7 @@ def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website", r
         f'<link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">\n'
         + font_preloads(root) + ld +
         '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>\n'
-        '</head>\n<body>\n' + externalize_fonts(body, root) + '\n</body>\n</html>\n')
+        '</head>\n<body>\n' + externalize_fonts(body, root) + '\n' + beacon() + '</body>\n</html>\n')
 
 ORG = {"@context":"https://schema.org","@type":"EducationalOrganization","name":"01+ 名校背景提升","alternateName":"01plus",
        "url":SITE,"logo":SITE+"/assets/apple-touch-icon.png","description":"01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果，申请世界名校。",
