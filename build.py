@@ -132,7 +132,7 @@ if faq:
     land_ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":re.sub("<.*?>","",q).strip(),
         "acceptedAnswer":{"@type":"Answer","text":re.sub("<.*?>","",a).strip()}} for q,a in faq]})
 og_image("assets/hero.jpg", "assets/og-home.jpg") if not os.path.exists("assets/og-home.jpg") else None
-jpg("assets/hero.jpg", "assets/hero-720.jpg", width=720, q=80); webp("assets/hero.jpg", "assets/hero.webp", width=1400, q=78); webp("assets/hero.jpg", "assets/hero-720.webp", width=720, q=78)
+jpg("assets/hero.jpg", "assets/hero-720.jpg", width=720, q=80); webp("assets/hero.jpg", "assets/hero.webp", width=1400, q=70); webp("assets/hero.jpg", "assets/hero-720.webp", width=720, q=70)
 open("index.html","w",encoding="utf-8").write(shell(land, title="01+ 名校背景提升 · 一个项目，多元成果",
     desc="01+ 名校背景提升：陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果。哈耶普斯麻录取率 20%+，Top 30 名校录取率 90%+。",
     path="/", root="", og="assets/og-home.jpg", jsonld=land_ld))
@@ -158,6 +158,8 @@ for i, c in enumerate(cases):
     og_image(f"assets/cases/{c['slug']}-hero.jpg", f"assets/cases/{c['slug']}-og.jpg")
     src720 = f"assets/cases/{c['slug']}-hero.png"; src720 = src720 if os.path.exists(src720) else f"assets/cases/{c['slug']}-hero.jpg"
     jpg(src720, f"assets/cases/{c['slug']}-hero-720.jpg", width=720, q=78)
+    jpg(src720, f"assets/cases/{c['slug']}-hero-1080.jpg", width=1080, q=78)
+    for w in (720, 1080, 1400): webp(src720, f"assets/cases/{c['slug']}-hero-{w}.webp", width=w, q=74)
     srccov = f"assets/cases/{c['slug']}-cover.png"; srccov = srccov if os.path.exists(srccov) else f"assets/cases/{c['slug']}-cover.jpg"
     jpg(srccov, f"assets/cases/{c['slug']}-cover-720.jpg", width=720, q=82)
     steps = []
