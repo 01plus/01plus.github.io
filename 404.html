@@ -15,6 +15,7 @@
 <meta property="og:description" content="页面不存在。">
 <meta property="og:url" content="https://01plus.ai/404.html">
 <meta property="og:image" content="https://01plus.ai/assets/og-home.jpg">
+<meta property="og:image:alt" content="页面不存在 · 01+">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -24,18 +25,18 @@
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preload" href="/assets/fonts/douyu-400.woff2?v=2b636d83" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/puhui-300.woff2?v=dc4e880f" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="/assets/fonts/puhui-700.woff2?v=33928840" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/douyu-400.woff2?v=c75059bd" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/outfit.woff2?v=4777f53a" as="font" type="font/woff2" crossorigin>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<style>@font-face{font-family:"DOUYU";font-weight:400;font-style:normal;font-display:swap;src:url(/assets/fonts/douyu-400.woff2?v=2b636d83) format("woff2")}
-@font-face{font-family:"PuHui";font-weight:300;font-style:normal;font-display:swap;src:url(/assets/fonts/puhui-300.woff2?v=dc4e880f) format("woff2")}
-@font-face{font-family:"PuHui";font-weight:700;font-style:normal;font-display:swap;src:url(/assets/fonts/puhui-700.woff2?v=33928840) format("woff2")}
+<style>@font-face{font-family:"DOUYU";font-weight:400;font-style:normal;font-display:swap;src:url(/assets/fonts/douyu-400.woff2?v=c75059bd) format("woff2")}
+@font-face{font-family:"PuHui";font-weight:300;font-style:normal;font-display:swap;src:url(/assets/fonts/puhui-300.woff2?v=5cd1fa10) format("woff2")}
+@font-face{font-family:"PuHui";font-weight:700;font-style:normal;font-display:swap;src:url(/assets/fonts/puhui-700.woff2?v=06d0bf3c) format("woff2")}
+@font-face{font-family:"Outfit";font-weight:500 800;font-style:normal;font-display:swap;src:url(/assets/fonts/outfit.woff2?v=4777f53a) format("woff2")}
 
 :root{
-  --bg:#ffffff; --bg-2:#f4f3fb; --fg:#1b1833; --fg-2:#4b4769; --muted:#8c88a8;
+  --bg:#ffffff; --bg-2:#f4f3fb; --fg:#1b1833; --fg-2:#4b4769; --muted:#726e92;
   --line:rgba(27,24,51,.1); --line-2:rgba(27,24,51,.22);
   --purple:#5040bf; --purple-deep:#3f31a8; --purple-text:#5040bf; --purple-soft:#ece9fb;
   --yellow:#ffdf00; --yellow-ink:#2a2400; --pink:#ff465d;
@@ -44,7 +45,7 @@
   --arw:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M0 0H100V100A28.5 28.5 0 0 1 71.5 71.5V49L43.75 76.75A14.5 14.5 0 0 1 23.25 56.25L51 28.5H28.5A28.5 28.5 0 0 1 0 0Z'/%3E%3C/svg%3E");
   --display:"DOUYU","Noto Sans SC","PingFang SC",sans-serif;
   --body:"PuHui","Noto Sans SC","PingFang SC","Hiragino Sans GB",system-ui,sans-serif;
-  --latin:"Outfit","Noto Sans SC",system-ui,sans-serif;
+  --latin:"Outfit",system-ui,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
@@ -189,7 +190,7 @@ footer .col{display:grid;gap:.45rem;align-content:start}
 footer .col b{font:600 .66rem/1 var(--latin);letter-spacing:.16em;text-transform:uppercase;color:#8c88a8;margin-bottom:.35rem}
 footer .col a{color:#fff;text-decoration:none;font:400 .95rem/1.5 var(--body);width:fit-content;border-bottom:1px solid transparent;transition:border-color .2s}
 footer .col a:hover{border-color:var(--yellow)}
-footer .fl a{color:#cfcbe6;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+footer .fl a{color:#e4e1f5;text-decoration:underline;text-underline-offset:.2em;text-decoration-color:rgba(228,225,245,.45);transition:text-decoration-color .2s}
 footer .fl a:hover{border-color:var(--yellow)}
 footer .fl{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font:400 .78rem/1.6 var(--body);color:#8c88a8}
 @media (min-width:700px){footer .in{grid-template-columns:1fr auto}footer .col{justify-items:end;text-align:right}}
@@ -219,6 +220,6 @@ footer .fl{margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,25
     </filter>
   </defs>
 </svg>
-<nav class="nav wrap" id="nav"><div class="in"><a class="brand" href="/" aria-label="01+"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></a><a class="btn" href="/#contact">预约咨询</a></div></nav><section class="wrap" style="min-height:100svh;display:grid;place-items:center;text-align:center;padding-block:6rem"><div class="in"><div class="eyebrow">404</div><h1 style="font-size:clamp(2rem,6vw,4.5rem);margin:.6rem 0 1rem">这一页还没有从 0 走到 1</h1><p style="color:var(--fg-2);margin:0 0 1.8rem">你要找的页面不存在，或者已经移动。</p><a class="btn p" href="/">回到首页<span class="ar"></span></a></div></section>
+<nav class="nav wrap" id="nav"><div class="in"><a class="brand" href="/" aria-label="01+"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></a><a class="btn" href="/#contact">预约咨询</a></div></nav><section class="wrap" style="min-height:100svh;display:grid;place-items:center;text-align:center;padding-block:6rem"><div class="in"><div class="eyebrow">404</div><h1 style="font-size:clamp(2rem,6vw,4.5rem);margin:.6rem 0 1rem">这一页还没有从 0 走到 1</h1><p style="color:var(--fg-2);margin:0 0 1.8rem">你要找的页面不存在，或已被移动。</p><a class="btn p" href="/">回到首页<span class="ar"></span></a></div></section>
 </body>
 </html>

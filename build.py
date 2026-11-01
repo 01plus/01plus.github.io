@@ -27,7 +27,7 @@ fonts = re.search(r"/\*FONTS-START\*/.*?/\*FONTS-END\*/", css_all, re.S).group(0
 base_css = css_all[css_all.index(":root{"):css_all.index("/* hero */")]
 cta_css = css_all[css_all.index("/* cta */"):]
 defs = re.search(r'<svg width="0" height="0" style="position:absolute" aria-hidden="true">.*?</svg>\n', land, re.S).group(0)
-head_links = re.search(r'(<link rel="preconnect".*?display=swap">\n)', land, re.S).group(1)
+_hl = re.search(r'(<link rel="preconnect".*?display=swap">\n)', land, re.S); head_links = _hl.group(1) if _hl else ""
 # the landing's contact panel (signup form + WeChat column) is reused verbatim on every case page
 contact_html = re.search(r'<section class="cta panel wrap" id="contact">.*?</section>\n', land, re.S).group(0).replace('src="assets/', 'src="../assets/')
 contact_js = land[land.index("  const leadForm="):land.index("  const allBtn=")]
@@ -59,6 +59,12 @@ def jpg(src_png, dst_jpg, width=1400, q=80):
     im.save(dst_jpg, quality=q, optimize=True, progressive=True)
     return True
 
+def webp(src, dst, width=1400, q=80):
+    if not os.path.exists(src): return False
+    if os.path.exists(dst) and os.path.getmtime(dst) >= os.path.getmtime(src): return True
+    from PIL import Image
+    im = Image.open(src).convert("RGB"); im.thumbnail((width, width)); im.save(dst, "WEBP", quality=q, method=6)
+    return True
 def og_image(src, dst):
     """1200x630 share image from a case hero."""
     if not os.path.exists(src): return False
@@ -69,7 +75,8 @@ def og_image(src, dst):
     im.save(dst, quality=82, optimize=True); return True
 
 # ---------- fonts: inline in the sources (artifact), shared files on the built site ----------
-FACES = [("DOUYU", 400, "douyu-400"), ("PuHui", 300, "puhui-300"), ("PuHui", 700, "puhui-700")]
+FACES = [("DOUYU", 400, "douyu-400"), ("PuHui", 300, "puhui-300"), ("PuHui", 700, "puhui-700"), ("Outfit", "500 800", "outfit")]
+PRELOAD = {"douyu-400", "outfit"}  # the hero headline faces; body faces load with swap so they never compete with the LCP image
 def font_ver(fn):
     import hashlib
     p = f"assets/fonts/{fn}.woff2"
@@ -79,7 +86,7 @@ def font_css(root):
 def externalize_fonts(body, root):
     return re.sub(r"/\*FONTS-START\*/.*?/\*FONTS-END\*/", lambda m: font_css(root), body, flags=re.S)
 def font_preloads(root):
-    return "".join(f'<link rel="preload" href="{root}assets/fonts/{fn}.woff2?v={font_ver(fn)}" as="font" type="font/woff2" crossorigin>\n' for _, _, fn in FACES)
+    return "".join(f'<link rel="preload" href="{root}assets/fonts/{fn}.woff2?v={font_ver(fn)}" as="font" type="font/woff2" crossorigin>\n' for _, _, fn in FACES if fn in PRELOAD)
 
 # ---------- document skeleton with SEO head ----------
 def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website"):
@@ -96,7 +103,7 @@ def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website"):
         f'<meta property="og:type" content="{ogtype}">\n<meta property="og:site_name" content="01+ 名校背景提升">\n'
         f'<meta property="og:locale" content="zh_CN">\n<meta property="og:title" content="{html.escape(title)}">\n'
         f'<meta property="og:description" content="{html.escape(desc)}">\n<meta property="og:url" content="{url}">\n'
-        f'<meta property="og:image" content="{SITE}/{og}">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+        f'<meta property="og:image" content="{SITE}/{og}">\n<meta property="og:image:alt" content="{html.escape(title)}">\n<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
         '<meta name="twitter:card" content="summary_large_image">\n'
         f'<meta name="twitter:title" content="{html.escape(title)}">\n<meta name="twitter:description" content="{html.escape(desc)}">\n'
         f'<meta name="twitter:image" content="{SITE}/{og}">\n'
@@ -110,15 +117,22 @@ def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website"):
 ORG = {"@context":"https://schema.org","@type":"EducationalOrganization","name":"01+ 名校背景提升","alternateName":"01plus",
        "url":SITE,"logo":SITE+"/assets/apple-touch-icon.png","description":"01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果，申请世界名校。",
        "address":{"@type":"PostalAddress","streetAddress":"920 Roosevelt, Suite 200","addressLocality":"Irvine","addressRegion":"CA","addressCountry":"US"},
-       "founder":{"@type":"Person","name":"孙宇","jobTitle":"创始人 · 计算机系终身教授"},"areaServed":["US","CN","CA"],"sameAs":["https://01plus.ai"]}
+       "founder":{"@type":"Person","name":"孙宇","jobTitle":"创始人 · 计算机系终身教授"},"areaServed":["US","CN","CA"],"sameAs":["https://01plus.ai"],
+       "email":"hello@01plus.ai","slogan":"一个项目，多元成果","knowsAbout":["名校背景提升","科研项目辅导","美国大学申请","青少年科创","AI 跨学科项目"]}
+SERVICE = {"@context":"https://schema.org","@type":"Service","name":"01+ 名校背景提升","serviceType":"升学背景提升与科研项目辅导","url":SITE+"/#method",
+       "provider":{"@type":"EducationalOrganization","name":"01+ 名校背景提升","url":SITE},"areaServed":["US","CN","CA"],
+       "audience":{"@type":"EducationalAudience","educationalRole":"student","audienceType":"6–12 年级学生与大学在读学生"},
+       "description":"以一个真实的核心项目为中心，陪伴学员从零到一把项目做实、做深，并围绕它产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果。",
+       "hasOfferCatalog":{"@type":"OfferCatalog","name":"多元成果","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":n}} for n in ["实习","论文","竞赛","专利","产品","发布","品牌","社会影响","推荐信"]]}}
 
 # ---------- landing ----------
 faq = re.findall(r'<details class="q">\s*<summary>(.*?)</summary>\s*<p>(.*?)</p>', land, re.S)
-land_ld = [ORG, {"@context":"https://schema.org","@type":"WebSite","name":"01+ 名校背景提升","url":SITE,"inLanguage":"zh-CN"}]
+land_ld = [ORG, SERVICE, {"@context":"https://schema.org","@type":"WebSite","name":"01+ 名校背景提升","url":SITE,"inLanguage":"zh-CN"}]
 if faq:
     land_ld.append({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":re.sub("<.*?>","",q).strip(),
         "acceptedAnswer":{"@type":"Answer","text":re.sub("<.*?>","",a).strip()}} for q,a in faq]})
 og_image("assets/hero.jpg", "assets/og-home.jpg") if not os.path.exists("assets/og-home.jpg") else None
+jpg("assets/hero.jpg", "assets/hero-720.jpg", width=720, q=80); webp("assets/hero.jpg", "assets/hero.webp", width=1400, q=78); webp("assets/hero.jpg", "assets/hero-720.webp", width=720, q=78)
 open("index.html","w",encoding="utf-8").write(shell(land, title="01+ 名校背景提升 · 一个项目，多元成果",
     desc="01+ 名校背景提升：陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果。哈耶普斯麻录取率 20%+，Top 30 名校录取率 90%+。",
     path="/", root="", og="assets/og-home.jpg", jsonld=land_ld))
@@ -152,7 +166,8 @@ for i, c in enumerate(cases):
     scenes = []
     for k, zh in (("s1","科研与开发"),("s2","竞赛与展示"),("s3","落地与影响")):
         if os.path.exists(f"assets/cases/{c['slug']}-{k}.jpg"):
-            scenes.append(f'<figure><img src="../assets/cases/{c["slug"]}-{k}.jpg" alt="{esc(c["project"])} · {zh}" loading="lazy" width="1400" height="933"><figcaption>{zh}</figcaption></figure>')
+            jpg(f"assets/cases/{c['slug']}-{k}.jpg", f"assets/cases/{c['slug']}-{k}-720.jpg", width=720, q=78)
+            scenes.append(f'<figure><img src="../assets/cases/{c["slug"]}-{k}-720.jpg" srcset="../assets/cases/{c["slug"]}-{k}-720.jpg 720w, ../assets/cases/{c["slug"]}-{k}.jpg 1400w" sizes="(max-width:860px) 50vw, 300px" alt="{esc(c["project"])} · {zh}" loading="lazy" width="1400" height="933"><figcaption>{zh}</figcaption></figure>')
     stats = "".join(f'<div class="stat"><b>{esc(a)}</b><span>{esc(b)}</span></div>' for a, b in c["stats"])
     nine = "".join(f'<li><span class="ic"><svg viewBox="0 0 24 24">{ICONS[key]}</svg></span>{zh}</li>' for key, zh, en in STEPS)
     outcomes = (f'<div class="hd"><b>9<i>/9</i></b><span>种成果全部达成</span></div><ul class="nine">{nine}</ul>'
@@ -181,7 +196,7 @@ print(f"built {len(cases)} case pages")
 # ---------- 404 ----------
 nf = ('<nav class="nav wrap" id="nav"><div class="in"><a class="brand" href="/" aria-label="01+"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></a><a class="btn" href="/#contact">预约咨询</a></div></nav>'
       '<section class="wrap" style="min-height:100svh;display:grid;place-items:center;text-align:center;padding-block:6rem"><div class="in"><div class="eyebrow">404</div>'
-      '<h1 style="font-size:clamp(2rem,6vw,4.5rem);margin:.6rem 0 1rem">这一页还没有从 0 走到 1</h1><p style="color:var(--fg-2);margin:0 0 1.8rem">你要找的页面不存在，或者已经移动。</p>'
+      '<h1 style="font-size:clamp(2rem,6vw,4.5rem);margin:.6rem 0 1rem">这一页还没有从 0 走到 1</h1><p style="color:var(--fg-2);margin:0 0 1.8rem">你要找的页面不存在，或已被移动。</p>'
       '<a class="btn p" href="/">回到首页<span class="ar"></span></a></div></section>')
 open("404.html","w",encoding="utf-8").write(shell('<style>'+fonts+'\n'+base_css+cta_css+'</style>\n'+defs+nf, title="页面不存在 · 01+", desc="页面不存在。", path="/404.html", root="/", og="assets/og-home.jpg"))
 print("built 404.html")
@@ -192,7 +207,7 @@ open("sitemap.xml","w").write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset x
     "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod><changefreq>{'weekly' if u=='/' else 'monthly'}</changefreq><priority>{'1.0' if u=='/' else '0.8'}</priority></url>\n" for u in urls) + "</urlset>\n")
 open("robots.txt","w").write(f"User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n")
 open("llms.txt","w",encoding="utf-8").write("# 01+ 名校背景提升\n\n> 01+ 通过「一个项目 × 多元成果」培养模式，陪伴学员从一个真实项目出发，产出实习、论文、竞赛、专利、产品、发布、品牌、社会影响与推荐信等多元成果，申请世界名校。总校位于美国加州 Irvine。\n\n"
-    "## 核心数据\n- 10+ 年科创项目经验，700+ 位学员\n- 哈耶普斯麻录取率 20%+；Top 30 名校录取率 90%+；Top 50 名校录取率 100%\n- 2024–2026 录取名单覆盖 35 所院校，见首页\n\n## 方法\n开展调研 → 明确选题 → 制定计划 → 全程陪跑；围绕一个项目持续产出：产品、实习、竞赛、论文、专利、发布、品牌、社会影响、推荐信。\n\n## 案例\n" +
+    "## 核心数据\n- 10+ 年科创项目经验，700+ 位学员\n- 哈耶普斯麻录取率 20%+；Top 30 名校录取率 90%+；Top 50 名校录取率 100%\n- 2024–2026 录取名单覆盖 35 所院校，见首页\n\n## 方法\n开展调研 → 明确选题 → 制定计划 → 全程陪跑；围绕一个项目持续产出：实习、论文、竞赛、专利、产品、发布、品牌、社会影响、推荐信。\n\n## 案例\n" +
     "".join(f"- [{c['project']} · {c['name']} → {c['school']}]({SITE}/case/{c['slug']}.html)\n" for c in cases) +
     f"- [示例项目计划：CarveTrack 多模态滑雪传感器]({SITE}/case/carvetrack.html)\n\n## 联系\n微信扫码预约免费名校背景规划，获得定制策划书。地址：920 Roosevelt, Suite 200, Irvine, CA。官网 https://01plus.ai\n")
 print("wrote sitemap.xml, robots.txt, llms.txt")

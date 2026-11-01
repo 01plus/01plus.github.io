@@ -8,14 +8,18 @@ body="".join(re.sub(r"/\*FONTS-START\*/.*?/\*FONTS-END\*/","",open(p,encoding="u
 chars=set(body)|set(chr(c) for c in range(0x20,0x7f))|set("“”‘’—–·×→…（）：；，。！？、《》")
 text="".join(sorted(c for c in chars if ord(c)>=0x20 and c not in "\r\n\t"))
 F=os.path.expanduser("~/Library/Fonts/")
-faces=[("DOUYU",400,"douyuFont.otf"),("PuHui",300,"AlibabaPuHuiTi-2-45-Light.otf"),("PuHui",700,"AlibabaPuHuiTi-2-85-Bold.otf")]
+faces=[("DOUYU",400,"douyu-400",F+"douyuFont.otf"),("PuHui",300,"puhui-300",F+"AlibabaPuHuiTi-2-45-Light.otf"),("PuHui",700,"puhui-700",F+"AlibabaPuHuiTi-2-85-Bold.otf"),
+       ("Outfit","500 800","outfit","/Users/yusun/workspace/01plus/tools/fonts/Outfit[wght].ttf")]  # Outfit: OFL, variable font kept as one file
 css=["/*FONTS-START*/"]; total=0
-for fam,wt,fn in faces:
-    f=TTFont(F+fn)
+for fam,wt,fn,path in faces:
+    f=TTFont(path)
+    if "fvar" in f:
+        from fontTools.varLib import instancer
+        f=instancer.instantiateVariableFont(f,{"wght":(500,800)})
     opts=subset.Options(); opts.flavor="woff2"; opts.hinting=False; opts.desubroutinize=True; opts.layout_features=["*"]; opts.name_IDs=["*"]; opts.notdef_outline=True
     sub=subset.Subsetter(opts); sub.populate(text=text); sub.subset(f)
     buf=io.BytesIO(); f.flavor="woff2"; f.save(buf); data=buf.getvalue(); total+=len(data)
-    open(f"/Users/yusun/workspace/01plus/assets/fonts/{fam.lower()}-{wt}.woff2","wb").write(data)
+    open(f"/Users/yusun/workspace/01plus/assets/fonts/{fn}.woff2","wb").write(data)
     css.append(f'@font-face{{font-family:"{fam}";font-weight:{wt};font-style:normal;font-display:swap;src:url(data:font/woff2;base64,{base64.b64encode(data).decode()}) format("woff2")}}')
     print(fam,wt,len(data)//1024,"KB")
 css.append("/*FONTS-END*/")
