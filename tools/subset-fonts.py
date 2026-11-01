@@ -3,7 +3,7 @@ sys.path.insert(0,"/Users/yusun/Library/Python/3.9/lib/python/site-packages")
 from fontTools import subset
 from fontTools.ttLib import TTFont
 PAGES=["/Users/yusun/workspace/01plus/src/index.html","/Users/yusun/workspace/01plus/src/case-carvetrack.html"]
-EXTRA=["/Users/yusun/workspace/01plus/src/case-template.html","/Users/yusun/workspace/01plus/cases/cases.json","/Users/yusun/workspace/01plus/build.py"]
+EXTRA=["/Users/yusun/workspace/01plus/src/case-template.html","/Users/yusun/workspace/01plus/cases/cases.json","/Users/yusun/workspace/01plus/build.py","/Users/yusun/workspace/01plus/src/landing-template.html","/Users/yusun/workspace/01plus/campaigns/campaigns.json"]
 body="".join(re.sub(r"/\*FONTS-START\*/.*?/\*FONTS-END\*/","",open(p,encoding="utf-8").read(),flags=re.S) for p in PAGES+EXTRA)
 chars=set(body)|set(chr(c) for c in range(0x20,0x7f))|set("“”‘’—–·×→…（）：；，。！？、《》")
 text="".join(sorted(c for c in chars if ord(c)>=0x20 and c not in "\r\n\t"))

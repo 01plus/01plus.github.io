@@ -89,7 +89,7 @@ def font_preloads(root):
     return "".join(f'<link rel="preload" href="{root}assets/fonts/{fn}.woff2?v={font_ver(fn)}" as="font" type="font/woff2" crossorigin>\n' for _, _, fn in FACES if fn in PRELOAD)
 
 # ---------- document skeleton with SEO head ----------
-def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website"):
+def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website", robots="index,follow,max-image-preview:large"):
     url = SITE + path
     ld = "".join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>\n' for j in (jsonld or []))
     return (
@@ -98,7 +98,7 @@ def shell(body, *, title, desc, path, root, og, jsonld=None, ogtype="website"):
         f'<title>{html.escape(title)}</title>\n'
         f'<meta name="description" content="{html.escape(desc)}">\n'
         f'<link rel="canonical" href="{url}">\n'
-        '<meta name="robots" content="index,follow,max-image-preview:large">\n'
+        f'<meta name="robots" content="{robots}">\n'
         '<meta name="theme-color" content="#5040bf">\n'
         f'<meta property="og:type" content="{ogtype}">\n<meta property="og:site_name" content="01+ 名校背景提升">\n'
         f'<meta property="og:locale" content="zh_CN">\n<meta property="og:title" content="{html.escape(title)}">\n'
@@ -194,6 +194,31 @@ for i, c in enumerate(cases):
     open(f"case/{c['slug']}.html","w",encoding="utf-8").write(shell(page, title=title, desc=desc, path=f"/case/{c['slug']}.html", root="../",
         og=f"assets/cases/{c['slug']}-og.jpg", jsonld=ld, ogtype="article"))
 print(f"built {len(cases)} case pages")
+
+# ---------- campaign landing pages (paid traffic): go/<slug>.html, noindex, own lead referrer ----------
+lp_tpl = open("src/landing-template.html", encoding="utf-8").read()
+campaigns = json.load(open("campaigns/campaigns.json", encoding="utf-8"))
+SEAL_ROW = [("mit","MIT"),("harvard","Harvard"),("stanford","Stanford"),("yale","Yale"),("princeton","Princeton"),("upenn","UPenn"),("columbia","Columbia"),("caltech","Caltech"),("johns-hopkins","Johns Hopkins")]
+os.makedirs("go", exist_ok=True)
+for g in campaigns:
+    c = next(x for x in cases if x["slug"] == g["case"])
+    summ = c["summary"]; cut = summ.find("，", 70); summ = (summ[:cut] + "……") if 0 < cut < len(summ) - 1 and len(summ) > 110 else summ
+    page = lp_tpl
+    for k, v in {
+        "FONTS": fonts, "BASE_CSS": base_css, "CTA_CSS": cta_css, "DEFS": defs, "TITLE": esc(g["title"]),
+        "BADGE": esc(g["badge"]), "EYEBROW": esc(g["eyebrow"]), "HEADLINE": g["headline"], "SUB": esc(g["sub"]), "CTA": esc(g["cta"]),
+        "AUDIENCE": "".join(f"<li>{esc(a)}</li>" for a in g["audience"]),
+        "SEALS": "".join(f'<img src="../assets/logos/{f}.png" alt="{n}" width="48" height="48" loading="lazy">' for f, n in SEAL_ROW),
+        "CASE_SLUG": c["slug"], "CASE_PROJECT": esc(c["project"]), "CASE_NAME": esc(c["name"]), "CASE_SCHOOL": esc(c["school"]), "CASE_MAJOR": esc(c["major"]),
+        "CASE_COLOR": c["color"], "CASE_SUMMARY": esc(summ), "CASE_STATS": "".join(f"<div><b>{esc(a)}</b><span>{esc(b)}</span></div>" for a, b in c["stats"][:2]),
+        "FAQ": "".join(f"<div class=\"q\"><b>{esc(q)}</b><p>{esc(a)}</p></div>" for q, a in g["faq"]),
+        "CONTACT": contact_html, "CONTACT_JS": contact_js.replace("referrer:'01plus.ai 官网表单'", f"referrer:'{g['referrer']}'"),
+    }.items():
+        page = page.replace("{{" + k + "}}", v)
+    assert "{{" not in page, re.findall(r"\{\{\w+\}\}", page)[:3]
+    assert f"referrer:'{g['referrer']}'" in page
+    open(f"go/{g['slug']}.html", "w", encoding="utf-8").write(shell(page, title=g["title"], desc=g["desc"], path=f"/go/{g['slug']}.html", root="../", og="assets/og-home.jpg", robots="noindex,nofollow"))
+print(f"built {len(campaigns)} campaign pages")
 
 # ---------- 404 ----------
 nf = ('<nav class="nav wrap" id="nav"><div class="in"><a class="brand" href="/" aria-label="01+"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></a><a class="btn" href="/#contact">预约咨询</a></div></nav>'
