@@ -16,7 +16,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__)); os.chdir(ROOT)
 SITE = "https://01plus.ai"
 # Growth beacon (first-party analytics, see github.com/sunyu912/cm-growth). Empty = not shipped.
 # Production value once deployed: https://growth.aira.ventures/api/t ; the preview wrapper points it at localhost.
-GROWTH_ENDPOINT = os.environ.get("GROWTH_ENDPOINT", "")
+GROWTH_ENDPOINT = os.environ.get("GROWTH_ENDPOINT", "https://cm-growth-liart.vercel.app/api/t")  # switch to https://growth.aira.ventures/api/t once its DNS is live
 GROWTH_SITE = "01plus"
 TODAY = datetime.date.today().isoformat()
 
@@ -100,7 +100,7 @@ BEACON = ("<script>(function(){try{var E=%s,S=%s,L=localStorage,SS=sessionStorag
  "var a={};try{a=JSON.parse(L.getItem('gs_u')||'{}')}catch(e){}"
  "function send(e,x){var d={s:S,e:e,v:v,ss:ss,p:location.pathname,r:document.referrer,w:innerWidth,l:navigator.language,lp:L.getItem('gs_lp')||location.pathname,fc:L.getItem('gs_fc')||null,n:n};"
  "for(var k in a)d[k]=a[k];if(x)for(var k2 in x)d[k2]=x[k2];var b=JSON.stringify(d);"
- "if(navigator.sendBeacon)navigator.sendBeacon(E,new Blob([b],{type:'text/plain'}));else fetch(E,{method:'POST',body:b,keepalive:true,mode:'no-cors'}).catch(function(){})}"
+ "if(navigator.sendBeacon)navigator.sendBeacon(E,new Blob([b],{type:'application/json'}));else fetch(E,{method:'POST',body:b,headers:{'Content-Type':'application/json'},keepalive:true}).catch(function(){})}"
  "window.gsTrack=send;send('view');"
  "document.addEventListener('click',function(ev){var t=ev.target.closest&&ev.target.closest('a[href$=\"#contact\"],a[href$=\"#signup\"],.btn.y');if(t)send('cta',{t:(t.textContent||'').trim().slice(0,40)})});"
  "var f=document.getElementById('leadForm');if(f){var st=0;f.addEventListener('focusin',function(){if(!st){st=1;send('form_start')}})}"
