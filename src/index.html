@@ -166,7 +166,8 @@ a.card:hover .pic img{transform:scale(1.04)}
 .card em img{width:40px;height:40px;object-fit:contain;flex:none}
 .card em img+img{margin-left:-.25rem}
 .card em span{min-width:0}
-.card .go{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:.45rem;font:700 .88rem/1 var(--body);color:var(--yellow-ink);background:var(--yellow);padding:.6em .85em;border-radius:999px;transition:transform .25s}
+.card .go{margin-left:auto;flex:none;display:inline-flex;align-items:center;gap:.45rem;font:600 .84rem/1 var(--body);color:var(--purple);background:transparent;border:1.5px solid rgba(80,64,191,.28);padding:.55em .8em;border-radius:999px;transition:transform .25s,background .25s,border-color .25s}
+.card:hover .go{background:rgba(80,64,191,.08);border-color:var(--purple)}
 .card .go b{width:.8em;height:.8em;background:currentColor;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat}
 a.card:hover .go{transform:translateX(3px)}
 @media (max-width:900px){.cases .grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
