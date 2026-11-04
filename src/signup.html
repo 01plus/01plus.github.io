@@ -125,8 +125,8 @@ body{background:var(--bg-2);color:var(--fg)}
       </fieldset>
 
       <fieldset class="su-sec">
-        <legend><b>02</b><span>学术与经历</span><em>都是选填，写关键词即可</em></legend>
-        <label class="w"><span class="l">兴趣爱好、校内活动与项目经历</span><textarea name="experience" rows="4" maxlength="1200"></textarea></label>
+        <legend><b>02</b><span>学术与经历</span></legend>
+        <label class="w"><span class="l">主要兴趣爱好、活动与经历</span><textarea name="experience" rows="4" maxlength="1200"></textarea></label>
         <label class="w"><span class="l">竞赛与获奖情况</span><textarea name="awards" rows="3" maxlength="800"></textarea></label>
         <label class="w"><span class="l">其他想了解的问题</span><textarea name="ideas" rows="3" maxlength="800"></textarea></label>
         <label class="hp" aria-hidden="true">网站<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
@@ -202,7 +202,7 @@ body{background:var(--bg-2);color:var(--fg)}
     const html=btn.innerHTML; btn.disabled=true; btn.textContent='提交中…';
     let tz=null; try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||null}catch(_){}
     /* the lead table has no columns for these, so they travel as a labelled block in "ideas" */
-    const notes=[['兴趣、活动与项目','experience'],['竞赛与获奖','awards'],['其他想了解的问题','ideas']]
+    const notes=[['主要兴趣爱好、活动与经历','experience'],['竞赛与获奖','awards'],['其他想了解的问题','ideas']]
       .filter(([,k])=>v(k)).map(([t,k])=>`【${t}】${v(k)}`).join('\n');
     const lead={id:'',created_at:'',first_name:v('name'),last_name:'',email:v('email'),phone_number:v('contact'),start_grade:parseInt(v('grade'),10),intended_majors:majors.join(', '),hobbies:null,ideas:notes||null,project_type:null,specialties:null,industry_interests:null,motivation:null,converted:false,proposed:false,dropped:false,high_potential:false,internal_notes:null,referrer:'01plus.ai 背景信息表',school:v('school'),time_zone:tz};
     try{
