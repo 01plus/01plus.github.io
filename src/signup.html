@@ -153,17 +153,13 @@ body{background:var(--bg-2);color:var(--fg)}
       </fieldset>
 
       <fieldset class="su-sec">
-        <legend><b>03</b><span>家长与联系方式</span></legend>
-        <label><span class="l">家长称呼 <em>选填</em></span><input name="parent" type="text" maxlength="40" autocomplete="name"></label>
-        <label><span class="l">微信号或手机号 <i>*</i></span><input name="contact" type="text" maxlength="60" autocomplete="tel" required></label>
-        <label><span class="l">邮箱 <i>*</i></span><input name="email" type="email" maxlength="80" autocomplete="email" required></label>
-        <label><span class="l">从哪里了解到 01+ <em>选填</em></span><select name="heard"><option value="" selected>请选择</option><option>朋友或家长推荐</option><option>小红书</option><option>微信</option><option>讲座或活动</option><option>搜索引擎</option><option>其他</option></select></label>
-        <label class="w"><span class="l">最想了解的问题 <em>选填</em></span><textarea name="ideas" rows="3" maxlength="800"></textarea></label>
+        <legend><b>03</b><span>其他</span></legend>
+        <label class="w"><span class="l">从哪里了解到 01+ <em>选填</em></span><select name="heard"><option value="" selected>请选择</option><option>朋友或家长推荐</option><option>小红书</option><option>微信</option><option>讲座或活动</option><option>搜索引擎</option><option>其他</option></select></label>
+        <label class="w"><span class="l">其他想了解的问题 <em>选填</em></span><textarea name="ideas" rows="3" maxlength="800"></textarea></label>
         <label class="hp" aria-hidden="true">网站<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
       </fieldset>
 
       <div class="su-foot">
-        <p>资料只用于顾问了解孩子、准备会面。提交后可以随时通过微信补充。</p>
         <div class="msg" role="alert"></div>
         <button class="btn p" type="submit">提交信息<span class="ar"></span></button>
       </div>
@@ -173,7 +169,7 @@ body{background:var(--bg-2);color:var(--fg)}
       <div class="top">
         <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
         <h2><span>信息已收到，</span><span>谢谢！</span></h2>
-        <p>顾问会在会面前读完这份资料，准备评估与建议；如还没约好时间，会在 1–2 个工作日内联系你。确认邮件已发送到 <b class="em"></b>。</p>
+        <p>顾问会在会面前读完这份资料，准备评估与建议。</p>
       </div>
       <div>
         <div class="k">等待的时候，先看看</div>
@@ -206,7 +202,6 @@ body{background:var(--bg-2);color:var(--fg)}
       <b>想更快开始？微信扫码</b>
       <small>直接添加顾问 · 手机上长按识别</small>
     </div>
-    <p class="note">01+ 名校背景提升 · 总部位于美国加州 Irvine，线下与线上均可，适配中美时区。</p>
   </aside>
 </div></main>
 
@@ -231,23 +226,21 @@ body{background:var(--bg-2);color:var(--fg)}
     msg.classList.remove('on'); form.querySelectorAll('.bad').forEach(x=>x.classList.remove('bad'));
     if(v('website')){card.classList.add('done');return}
     const picked=[...form.querySelectorAll('input[name=majors]:checked')].map(i=>i.value), other=picked.includes('其他'), majors=picked.filter(x=>x!=='其他').concat(other&&v('majors_other')?[v('majors_other')]:[]);
-    const missing=['name','grade','school','contact','email'].filter(k=>!v(k));
+    const missing=['name','grade','school'].filter(k=>!v(k));
     missing.forEach(k=>form.elements[k].classList.add('bad'));
     const fail=(t,el)=>{msg.textContent=t; msg.classList.add('on'); (el||msg).scrollIntoView({behavior:'smooth',block:'center'}); if(el) el.focus({preventScroll:true})};
     if(missing.length||!picked.length) return fail('请填写带 * 的必填项。', missing.length?form.elements[missing[0]]:form.querySelector('.chips input'));
     if(other&&!v('majors_other')) return fail('请填写其他专业方向。', othIn);
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))){form.elements.email.classList.add('bad'); return fail('邮箱格式看起来不对，请检查一下。', form.elements.email)}
     const html=btn.innerHTML; btn.disabled=true; btn.textContent='提交中…';
     let tz=null; try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||null}catch(_){}
     /* the lead table has no columns for these, so they travel as a labelled block in "ideas" */
-    const notes=[['兴趣、活动与项目','experience'],['竞赛与获奖','awards'],['家长称呼','parent'],['了解渠道','heard'],['想了解的问题','ideas']]
+    const notes=[['兴趣、活动与项目','experience'],['竞赛与获奖','awards'],['了解渠道','heard'],['其他想了解的问题','ideas']]
       .filter(([,k])=>v(k)).map(([t,k])=>`【${t}】${v(k)}`).join('\n');
-    const lead={id:'',created_at:'',first_name:v('name'),last_name:'',email:v('email'),phone_number:v('contact'),start_grade:parseInt(v('grade'),10),intended_majors:majors.join(', '),hobbies:null,ideas:notes||null,project_type:null,specialties:null,industry_interests:null,motivation:null,converted:false,proposed:false,dropped:false,high_potential:false,internal_notes:null,referrer:'01plus.ai 背景信息表',school:v('school'),time_zone:tz};
+    const lead={id:'',created_at:'',first_name:v('name'),last_name:'',email:'',phone_number:'',start_grade:parseInt(v('grade'),10),intended_majors:majors.join(', '),hobbies:null,ideas:notes||null,project_type:null,specialties:null,industry_interests:null,motivation:null,converted:false,proposed:false,dropped:false,high_potential:false,internal_notes:null,referrer:'01plus.ai 背景信息表',school:v('school'),time_zone:tz};
     try{
       const r=await fetch('https://prime.codingmind.com/api/welcome-survey/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({welcomeSurveyResponse:lead})});
       if(!r.ok) throw new Error(String(r.status));
       let ref=null; try{ref=String((await r.json()).welcomeSurveyResponse.lead_number||'')}catch(_){}
-      ok.querySelector('.em').textContent=v('email');
       card.classList.add('done'); try{localStorage.removeItem(KEY)}catch(_){}
       scrollTo({top:Math.max(0,card.getBoundingClientRect().top+scrollY-90),behavior:'smooth'}); ok.focus({preventScroll:true});
       if(window.gsTrack) gsTrack('lead',{lead:ref});
