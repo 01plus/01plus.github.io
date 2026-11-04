@@ -2,7 +2,7 @@
 """Builds the site served by GitHub Pages.
 
   src/index.html            -> index.html
-  src/signup.html           -> signup.html   (01plus.ai/signup, enrollment form)
+  src/signup.html           -> signup.html   (01plus.ai/signup, student background form)
   src/case-carvetrack.html  -> case/carvetrack.html
   src/case-template.html + cases/cases.json -> case/<slug>.html  (one page per case)
   + sitemap.xml, robots.txt, llms.txt
@@ -242,7 +242,7 @@ for g in campaigns:
     open(f"go/{g['slug']}.html", "w", encoding="utf-8").write(shell(page, title=g["title"], desc=g["desc"], path=f"/go/{g['slug']}.html", root="../", og="assets/og-home.jpg", robots="noindex,nofollow"))
 print(f"built {len(campaigns)} campaign pages")
 
-# ---------- enrollment form: 01plus.ai/signup, a page to send to parents ----------
+# ---------- student background form: 01plus.ai/signup, sent to parents before the assessment meeting ----------
 su = open("src/signup.html", encoding="utf-8").read()
 _sch = json.loads(re.search(r"const SCHOOLS=(\[.*?\]);\n", land, re.S).group(1))
 SU_CASES = ["campus-platform", "clinical-trials", "peer-support"]
@@ -250,13 +250,13 @@ su_cases = "".join(
     f'<a href="case/{c["slug"]}.html"><div class="pic"><img src="assets/cases/{c["slug"]}-cover-720.jpg" alt="{esc(c["project"])}" width="720" height="480" loading="lazy"></div>'
     f'<b>{esc(c["project"])}</b><em>{esc(c["name"])} · {esc(c["school"])}录取</em></a>'
     for c in (next(x for x in cases if x["slug"] == s) for s in SU_CASES))
-for k, v in {"FONTS": fonts, "BASE_CSS": base_css, "DEFS": defs, "TITLE": "学员报名表 · 01+ 名校背景提升",
+for k, v in {"FONTS": fonts, "BASE_CSS": base_css, "DEFS": defs, "TITLE": "学生背景信息 · 01+ 名校背景提升",
              "BOARD_STATS": f"{len(_sch)} 所名校、{sum(len(x['p']) for x in _sch)} 位学生", "CASES": su_cases}.items():
     su = su.replace("{{" + k + "}}", v)
 assert "{{" not in su, re.findall(r"\{\{\w+\}\}", su)[:3]
-assert "referrer:'01plus.ai 报名表'" in su
-open("signup.html", "w", encoding="utf-8").write(shell(su, title="学员报名表 · 01+ 名校背景提升",
-    desc="01+ 名校背景提升学员报名表：填写学生的年级、学校、兴趣与经历，顾问会在 1–2 个工作日内联系你，安排免费名校背景规划。",
+assert "referrer:'01plus.ai 背景信息表'" in su
+open("signup.html", "w", encoding="utf-8").write(shell(su, title="学生背景信息 · 01+ 名校背景提升",
+    desc="01+ 名校背景提升学生背景信息：填写学生的年级、学校、兴趣与经历，顾问会在会面前完成背景评估，准备项目方向建议。",
     path="/signup", root="", og="assets/og-home.jpg", robots="noindex,follow"))
 print("built signup.html")
 
