@@ -70,27 +70,18 @@ body{background:var(--bg-2);color:var(--fg)}
 .su-card.done form{display:none}
 .su-card.done .su-ok{display:grid}
 .su-ok:focus{outline:none}
+.su-main .in:has(.su-card.done){grid-template-columns:minmax(0,46rem);justify-content:center}
+.su-main .in:has(.su-card.done) .su-aside{display:none}
 .su-ok .top{display:grid;justify-items:center;text-align:center;gap:.7rem;padding:1rem 0 .4rem}
 .su-ok .ic{width:3.4rem;height:3.4rem;border-radius:50%;background:var(--yellow);display:grid;place-items:center}
 .su-ok .ic svg{width:48%;height:48%;fill:none;stroke:#2a2400;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 .su-ok h2{font-size:clamp(1.6rem,4vw,2.2rem);color:#1b1833}
 .su-ok h2 span{display:inline-block}
 .su-ok .top p{margin:0;max-width:30em;font:400 .95rem/1.7 var(--body);color:#4b4769}
-.su-ok .k{font:600 .72rem/1 var(--latin);letter-spacing:.2em;text-transform:uppercase;color:#5040bf;text-align:center}
-.su-ok h3{margin:.5rem 0 0;font-size:clamp(1.3rem,3vw,1.7rem);text-align:center;color:#1b1833}
-.su-go{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
-.su-go a{display:grid;gap:.35rem;padding:1.1rem 1.15rem;border-radius:16px;background:#f4f3fb;border:1px solid rgba(80,64,191,.12);color:#1b1833;transition:border-color .2s,transform .2s}
-.su-go a:hover{border-color:#5040bf;transform:translateY(-2px)}
-.su-go b{display:flex;align-items:center;justify-content:space-between;gap:.6rem;font:700 1.02rem/1.35 var(--body)}
-.su-go b::after{content:"";flex:none;width:.7em;height:.7em;background:#5040bf;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat}
-.su-go span{font:400 .84rem/1.55 var(--body);color:#4b4769}
-.su-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
-.su-cases a{display:grid;gap:.55rem;color:#1b1833;min-width:0}
-.su-cases .pic{aspect-ratio:3/2;border-radius:14px;overflow:hidden;background:#efedfa}
-.su-cases img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
-.su-cases a:hover img{transform:scale(1.04)}
-.su-cases b{font:700 .92rem/1.35 var(--body);color:#5040bf}
-.su-cases em{font:400 .78rem/1.4 var(--body);font-style:normal;color:#726e92}
+.su-ok .hi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;padding:1.3rem 1rem;border-radius:18px;background:#f4f3fb;text-align:center}
+.su-ok .hi b{display:block;font:800 clamp(1.7rem,4vw,2.3rem)/1 var(--latin);letter-spacing:-.02em;color:#5040bf}
+.su-ok .hi span{display:block;margin-top:.4rem;font:400 .8rem/1.35 var(--body);color:#4b4769}
+.su-ok .sm{margin:-.8rem 0 0;text-align:center;font:400 .84rem/1.5 var(--body);color:#726e92}
 .su-ok .act{display:flex;justify-content:center}
 .su-ok .act .btn{height:3.2rem;padding:0 1.6rem}
 .su-legal{padding-block:0 2.4rem;text-align:center;font:400 .78rem/1.6 var(--body);color:var(--muted)}
@@ -104,9 +95,6 @@ body{background:var(--bg-2);color:var(--fg)}
         .su-sec{grid-template-columns:1fr}
   .su-sec legend em{display:none}
   .su-aside{grid-template-columns:1fr}
-  .su-go{grid-template-columns:1fr}
-  .su-cases{grid-template-columns:1fr 1fr}
-  .su-cases a:nth-child(3){display:none}
   .su-foot .btn{max-width:none}
   .su-bar .home{padding:.65em .9em}
 }
@@ -131,6 +119,8 @@ body{background:var(--bg-2);color:var(--fg)}
         <label><span class="l">学生姓名 <i>*</i></span><input name="name" type="text" maxlength="40" autocomplete="off" required></label>
         <label><span class="l">当前年级 <i>*</i></span><select name="grade" required><option value="" disabled selected>请选择</option><option value="6">6 年级</option><option value="7">7 年级</option><option value="8">8 年级</option><option value="9">9 年级</option><option value="10">10 年级</option><option value="11">11 年级</option><option value="12">12 年级</option><option value="13">大学在读</option></select></label>
         <label class="w"><span class="l">就读学校 <i>*</i></span><input name="school" type="text" maxlength="80" autocomplete="off" required></label>
+        <label><span class="l">邮箱 <i>*</i></span><input name="email" type="email" maxlength="80" autocomplete="email" required></label>
+        <label><span class="l">微信号或手机号 <em>选填</em></span><input name="contact" type="text" maxlength="60" autocomplete="tel"></label>
         <div class="fs w" role="group" aria-labelledby="mj"><span class="l" id="mj">意向专业方向 <i>*</i><em>可多选</em></span><div class="chips"><label class="chip"><input type="checkbox" name="majors" value="计算机 / 人工智能"><span>计算机 / 人工智能</span></label><label class="chip"><input type="checkbox" name="majors" value="工程"><span>工程</span></label><label class="chip"><input type="checkbox" name="majors" value="生物 / 化学 / 医学"><span>生物 / 化学 / 医学</span></label><label class="chip"><input type="checkbox" name="majors" value="数学 / 物理"><span>数学 / 物理</span></label><label class="chip"><input type="checkbox" name="majors" value="商科 / 经济"><span>商科 / 经济</span></label><label class="chip"><input type="checkbox" name="majors" value="心理学"><span>心理学</span></label><label class="chip"><input type="checkbox" name="majors" value="社会科学"><span>社会科学</span></label><label class="chip"><input type="checkbox" name="majors" value="人文"><span>人文</span></label><label class="chip"><input type="checkbox" name="majors" value="艺术"><span>艺术</span></label><label class="chip"><input type="checkbox" name="majors" value="尚未确定"><span>尚未确定</span></label><label class="chip"><input type="checkbox" name="majors" value="其他"><span>其他</span></label></div><input class="oth" name="majors_other" type="text" maxlength="60" placeholder="请填写其他专业方向" autocomplete="off" aria-label="其他专业方向"></div>
       </fieldset>
 
@@ -153,21 +143,14 @@ body{background:var(--bg-2);color:var(--fg)}
       <div class="top">
         <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
         <h2><span>信息已收到，</span><span>谢谢！</span></h2>
-        <p>顾问会在会面前读完这份资料，准备评估与建议。</p>
+        <p>顾问会在会面前读完这份资料，准备评估与建议。确认邮件已发送到 <b class="em"></b>。</p>
       </div>
-      <div>
-        <div class="k">等待的时候，先看看</div>
-        <h3>01+ 官网上家长最常看的内容</h3>
+      <div class="hi">
+        <div><b>20%</b><span>哈耶普斯麻录取率</span></div>
+        <div><b>90%</b><span>Top 30 名校录取率</span></div>
+        <div><b>100%</b><span>Top 50 名校录取率</span></div>
       </div>
-      <div class="su-go">
-        <a href="index.html#board"><b>录取结果 2024–2026</b><span>{{BOARD_STATS}}，每一位都附上了他们做的项目。</span></a>
-        <a href="index.html#cases"><b>9 个真实案例</b><span>从一个问题出发，到实习、论文、竞赛、专利和名校录取。</span></a>
-        <a href="index.html#method"><b>一个项目，多元成果</b><span>我们的方法：围绕一个核心项目，产出九种成果。</span></a>
-        <a href="case/carvetrack.html"><b>示例项目计划</b><span>一个滑雪少年的 30 个月，按月看一个项目怎样展开。</span></a>
-        <a href="index.html#founder"><b>创始人与教授团队</b><span>计算机系终身教授带队，10+ 年青少年科创经验。</span></a>
-        <a href="index.html#faq"><b>常见问题</b><span>几年级开始、需要多少时间、费用怎么算。</span></a>
-      </div>
-      <div class="su-cases">{{CASES}}</div>
+      <p class="sm">2024–2026 届学员录取 {{BOARD_STATS}}</p>
       <div class="act"><a class="btn p" href="index.html">进入 01+ 官网首页<span class="ar"></span></a></div>
     </div>
   </div>
@@ -210,21 +193,23 @@ body{background:var(--bg-2);color:var(--fg)}
     msg.classList.remove('on'); form.querySelectorAll('.bad').forEach(x=>x.classList.remove('bad'));
     if(v('website')){card.classList.add('done');return}
     const picked=[...form.querySelectorAll('input[name=majors]:checked')].map(i=>i.value), other=picked.includes('其他'), majors=picked.filter(x=>x!=='其他').concat(other&&v('majors_other')?[v('majors_other')]:[]);
-    const missing=['name','grade','school'].filter(k=>!v(k));
+    const missing=['name','grade','school','email'].filter(k=>!v(k));
     missing.forEach(k=>form.elements[k].classList.add('bad'));
     const fail=(t,el)=>{msg.textContent=t; msg.classList.add('on'); (el||msg).scrollIntoView({behavior:'smooth',block:'center'}); if(el) el.focus({preventScroll:true})};
     if(missing.length||!picked.length) return fail('请填写带 * 的必填项。', missing.length?form.elements[missing[0]]:form.querySelector('.chips input'));
     if(other&&!v('majors_other')) return fail('请填写其他专业方向。', othIn);
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))){form.elements.email.classList.add('bad'); return fail('邮箱格式看起来不对，请检查一下。', form.elements.email)}
     const html=btn.innerHTML; btn.disabled=true; btn.textContent='提交中…';
     let tz=null; try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||null}catch(_){}
     /* the lead table has no columns for these, so they travel as a labelled block in "ideas" */
     const notes=[['兴趣、活动与项目','experience'],['竞赛与获奖','awards'],['其他想了解的问题','ideas']]
       .filter(([,k])=>v(k)).map(([t,k])=>`【${t}】${v(k)}`).join('\n');
-    const lead={id:'',created_at:'',first_name:v('name'),last_name:'',email:'',phone_number:'',start_grade:parseInt(v('grade'),10),intended_majors:majors.join(', '),hobbies:null,ideas:notes||null,project_type:null,specialties:null,industry_interests:null,motivation:null,converted:false,proposed:false,dropped:false,high_potential:false,internal_notes:null,referrer:'01plus.ai 背景信息表',school:v('school'),time_zone:tz};
+    const lead={id:'',created_at:'',first_name:v('name'),last_name:'',email:v('email'),phone_number:v('contact'),start_grade:parseInt(v('grade'),10),intended_majors:majors.join(', '),hobbies:null,ideas:notes||null,project_type:null,specialties:null,industry_interests:null,motivation:null,converted:false,proposed:false,dropped:false,high_potential:false,internal_notes:null,referrer:'01plus.ai 背景信息表',school:v('school'),time_zone:tz};
     try{
       const r=await fetch('https://prime.codingmind.com/api/welcome-survey/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({welcomeSurveyResponse:lead})});
       if(!r.ok) throw new Error(String(r.status));
       let ref=null; try{ref=String((await r.json()).welcomeSurveyResponse.lead_number||'')}catch(_){}
+      ok.querySelector('.em').textContent=v('email');
       card.classList.add('done'); try{localStorage.removeItem(KEY)}catch(_){}
       scrollTo({top:Math.max(0,card.getBoundingClientRect().top+scrollY-90),behavior:'smooth'}); ok.focus({preventScroll:true});
       if(window.gsTrack) gsTrack('lead',{lead:ref});

@@ -245,13 +245,8 @@ print(f"built {len(campaigns)} campaign pages")
 # ---------- student background form: 01plus.ai/signup, sent to parents before the assessment meeting ----------
 su = open("src/signup.html", encoding="utf-8").read()
 _sch = json.loads(re.search(r"const SCHOOLS=(\[.*?\]);\n", land, re.S).group(1))
-SU_CASES = ["campus-platform", "clinical-trials", "peer-support"]
-su_cases = "".join(
-    f'<a href="case/{c["slug"]}.html"><div class="pic"><img src="assets/cases/{c["slug"]}-cover-720.jpg" alt="{esc(c["project"])}" width="720" height="480" loading="lazy"></div>'
-    f'<b>{esc(c["project"])}</b><em>{esc(c["name"])} · {esc(c["school"])}录取</em></a>'
-    for c in (next(x for x in cases if x["slug"] == s) for s in SU_CASES))
 for k, v in {"FONTS": fonts, "BASE_CSS": base_css, "DEFS": defs, "TITLE": "学生背景信息 · 01+ 名校背景提升",
-             "BOARD_STATS": f"{len(_sch)} 所名校、{sum(len(x['p']) for x in _sch)} 位学生", "CASES": su_cases}.items():
+             "BOARD_STATS": f"{len(_sch)} 所名校、{sum(len(x['p']) for x in _sch)} 位学生"}.items():
     su = su.replace("{{" + k + "}}", v)
 assert "{{" not in su, re.findall(r"\{\{\w+\}\}", su)[:3]
 assert "referrer:'01plus.ai 背景信息表'" in su
