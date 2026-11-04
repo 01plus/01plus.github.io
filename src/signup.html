@@ -1,0 +1,265 @@
+<title>{{TITLE}}</title>
+<style>
+{{FONTS}}
+{{BASE_CSS}}
+/* enrollment form: one focused page, a clear URL to send to parents (01plus.ai/signup) */
+body{background:var(--bg-2);color:var(--fg)}
+.su-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.su-bar .in{display:flex;align-items:center;justify-content:space-between;gap:1rem;height:4rem;max-width:68rem}
+.su-bar .brand{display:flex;align-items:center;gap:.6rem;color:var(--fg);--mark2:var(--purple)}
+.su-bar .brand svg{height:1.7rem;width:auto}
+.su-bar .home{display:inline-flex;align-items:center;gap:.45rem;font:600 .84rem/1 var(--body);color:var(--purple-text);padding:.7em 1.05em;border:1.5px solid var(--line-2);border-radius:999px;transition:border-color .2s,background .2s}
+.su-bar .home:hover{border-color:var(--purple-text);background:var(--bg-2)}
+.su-head{position:relative;overflow:hidden;padding-block:clamp(2.6rem,7vw,4.6rem) clamp(6.5rem,12vw,8.5rem)}
+.su-head::before{content:"";position:absolute;right:clamp(-120px,-6vw,-40px);top:-30%;width:min(46vw,520px);aspect-ratio:1;background:var(--yellow);opacity:.16;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;pointer-events:none}
+.su-head .in{position:relative;max-width:68rem;display:grid;gap:1rem}
+.su-head h1{font-size:clamp(2.1rem,6vw,3.9rem);line-height:1.08;text-wrap:balance}
+.su-head h1 .hl{white-space:nowrap}
+.su-head .sub{margin:0;max-width:36em;font:300 clamp(.98rem,2vw,1.1rem)/1.7 var(--body);color:rgba(255,255,255,.88)}
+.su-head .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:.9rem 0 0;padding:1.2rem 0 0;list-style:none;border-top:1px solid rgba(255,255,255,.24);max-width:52rem}
+.su-head .steps li{display:grid;gap:.3rem;font:400 .86rem/1.45 var(--body);color:rgba(255,255,255,.85)}
+.su-head .steps b{font:800 .8rem/1 var(--latin);letter-spacing:.14em;color:var(--yellow)}
+.su-head .steps strong{font:700 1rem/1.3 var(--body);color:#fff}
+.su-main{padding-block:0 4.5rem}
+.su-main .in{max-width:68rem;display:grid;grid-template-columns:minmax(0,1fr) 17rem;gap:1.4rem;align-items:start;margin-top:clamp(-5.5rem,-9vw,-4.4rem);position:relative}
+.su-card{background:#fff;color:#1b1833;border-radius:24px;box-shadow:0 30px 70px -40px rgba(27,24,51,.55),0 0 0 1px rgba(27,24,51,.05);padding:clamp(1.3rem,3.5vw,2.4rem);min-width:0}
+.su-card form{display:grid;gap:2.1rem}
+.su-sec{border:0;margin:0;padding:0;min-width:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem .9rem}
+.su-sec legend{grid-column:1/-1;display:flex;align-items:baseline;gap:.7rem;width:100%;padding:0 0 .9rem;margin:0 0 .2rem;border-bottom:1px solid rgba(27,24,51,.1)}
+.su-sec legend b{font:800 .8rem/1 var(--latin);letter-spacing:.14em;color:#5040bf}
+.su-sec legend span{font:700 1.15rem/1.3 var(--body);color:#1b1833}
+.su-sec legend em{margin-left:auto;font:400 .78rem/1.3 var(--body);font-style:normal;color:#8c88a8}
+.su-sec .w{grid-column:1/-1}
+.su-card label,.su-card .fs{display:grid;gap:.42rem;font:600 .8rem/1.2 var(--body);color:#4b4769;min-width:0;align-content:start}
+.su-card .l{display:flex;align-items:baseline;gap:.35rem;flex-wrap:wrap}
+.su-card .l i{font-style:normal;color:#d8323f}
+.su-card .l em{font-style:normal;font-weight:400;color:#8c88a8}
+.su-card input,.su-card select,.su-card textarea{width:100%;min-width:0;box-sizing:border-box;border:1.5px solid rgba(27,24,51,.16);border-radius:12px;padding:.78em .9em;font:400 1rem/1.35 var(--body);color:#1b1833;background:#fff;appearance:none;-webkit-appearance:none;outline:none;transition:border-color .2s,box-shadow .2s}
+.su-card input::placeholder{color:#a8a5c2}
+.su-card :is(input,select,textarea):focus{border-color:#5040bf;box-shadow:0 0 0 3px rgba(80,64,191,.15)}
+.su-card select{padding-right:2.3em;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5 8l5 5 5-5' fill='none' stroke='%235040bf' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right .8em center/.9em}
+.su-card select:invalid{color:#a8a5c2}
+.su-card textarea{resize:vertical;min-height:5.2em;line-height:1.55}
+.su-card .bad{border-color:#d8323f}
+.su-card .chips{display:flex;flex-wrap:wrap;gap:.45rem .4rem}
+.su-card label.chip{position:relative;display:inline-flex;gap:0;font:500 .88rem/1 var(--body);color:#4b4769;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.su-card .chip input{position:absolute;inset:0;width:100%;height:100%;margin:0;padding:0;border:0;opacity:0;cursor:pointer}
+.su-card .chip span{display:inline-flex;align-items:center;padding:.56em .9em;border:1.5px solid rgba(27,24,51,.16);border-radius:999px;background:#fff;transition:border-color .2s,background .2s,color .2s}
+.su-card .chip:hover span{border-color:rgba(80,64,191,.45)}
+.su-card .chip input:checked+span{border-color:#5040bf;background:#5040bf;color:#fff}
+.su-card .chip input:focus-visible+span{box-shadow:0 0 0 3px rgba(80,64,191,.2)}
+.su-card .oth{display:none}
+.su-card .oth.on{display:block}
+.su-card .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0;overflow:hidden}
+.su-foot{display:grid;gap:.9rem;padding-top:1.4rem;border-top:1px solid rgba(27,24,51,.1)}
+.su-foot p{margin:0;font:400 .84rem/1.6 var(--body);color:#726e92}
+.su-foot .msg{display:none;font:500 .88rem/1.5 var(--body);color:#d8323f}
+.su-foot .msg.on{display:block}
+.su-foot .btn{justify-content:center;height:3.4rem;font-size:1rem;cursor:pointer;width:100%;max-width:22rem}
+.su-foot .btn:disabled{opacity:.6;cursor:default}
+.su-aside{position:sticky;top:5.2rem;display:grid;gap:1rem}
+.su-aside .box{background:#fff;color:#1b1833;border-radius:20px;box-shadow:0 0 0 1px rgba(27,24,51,.06);padding:1.3rem 1.2rem;display:grid;gap:.5rem}
+.su-aside .k{font:600 .68rem/1 var(--latin);letter-spacing:.2em;text-transform:uppercase;color:#5040bf}
+.su-aside .rates{display:grid;gap:.7rem;margin-top:.3rem}
+.su-aside .rates div{display:flex;align-items:baseline;justify-content:space-between;gap:.8rem;border-top:1px solid rgba(27,24,51,.08);padding-top:.6rem}
+.su-aside .rates b{font:800 1.6rem/1 var(--latin);letter-spacing:-.02em;color:#5040bf}
+.su-aside .rates span{font:400 .8rem/1.3 var(--body);color:#4b4769;text-align:right}
+.su-aside .qr{justify-items:center;text-align:center}
+.su-aside .qr img{width:140px;height:140px;border-radius:12px;padding:6px;border:1px solid rgba(27,24,51,.08);background:#fff;margin:.2rem 0}
+.su-aside .qr b{font:700 .98rem/1.35 var(--body)}
+.su-aside .qr small{font:400 .76rem/1.5 var(--body);color:#8c88a8}
+.su-aside .note{font:400 .8rem/1.6 var(--body);color:#726e92;padding:0 .3rem}
+/* after submit: thank-you, then the best of the home page */
+.su-ok{display:none;gap:1.8rem}
+.su-card.done form{display:none}
+.su-card.done .su-ok{display:grid}
+.su-ok:focus{outline:none}
+.su-ok .top{display:grid;justify-items:center;text-align:center;gap:.7rem;padding:1rem 0 .4rem}
+.su-ok .ic{width:3.4rem;height:3.4rem;border-radius:50%;background:var(--yellow);display:grid;place-items:center}
+.su-ok .ic svg{width:48%;height:48%;fill:none;stroke:#2a2400;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.su-ok h2{font-size:clamp(1.6rem,4vw,2.2rem);color:#1b1833}
+.su-ok h2 span{display:inline-block}
+.su-ok .top p{margin:0;max-width:30em;font:400 .95rem/1.7 var(--body);color:#4b4769}
+.su-ok .k{font:600 .72rem/1 var(--latin);letter-spacing:.2em;text-transform:uppercase;color:#5040bf;text-align:center}
+.su-ok h3{margin:.5rem 0 0;font-size:clamp(1.3rem,3vw,1.7rem);text-align:center;color:#1b1833}
+.su-go{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem}
+.su-go a{display:grid;gap:.35rem;padding:1.1rem 1.15rem;border-radius:16px;background:#f4f3fb;border:1px solid rgba(80,64,191,.12);color:#1b1833;transition:border-color .2s,transform .2s}
+.su-go a:hover{border-color:#5040bf;transform:translateY(-2px)}
+.su-go b{display:flex;align-items:center;justify-content:space-between;gap:.6rem;font:700 1.02rem/1.35 var(--body)}
+.su-go b::after{content:"";flex:none;width:.7em;height:.7em;background:#5040bf;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat}
+.su-go span{font:400 .84rem/1.55 var(--body);color:#4b4769}
+.su-cases{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem}
+.su-cases a{display:grid;gap:.55rem;color:#1b1833;min-width:0}
+.su-cases .pic{aspect-ratio:3/2;border-radius:14px;overflow:hidden;background:#efedfa}
+.su-cases img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.su-cases a:hover img{transform:scale(1.04)}
+.su-cases b{font:700 .92rem/1.35 var(--body);color:#5040bf}
+.su-cases em{font:400 .78rem/1.4 var(--body);font-style:normal;color:#726e92}
+.su-ok .act{display:flex;justify-content:center}
+.su-ok .act .btn{height:3.2rem;padding:0 1.6rem}
+.su-legal{padding-block:0 2.4rem;text-align:center;font:400 .78rem/1.6 var(--body);color:var(--muted)}
+.su-legal span{display:inline-block;margin:0 .5rem}
+@media (max-width:900px){
+  .su-main .in{grid-template-columns:1fr}
+  .su-aside{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .su-aside .note{grid-column:1/-1}
+}
+@media (max-width:600px){
+  .su-head .steps{grid-template-columns:1fr;gap:.7rem}
+  .su-head .steps li{grid-template-columns:2.2rem minmax(0,1fr);align-items:baseline;column-gap:.4rem}
+  .su-head .steps li span{grid-column:2}
+  .su-sec{grid-template-columns:1fr}
+  .su-sec legend em{display:none}
+  .su-aside{grid-template-columns:1fr}
+  .su-go{grid-template-columns:1fr}
+  .su-cases{grid-template-columns:1fr 1fr}
+  .su-cases a:nth-child(3){display:none}
+  .su-foot .btn{max-width:none}
+  .su-bar .home{padding:.65em .9em}
+}
+</style>
+{{DEFS}}
+
+<div class="su-bar wrap"><div class="in">
+  <a class="brand" href="index.html" aria-label="01+ 名校背景提升 首页"><svg viewBox="0 0 425.2 425.2"><use href="#mark"/></svg><svg viewBox="0 0 505 312" fill="currentColor"><use href="#word"/></svg></a>
+  <a class="home" href="index.html">01+ 官网首页</a>
+</div></div>
+
+<header class="su-head panel wrap"><div class="in">
+  <div class="eyebrow">学员报名表</div>
+  <h1>报名 01+ <span class="hl">名校背景提升</span></h1>
+  <p class="sub">请填写孩子目前的情况。顾问会先读完这份资料，在 1–2 个工作日内联系你，安排一次免费的名校背景规划。大约需要 3 分钟。</p>
+  <ol class="steps">
+    <li><b>01</b><strong>填写报名表</strong><span>带 * 为必填，其余能填多少填多少</span></li>
+    <li><b>02</b><strong>顾问联系你</strong><span>1–2 个工作日内，微信或电话</span></li>
+    <li><b>03</b><strong>免费名校背景规划</strong><span>并获得一份定制项目策划书</span></li>
+  </ol>
+</div></header>
+
+<main class="su-main wrap"><div class="in">
+  <div class="su-card" id="signup">
+    <form id="leadForm" novalidate>
+      <fieldset class="su-sec">
+        <legend><b>01</b><span>学生信息</span></legend>
+        <label><span class="l">学生姓名 <i>*</i></span><input name="name" type="text" maxlength="40" autocomplete="off" required></label>
+        <label><span class="l">当前年级 <i>*</i></span><select name="grade" required><option value="" disabled selected>请选择</option><option value="6">6 年级</option><option value="7">7 年级</option><option value="8">8 年级</option><option value="9">9 年级</option><option value="10">10 年级</option><option value="11">11 年级</option><option value="12">12 年级</option><option value="13">大学在读</option></select></label>
+        <label><span class="l">就读学校 <i>*</i></span><input name="school" type="text" maxlength="80" autocomplete="off" required></label>
+        <label><span class="l">所在城市 <em>选填</em></span><input name="city" type="text" maxlength="60" autocomplete="off"></label>
+        <div class="fs w" role="group" aria-labelledby="mj"><span class="l" id="mj">意向专业方向 <i>*</i><em>可多选</em></span><div class="chips"><label class="chip"><input type="checkbox" name="majors" value="计算机 / 人工智能"><span>计算机 / 人工智能</span></label><label class="chip"><input type="checkbox" name="majors" value="工程"><span>工程</span></label><label class="chip"><input type="checkbox" name="majors" value="生物 / 化学 / 医学"><span>生物 / 化学 / 医学</span></label><label class="chip"><input type="checkbox" name="majors" value="数学 / 物理"><span>数学 / 物理</span></label><label class="chip"><input type="checkbox" name="majors" value="商科 / 经济"><span>商科 / 经济</span></label><label class="chip"><input type="checkbox" name="majors" value="心理学"><span>心理学</span></label><label class="chip"><input type="checkbox" name="majors" value="社会科学"><span>社会科学</span></label><label class="chip"><input type="checkbox" name="majors" value="人文"><span>人文</span></label><label class="chip"><input type="checkbox" name="majors" value="艺术"><span>艺术</span></label><label class="chip"><input type="checkbox" name="majors" value="尚未确定"><span>尚未确定</span></label><label class="chip"><input type="checkbox" name="majors" value="其他"><span>其他</span></label></div><input class="oth" name="majors_other" type="text" maxlength="60" placeholder="请填写其他专业方向" autocomplete="off" aria-label="其他专业方向"></div>
+      </fieldset>
+
+      <fieldset class="su-sec">
+        <legend><b>02</b><span>学术与经历</span><em>都是选填，写关键词即可</em></legend>
+        <label class="w"><span class="l">兴趣爱好</span><textarea name="hobbies" rows="2" maxlength="400"></textarea></label>
+        <label class="w"><span class="l">竞赛与获奖情况</span><textarea name="awards" rows="3" maxlength="800"></textarea></label>
+        <label class="w"><span class="l">校内活动与社团</span><textarea name="clubs" rows="3" maxlength="800"></textarea></label>
+        <label class="w"><span class="l">做过的项目、科研或实习</span><textarea name="projects" rows="3" maxlength="800"></textarea></label>
+        <label><span class="l">GPA / 标化成绩</span><input name="scores" type="text" maxlength="120" autocomplete="off"></label>
+        <label><span class="l">目标院校</span><input name="targets" type="text" maxlength="160" autocomplete="off"></label>
+      </fieldset>
+
+      <fieldset class="su-sec">
+        <legend><b>03</b><span>家长与联系方式</span></legend>
+        <label><span class="l">家长称呼 <em>选填</em></span><input name="parent" type="text" maxlength="40" autocomplete="name"></label>
+        <label><span class="l">微信号或手机号 <i>*</i></span><input name="contact" type="text" maxlength="60" autocomplete="tel" required></label>
+        <label><span class="l">邮箱 <i>*</i></span><input name="email" type="email" maxlength="80" autocomplete="email" required></label>
+        <label><span class="l">从哪里了解到 01+ <em>选填</em></span><select name="heard"><option value="" selected>请选择</option><option>朋友或家长推荐</option><option>小红书</option><option>微信</option><option>讲座或活动</option><option>搜索引擎</option><option>其他</option></select></label>
+        <label class="w"><span class="l">最想了解的问题 <em>选填</em></span><textarea name="ideas" rows="3" maxlength="800"></textarea></label>
+        <label class="hp" aria-hidden="true">网站<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
+      </fieldset>
+
+      <div class="su-foot">
+        <p>资料只用于顾问了解孩子、准备免费规划。提交后可以随时通过微信补充。</p>
+        <div class="msg" role="alert"></div>
+        <button class="btn p" type="submit">提交报名表<span class="ar"></span></button>
+      </div>
+    </form>
+
+    <div class="su-ok" aria-live="polite" tabindex="-1">
+      <div class="top">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+        <h2><span>报名表已收到，</span><span>谢谢！</span></h2>
+        <p>顾问会在 1–2 个工作日内通过微信或电话联系你。确认邮件已发送到 <b class="em"></b>，附有案例与常见问题的链接。</p>
+      </div>
+      <div>
+        <div class="k">等待的时候，先看看</div>
+        <h3>01+ 官网上家长最常看的内容</h3>
+      </div>
+      <div class="su-go">
+        <a href="index.html#board"><b>录取结果 2024–2026</b><span>{{BOARD_STATS}}，每一位都附上了他们做的项目。</span></a>
+        <a href="index.html#cases"><b>9 个真实案例</b><span>从一个问题出发，到实习、论文、竞赛、专利和名校录取。</span></a>
+        <a href="index.html#method"><b>一个项目，多元成果</b><span>我们的方法：围绕一个核心项目，产出九种成果。</span></a>
+        <a href="case/carvetrack.html"><b>示例项目计划</b><span>一个滑雪少年的 30 个月，按月看一个项目怎样展开。</span></a>
+        <a href="index.html#founder"><b>创始人与教授团队</b><span>计算机系终身教授带队，10+ 年青少年科创经验。</span></a>
+        <a href="index.html#faq"><b>常见问题</b><span>几年级开始、需要多少时间、费用怎么算。</span></a>
+      </div>
+      <div class="su-cases">{{CASES}}</div>
+      <div class="act"><a class="btn p" href="index.html">进入 01+ 官网首页<span class="ar"></span></a></div>
+    </div>
+  </div>
+
+  <aside class="su-aside">
+    <div class="box">
+      <div class="k">2024–2026 录取</div>
+      <div class="rates">
+        <div><b>20%</b><span>哈耶普斯麻录取率</span></div>
+        <div><b>90%</b><span>Top 30 名校录取率</span></div>
+        <div><b>100%</b><span>Top 50 名校录取率</span></div>
+      </div>
+    </div>
+    <div class="box qr wx">
+      <img src="assets/wechat-qr.png" alt="01+ 顾问微信二维码" width="156" height="156" loading="lazy">
+      <b>想更快开始？微信扫码</b>
+      <small>直接添加顾问 · 手机上长按识别</small>
+    </div>
+    <p class="note">01+ 名校背景提升 · 总部位于美国加州 Irvine，线下与线上均可，适配中美时区。</p>
+  </aside>
+</div></main>
+
+<footer class="su-legal wrap"><div class="in">
+  <span>© 2026 01+ 名校背景提升</span><span>920 Roosevelt, Suite 200, Irvine, CA</span><span>hello@01plus.ai</span>
+</div></footer>
+
+<script>
+(function(){
+  const form=document.getElementById('leadForm'), card=form.closest('.su-card'), ok=card.querySelector('.su-ok');
+  const othBox=form.querySelector('input[name=majors][value=其他]'), othIn=form.querySelector('.oth');
+  const KEY='su_draft', fields=[...form.querySelectorAll('input:not([type=checkbox]):not([name=website]),select,textarea')];
+  /* keep an unsent draft in this browser, so a parent can come back later */
+  try{const d=JSON.parse(localStorage.getItem(KEY)||'null'); if(d){fields.forEach(el=>{if(d[el.name]!=null) el.value=d[el.name]}); form.querySelectorAll('input[name=majors]').forEach(b=>b.checked=(d.majors||[]).includes(b.value)); othIn.classList.toggle('on',othBox.checked)}}catch(_){}
+  const save=()=>{try{const d={}; fields.forEach(el=>d[el.name]=el.value); d.majors=[...form.querySelectorAll('input[name=majors]:checked')].map(b=>b.value); localStorage.setItem(KEY,JSON.stringify(d))}catch(_){}};
+  form.addEventListener('input',save); form.addEventListener('change',save);
+  othBox.addEventListener('change',()=>{othIn.classList.toggle('on',othBox.checked); if(othBox.checked) othIn.focus(); else othIn.value=''});
+  form.addEventListener('input',e=>e.target.classList.remove('bad'));
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const f=new FormData(form), v=k=>String(f.get(k)||'').trim(), msg=form.querySelector('.msg'), btn=form.querySelector('button[type=submit]');
+    msg.classList.remove('on'); form.querySelectorAll('.bad').forEach(x=>x.classList.remove('bad'));
+    if(v('website')){card.classList.add('done');return}
+    const picked=[...form.querySelectorAll('input[name=majors]:checked')].map(i=>i.value), other=picked.includes('其他'), majors=picked.filter(x=>x!=='其他').concat(other&&v('majors_other')?[v('majors_other')]:[]);
+    const missing=['name','grade','school','contact','email'].filter(k=>!v(k));
+    missing.forEach(k=>form.elements[k].classList.add('bad'));
+    const fail=(t,el)=>{msg.textContent=t; msg.classList.add('on'); (el||msg).scrollIntoView({behavior:'smooth',block:'center'}); if(el) el.focus({preventScroll:true})};
+    if(missing.length||!picked.length) return fail('请填写带 * 的必填项。', missing.length?form.elements[missing[0]]:form.querySelector('.chips input'));
+    if(other&&!v('majors_other')) return fail('请填写其他专业方向。', othIn);
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))){form.elements.email.classList.add('bad'); return fail('邮箱格式看起来不对，请检查一下。', form.elements.email)}
+    const html=btn.innerHTML; btn.disabled=true; btn.textContent='提交中…';
+    let tz=null; try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||null}catch(_){}
+    /* the lead table has no columns for these, so they travel as a labelled block in "ideas" */
+    const notes=[['竞赛与获奖','awards'],['校内活动与社团','clubs'],['项目、科研或实习','projects'],['GPA / 标化成绩','scores'],['目标院校','targets'],['家长称呼','parent'],['了解渠道','heard'],['想了解的问题','ideas']]
+      .filter(([,k])=>v(k)).map(([t,k])=>`【${t}】${v(k)}`).join('\n');
+    const lead={id:'',created_at:'',first_name:v('name'),last_name:'',email:v('email'),phone_number:v('contact'),start_grade:parseInt(v('grade'),10),intended_majors:majors.join(', '),hobbies:v('hobbies')||null,ideas:notes||null,project_type:null,specialties:null,industry_interests:null,motivation:null,converted:false,proposed:false,dropped:false,high_potential:false,internal_notes:null,referrer:'01plus.ai 报名表',school:v('school'),location:v('city')||null,time_zone:tz};
+    try{
+      const r=await fetch('https://prime.codingmind.com/api/welcome-survey/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({welcomeSurveyResponse:lead})});
+      if(!r.ok) throw new Error(String(r.status));
+      let ref=null; try{ref=String((await r.json()).welcomeSurveyResponse.lead_number||'')}catch(_){}
+      ok.querySelector('.em').textContent=v('email');
+      card.classList.add('done'); try{localStorage.removeItem(KEY)}catch(_){}
+      scrollTo({top:Math.max(0,card.getBoundingClientRect().top+scrollY-90),behavior:'smooth'}); ok.focus({preventScroll:true});
+      if(window.gsTrack) gsTrack('lead',{lead:ref});
+    }catch(_){
+      btn.disabled=false; btn.innerHTML=html; fail('提交没有成功，请稍后再试，或直接微信扫码联系顾问。'); if(window.gsTrack) gsTrack('lead_error');
+    }
+  });
+})();
+</script>
