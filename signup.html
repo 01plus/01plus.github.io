@@ -25,17 +25,17 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/douyu-400.woff2?v=f95d6ec6" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/outfit.woff2?v=bc90d16b" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/douyu-400.woff2?v=153305db" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/outfit.woff2?v=a439951b" as="font" type="font/woff2" crossorigin>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
 <title>学生背景信息 · 01+ 名校背景提升</title>
 <style>
-@font-face{font-family:"DOUYU";font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/douyu-400.woff2?v=f95d6ec6) format("woff2")}
-@font-face{font-family:"PuHui";font-weight:300;font-style:normal;font-display:swap;src:url(assets/fonts/puhui-300.woff2?v=fe0edd43) format("woff2")}
-@font-face{font-family:"PuHui";font-weight:700;font-style:normal;font-display:swap;src:url(assets/fonts/puhui-700.woff2?v=958c2ab0) format("woff2")}
-@font-face{font-family:"Outfit";font-weight:500 800;font-style:normal;font-display:swap;src:url(assets/fonts/outfit.woff2?v=bc90d16b) format("woff2")}
+@font-face{font-family:"DOUYU";font-weight:400;font-style:normal;font-display:swap;src:url(assets/fonts/douyu-400.woff2?v=153305db) format("woff2")}
+@font-face{font-family:"PuHui";font-weight:300;font-style:normal;font-display:swap;src:url(assets/fonts/puhui-300.woff2?v=509e997d) format("woff2")}
+@font-face{font-family:"PuHui";font-weight:700;font-style:normal;font-display:swap;src:url(assets/fonts/puhui-700.woff2?v=8ff79ea5) format("woff2")}
+@font-face{font-family:"Outfit";font-weight:500 800;font-style:normal;font-display:swap;src:url(assets/fonts/outfit.woff2?v=a439951b) format("woff2")}
 
 :root{
   --bg:#ffffff; --bg-2:#f4f3fb; --fg:#1b1833; --fg-2:#4b4769; --muted:#726e92;
@@ -271,14 +271,10 @@ body{background:var(--bg-2);color:var(--fg)}
         <legend><b>02</b><span>学术与经历</span><em>都是选填，写关键词即可</em></legend>
         <label class="w"><span class="l">兴趣爱好、校内活动与项目经历</span><textarea name="experience" rows="4" maxlength="1200"></textarea></label>
         <label class="w"><span class="l">竞赛与获奖情况</span><textarea name="awards" rows="3" maxlength="800"></textarea></label>
-      </fieldset>
-
-      <fieldset class="su-sec">
-        <legend><b>03</b><span>其他</span></legend>
-        <label class="w"><span class="l">从哪里了解到 01+ <em>选填</em></span><select name="heard"><option value="" selected>请选择</option><option>朋友或家长推荐</option><option>小红书</option><option>微信</option><option>讲座或活动</option><option>搜索引擎</option><option>其他</option></select></label>
-        <label class="w"><span class="l">其他想了解的问题 <em>选填</em></span><textarea name="ideas" rows="3" maxlength="800"></textarea></label>
+        <label class="w"><span class="l">其他想了解的问题</span><textarea name="ideas" rows="3" maxlength="800"></textarea></label>
         <label class="hp" aria-hidden="true">网站<input name="website" type="text" tabindex="-1" autocomplete="off"></label>
       </fieldset>
+
 
       <div class="su-foot">
         <div class="msg" role="alert"></div>
@@ -355,7 +351,7 @@ body{background:var(--bg-2);color:var(--fg)}
     const html=btn.innerHTML; btn.disabled=true; btn.textContent='提交中…';
     let tz=null; try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||null}catch(_){}
     /* the lead table has no columns for these, so they travel as a labelled block in "ideas" */
-    const notes=[['兴趣、活动与项目','experience'],['竞赛与获奖','awards'],['了解渠道','heard'],['其他想了解的问题','ideas']]
+    const notes=[['兴趣、活动与项目','experience'],['竞赛与获奖','awards'],['其他想了解的问题','ideas']]
       .filter(([,k])=>v(k)).map(([t,k])=>`【${t}】${v(k)}`).join('\n');
     const lead={id:'',created_at:'',first_name:v('name'),last_name:'',email:'',phone_number:'',start_grade:parseInt(v('grade'),10),intended_majors:majors.join(', '),hobbies:null,ideas:notes||null,project_type:null,specialties:null,industry_interests:null,motivation:null,converted:false,proposed:false,dropped:false,high_potential:false,internal_notes:null,referrer:'01plus.ai 背景信息表',school:v('school'),time_zone:tz};
     try{
