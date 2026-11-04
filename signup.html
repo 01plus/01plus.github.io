@@ -111,7 +111,7 @@ body{background:var(--bg-2);color:var(--fg)}
 .su-head::before{content:"";position:absolute;right:clamp(-120px,-6vw,-40px);top:-30%;width:min(46vw,520px);aspect-ratio:1;background:var(--yellow);opacity:.16;-webkit-mask:var(--arw) center/contain no-repeat;mask:var(--arw) center/contain no-repeat;pointer-events:none}
 .su-head .in{position:relative;max-width:68rem;display:grid;gap:1rem}
 .su-head h1{font-size:clamp(2.1rem,6vw,3.9rem);line-height:1.08;text-wrap:balance}
-.su-head h1 .hl{white-space:nowrap}
+.su-head h1 :is(.hl,.nw){white-space:nowrap;display:inline-block}
 .su-head .sub{margin:0;max-width:36em;font:300 clamp(.98rem,2vw,1.1rem)/1.7 var(--body);color:rgba(255,255,255,.88)}
 .su-head .steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:.9rem 0 0;padding:1.2rem 0 0;list-style:none;border-top:1px solid rgba(255,255,255,.24);max-width:52rem}
 .su-head .steps li{display:grid;gap:.3rem;font:400 .86rem/1.45 var(--body);color:rgba(255,255,255,.85)}
@@ -247,7 +247,7 @@ body{background:var(--bg-2);color:var(--fg)}
 </div></div>
 
 <header class="su-head panel wrap"><div class="in">
-  <h1>填写学生<span class="hl">背景信息</span></h1>
+  <h1><span class="nw">填写学生</span><span class="hl">背景信息</span></h1>
   <p class="sub">请填写孩子目前的情况。顾问会在会面前读完这份资料，提前准备背景评估和项目方向建议，让下一次见面更有针对性。</p>
   <ol class="steps">
     <li><b>01</b><strong>填写背景信息</strong></li>
