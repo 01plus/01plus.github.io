@@ -244,9 +244,7 @@ print(f"built {len(campaigns)} campaign pages")
 
 # ---------- student background form: 01plus.ai/signup, sent to parents before the assessment meeting ----------
 su = open("src/signup.html", encoding="utf-8").read()
-_sch = json.loads(re.search(r"const SCHOOLS=(\[.*?\]);\n", land, re.S).group(1))
-for k, v in {"FONTS": fonts, "BASE_CSS": base_css, "DEFS": defs, "TITLE": "学生背景信息 · 01+ 名校背景提升",
-             "BOARD_STATS": f"{len(_sch)} 所名校、{sum(len(x['p']) for x in _sch)} 位学生"}.items():
+for k, v in {"FONTS": fonts, "BASE_CSS": base_css, "DEFS": defs, "TITLE": "学生背景信息 · 01+ 名校背景提升"}.items():
     su = su.replace("{{" + k + "}}", v)
 assert "{{" not in su, re.findall(r"\{\{\w+\}\}", su)[:3]
 assert "referrer:'01plus.ai 背景信息表'" in su
